@@ -1,0 +1,342 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Playlist Los Angeles - playlist.lsangeles.com</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/css-doodle/0.6.1/css-doodle.min.js"></script>
+    <script async charset="utf-8" src="https://cdn.iframe.ly/embed.js?api_key=78d408e0b569d36bb547fe"></script>
+    <style>
+      css-doodle {
+        --color: @p(#51eaea, #fffde1, #ff9d76, #FB3569);
+        --filter: @svg-filter(
+          <svg>
+            <filter>
+              <feTurbulence type="fractalNoise"
+                baseFrequency=".08"
+                numOctaves="2"
+                seed="200"
+              />
+              <feDisplacementMap in="SourceGraphic" scale="100" />
+            </filter>
+          </svg>
+        );
+
+        --rule: (
+          :doodle {
+            @grid: 30x1 / 18vmin;
+          }
+
+          :container {
+            perspective: 30vmin;
+          }
+
+          @place-cell: center;
+          @size: 100%;
+
+          :after, :before {
+            content: "";
+            @size: 100%;
+            position: absolute;
+            border: 2.4vmin solid var(--color);
+            border-image: radial-gradient(var(--color), transparent 60%);
+            border-image-width: 4;
+            transform: rotate(@pn(0, 5deg));
+          }
+
+          will-change: transform, opacity;
+          animation: scale-up 15s linear infinite;
+          animation-delay: calc(-15s / @size() * @i());
+          box-shadow: inset 0 0 1em var(--color);
+          border-radius: 50%;
+          filter: var(--filter);
+
+          @keyframes scale-up {
+            0%, 100% {
+              transform: translateZ(0) scale(0) rotate(0);
+              opacity: 0;
+            }
+            50% {
+              opacity: 1;
+            }
+            99% {
+              transform: translateZ(30vmin) scale(1) rotate(-270deg);
+            }
+          }
+        )
+      }
+
+      * {
+        color: white;
+      }
+
+      html, body {
+        position: relative;
+        height: 100%;
+      }
+
+      body {
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        background: black;
+        color: white;
+        text-transform: lowercase;
+        margin: 0;
+        padding: 0;
+      }
+
+      .swiper-container {
+        height: 100%;
+        width: 100%;
+      }
+
+      .swiper-slide {
+        overflow: hidden;
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+      }
+
+      .iframely-embed {
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        padding-left: 8%;
+        padding-right: 8%;
+        background: black;
+      }
+
+      .iframely-responsive {
+        top: 22% !important;
+        left: -10% !important;
+        width: 120% !important;
+        height: 50% !important;
+        position: relative;
+        padding-bottom: 50%;
+        box-sizing: border-box;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: clip;
+      }
+
+      .swiper-doodle {
+        background: #270F34;
+      }
+
+      .intro {
+        position: absolute;
+        z-index: 1000;
+        top: 65px;
+        line-height: 38px;
+      }
+
+      .logo {
+        position: absolute;
+        z-index: 1000;
+        bottom: 55px;
+        line-height: 38px;
+      }
+
+      h1, h2, h3, h4 {
+        letter-spacing: -0.2px;
+      }
+
+      h1 {
+        font-size: 55px;
+      }
+
+      h2 {
+        font-size: 33px;
+      }
+
+      h3 {
+        position: absolute;
+        color: white;
+      }
+
+      h3.artist {
+        top: 20%;
+        font-size: 84px;
+      }
+
+      h3.track {
+        bottom: 20%;
+        font-size: 66px;
+      }
+
+      h3.artist, h3.track, .vote {
+        position: absolute;
+        z-index: 1;
+      }
+
+      .vote {
+        position: absolute;
+        bottom: 4%;
+        right: 6%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .upvote, .downvote {
+        content: "";
+        background-image: url(arrow_vote.svg);
+        background-repeat: no-repeat;
+        height: 114px;
+        width: 120%;
+        background-position: center;
+        background-size: 52%;
+      }
+
+      .downvote {
+        transform: rotate(180deg);
+      }
+
+      .score {
+        font-size: 84px;
+        margin: 16px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="swiper-container swiper-container-h">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide swiper-doodle">
+          <div class="intro">
+            <h1>Sveip for å begynne</h1>
+          </div>
+          <div class="logo">
+            <h2>spilleliste.brgen.no</h2>
+          </div>
+          <css-doodle use="var(--rule)"></css-doodle>
+        </div>
+        <div class="swiper-slide">
+          <h3 class="artist">Nahamasy & DJ Poolboi</h3>
+          <a href="https://www.youtube.com/watch?v=32RHUW0LQKQ" data-iframely-url class="iframely-anchor">https://www.youtube.com/watch?v=32RHUW0LQKQ</a>
+          <h3 class="track">Let Go</h3>
+          <div class="vote">
+            <a class="upvote"><!-- Upvote --></a>
+            <span class="score">123</span>
+            <a class="downvote"><!-- Downvote --></a>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <h3 class="artist">Madrugada</h3>
+          <a href="https://www.youtube.com/watch?v=JcaynoMYGR8" data-iframely-url class="iframely-anchor">https://www.youtube.com/watch?v=JcaynoMYGR8</a>
+          <h3 class="track">Call My Name</h3>
+          <div class="vote">
+            <a class="upvote"><!-- Upvote --></a>
+            <span class="score">123</span>
+            <a class="downvote"><!-- Downvote --></a>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <h3 class="artist">Röyksopp</h3>
+          <a href="https://youtube.com/watch?v=QLnFpjHArwQ" data-iframely-url class="iframely-anchor">https://youtube.com/watch?v=QLnFpjHArwQ</a>
+          <h3 class="track">In Space</h3>
+          <div class="vote">
+            <a class="upvote"><!-- Upvote --></a>
+            <span class="score">123</span>
+            <a class="downvote"><!-- Downvote --></a>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <h3 class="artist">Daniel Klauser</h3>
+          <a href="https://youtube.com/watch?v=H6jNYY4GRr0" data-iframely-url class="iframely-anchor">https://youtube.com/watch?v=H6jNYY4GRr0</a>
+          <h3 class="track">Always I'm Back Here</h3>
+          <div class="vote">
+            <a class="upvote"><!-- Upvote --></a>
+            <span class="score">123</span>
+            <a class="downvote"><!-- Downvote --></a>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <h3 class="artist">Röyksopp</h3>
+          <a href="https://youtube.com/watch?v=8Gy_zq_YuQQ" data-iframely-url class="iframely-anchor">https://youtube.com/watch?v=8Gy_zq_YuQQ</a>
+          <h3 class="track">Remind Me</h3>
+          <div class="vote">
+            <a class="upvote"><!-- Upvote --></a>
+            <span class="score">123</span>
+            <a class="downvote"><!-- Downvote --></a>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <h3 class="artist">Afta-1</h3>
+          <a href="https://youtube.com/watch?v=fzBuXumxDX4" data-iframely-url class="iframely-anchor">https://youtube.com/watch?v=fzBuXumxDX4</a>
+          <h3 class="track">4nia (92)</h3>
+          <div class="vote">
+            <a class="upvote"><!-- Upvote --></a>
+            <span class="score">123</span>
+            <a class="downvote"><!-- Downvote --></a>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <h3 class="artist">Guizz</h3>
+          <a href="https://www.youtube.com/watch?v=9FfLoFaryxw" data-iframely-url class="iframely-anchor">https://www.youtube.com/watch?v=9FfLoFaryxw</a>
+          <h3 class="track">Introspección</h3>
+          <div class="vote">
+            <a class="upvote"><!-- Upvote --></a>
+            <span class="score">123</span>
+            <a class="downvote"><!-- Downvote --></a>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <h3 class="artist">Afta-1</h3>
+          <a href="https://youtube.com/watch?v=ADvXTRu9yJM" data-iframely-url class="iframely-anchor">https://youtube.com/watch?v=ADvXTRu9yJM</a>
+          <h3 class="track">Yellow</h3>
+          <div class="vote">
+            <a class="upvote"><!-- Upvote --></a>
+            <span class="score">123</span>
+            <a class="downvote"><!-- Downvote --></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      window.onload = function() {
+        var swiperH = new Swiper(".swiper-container-h", {
+          spaceBetween: 50,
+          pagination: {
+            el: ".swiper-pagination-h",
+            clickable: true
+          }
+        });
+
+        var swiperV = new Swiper(".swiper-container-v", {
+          direction: "vertical",
+          spaceBetween: 50,
+          pagination: {
+            el: ".swiper-pagination-v",
+            clickable: true
+          }
+        });
+
+        var linkElement = document.querySelector("a.iframely-anchor");
+        iframely.load(linkElement);
+      }
+    </script>
+  </body>
+</html>
+

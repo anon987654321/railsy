@@ -1,0 +1,76 @@
+<% page_title t(:rules) %>
+
+<!-- ------------------------------------------------- -->
+
+<%= render partial: "shared/header" %>
+
+<!-- ------------------------------------------------- -->
+
+<div id="rules" data-role="content">
+  <div class="column_wrapper">
+    <div class="column">
+      <div class="toc">
+        <%= render partial: "shared/help_links" %>
+      </div>
+    </div>
+
+    <!-- ------------------------------------------------- -->
+
+    <div class="column">
+      <article>
+        <h1><%= t :rules %></h1>
+        <p class="last_revised"><%= t :rules_last_revised %></p>
+        <p><%= translate_with_link(:these_rules_govern, brgen_no: "http://brgen.no") %></p>
+        <p><%= t :violation_of_these_rules %></p>
+        <h3 id="forbidden_activities"><%= t :forbidden_activities %></h3>
+        <ol>
+          <li><%= t :multiple_addresses %></li>
+          <li><%= t :url_shortening %></li>
+          <li><%= t :users_personal_info %></li>
+          <li><%= t :copy_content %></li>
+          <li><%= t :access_using_automated_means %></li>
+          <li><%= t :harmful_activities %></li>
+        </ol>
+        <h3 id="posting"><%= t :posting %></h3>
+        <p><%= t :brgen_is_not_responsible %></p>
+        <ol>
+          <li><%= t :any_illegal_content %></li>
+          <li><%= t :affiliate_marketing %></li>
+          <li><%= t :unrelated_categories %></li>
+          <li><%= t :similar_or_multiple_categories %></li>
+          <li><%= t :posting_on_behalf_of_others %></li>
+          <li><%= t :post_using_automated_means %></li>
+        </ol>
+        <h3 id="impersonation"><%= t :impersonation %></h3>
+        <p><%= t :impersonating_someone %></p>
+        <h3 id="discriminatory_housing_ads"><%= t :discriminatory_housing_ads %></h3>
+        <p><%= translate_with_link(:discriminatory_preferences, illegal_link: "http://lovdata.no/all/tl-19990326-017-001.html") %></p>
+        <ul>
+          <li><%= t :race %></li>
+          <li><%= t :religion %></li>
+          <li><%= t :age %></li>
+          <li><%= t :disability %></li>
+          <li><%= t :sexual_orientation %></li>
+          <li><%= t :income %></li>
+        </ul>
+        <h3 id="flagging"><%= t :flagging %></h3>
+        <p><%= t :help_make_brgen_cleaner %></p>
+        <ol>
+          <li><%= t :without_good_faith_belief %></li>
+          <li><%= t :flagging_on_behalf_of_others %></li>
+          <li><%= t :specific_post_multiple_times %></li>
+          <li><%= t :post_using_automated_means %></li>
+        </ol>
+        <h3 id="disclaimer"><%= t :disclaimer %></h3>
+        <p><%= t :might_not_be_appropriate %></p>
+        <ol>
+          <li><%= t :grant_brgen_all_rights %></li>
+          <li><%= t :hold_brgen_harmless %></li>
+          <li><%= t :release_brgen_from_claims %></li>
+        </ol>
+        <p><%= t :governed_by_bergen %></p>
+      </article>
+    </div>
+  </div>
+</div>
+

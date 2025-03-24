@@ -1,0 +1,6 @@
+<main>
+  <%= tag.h1 "bsdports.net", class: "logo" %>
+  <%= render partial: "shared/search" %>
+  <%= link_to "Browse #{ Category.all.count } categories", @categories_path, class: "browse_link" %>
+</main>
+

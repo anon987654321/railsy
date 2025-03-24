@@ -1,0 +1,166 @@
+
+  unpublished_post:
+    text: This is a unpublished post
+    topic: unpublished_topic
+    user_id: 1
+    email: "unpublished_topic@example.com"
+    lft: nil
+    rgt: nil
+    reply_to_id: nil
+    state: "approved"
+
+  pending_confirmation_post:
+    text: This is a pending_confirmation post
+    topic: pending_confirmation_topic
+    user_id: 1
+    email: "pending_confirmation_topic@example.com"
+    lft: nil
+    rgt: nil
+    reply_to_id: nil
+    state: "pending_confirmation"
+
+  published_post1:
+    text: This is a published post 1
+    topic: published_topic1
+    user_id: 1
+    email: "published_topic1@example.com"
+    lft: nil
+    rgt: nil
+    reply_to_id: nil
+
+  published_post2:
+    text: This is a published post 2
+    topic: published_topic2
+    user_id: 1
+    email: "published_topic2@example.com"
+    lft: nil
+    rgt: nil
+    reply_to_id: nil
+
+  published_post3:
+    text: This is a published post 3
+    topic: published_topic3
+    user_id: 1
+    email: "published_topic3@example.com"
+    lft: nil
+    rgt: nil
+    reply_to_id: nil
+
+  expired_post:
+    text: This is a expired post
+    password_salt: $2a$10$zqzau2d.3z7i8rngutU31.
+    password_hash: $2a$10$zqzau2d.3z7i8rngutU31.2TmYe7K2k685QItowUdGlVXPDvd/zJC
+    topic: expired_topic
+    user_id: 1
+    email: "expired_topic@example.com"
+    lft: nil
+    rgt: nil
+    reply_to_id: nil
+
+  open_post:
+    text: This is a open post
+    password_salt: $2a$10$zqzau2d.3z7i8rngutU31.
+    password_hash: $2a$10$zqzau2d.3z7i8rngutU31.2TmYe7K2k685QItowUdGlVXPDvd/zJC
+    topic: open_topic
+    user_id: 1
+    email: "open_post@example.com"
+    lft: nil
+    rgt: nil
+    reply_to_id: nil
+    enable_comments: true
+
+  private_post:
+    text: This is a private post
+    topic: private_topic
+    user_id: 1
+    email: "private_post@example.com"
+    lft: nil
+    rgt: nil
+    reply_to_id: nil
+    enable_comments: false
+
+  reply_to_open_post:
+    text: This is a open post
+    password_salt: $2a$10$zqzau2d.3z7i8rngutU31.
+    password_hash: $2a$10$zqzau2d.3z7i8rngutU31.2TmYe7K2k685QItowUdGlVXPDvd/zJC
+    topic: open_topic
+    user_id: 2
+    email: "reply_to_open_post@example.com"
+    lft: nil
+    rgt: nil
+    reply_to_id: open_post
+
+  anonymous_post:
+    text: This is a anonymous post
+    password_salt: $2a$10$zqzau2d.3z7i8rngutU31.
+    password_hash: $2a$10$zqzau2d.3z7i8rngutU31.2TmYe7K2k685QItowUdGlVXPDvd/zJC
+    topic: anonymous_topic
+    user_id: 3
+    email: "anonymous_post@example.com"
+    lft: nil
+    rgt: nil
+    reply_to_id: nil
+
+  anonymous_post_with_reply:
+    text: This is a anonymous post which has reply
+    password_salt: $2a$10$zqzau2d.3z7i8rngutU31.
+    password_hash: $2a$10$zqzau2d.3z7i8rngutU31.2TmYe7K2k685QItowUdGlVXPDvd/zJC
+    topic: anonymous_topic_with_reply
+    user_id: 3
+    email: "anonymous_post@example.com"
+    lft: nil
+    rgt: nil
+    reply_to_id: nil
+
+  reply_to_anonymous_post:
+    text: This is a reply to anonymous post
+    password_salt: $2a$10$zqzau2d.3z7i8rngutU31.
+    password_hash: $2a$10$zqzau2d.3z7i8rngutU31.2TmYe7K2k685QItowUdGlVXPDvd/zJC
+    topic: anonymous_topic_with_reply
+    user_id: 3
+    email: "anonymous_post@example.com"
+    lft: nil
+    rgt: nil
+    reply_to_id: anonymous_post_with_reply
+
+  sell_post:
+    text: sell post
+    topic: sell_topic
+    user_id: 3
+    email: "sell_topic@example.com"
+    lft: nil
+    rgt: nil
+    reply_to_id: nil
+
+  events_post1:
+    text: events post
+    topic: events_topic1
+    user_id: 3
+    lft: nil
+    rgt: nil
+    reply_to_id: nil
+
+  events_post2:
+    text: events post
+    topic: events_topic2
+    user_id: 3
+    lft: nil
+    rgt: nil
+    reply_to_id: nil
+
+  events_post3:
+    text: events post
+    topic: events_topic3
+    user_id: 3
+    lft: nil
+    rgt: nil
+    reply_to_id: nil
+
+  events_post4:
+    text: events post
+    topic: events_topic4
+    user_id: 3
+    lft: nil
+    rgt: nil
+    reply_to_id: nil
+

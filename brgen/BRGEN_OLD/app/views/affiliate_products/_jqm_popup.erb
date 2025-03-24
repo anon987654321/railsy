@@ -1,0 +1,24 @@
+<div id="affiliate_products_jqm_popup" data-role="popup">
+  <div class="logo_template" style="display: none;">
+    <div class="logo product">
+      <%= image_tag "logo.png" %>
+    </div>
+  </div>
+
+  <!-- ------------------------------------------------- -->
+
+  <a class="log_in_to_remove_ads" href="#sign_in" data-rel="popup" data-transition="pop" data-position-to="window"><%= t :log_in_to_remove_ads %></a>
+
+  <!-- ------------------------------------------------- -->
+
+  <a class="close_trigger" data-rel="back"><%= t :close %></a>
+
+  <!-- ------------------------------------------------- -->
+
+  <div class="products layer" data-depth="1.00">
+
+    <!-- Filled via `routes.rb` => `affiliate_products_controller.rb` => `polling.js` -->
+
+  </div>
+</div> 
+

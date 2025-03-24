@@ -1,0 +1,70 @@
+<% topic = post.topic %>
+
+<!-- ------------------------------------------------- -->
+
+<% is_reply = local_assigns[:is_reply] %>
+
+<!-- ------------------------------------------------- -->
+
+<div class="post_options">
+  <%= render "/likes/like_link", post: post %>
+
+  <!-- ------------------------------------------------- -->
+
+  <% if is_reply %>
+    <%= reply_triggers(post) %>
+  <% end %>
+
+  <!-- ------------------------------------------------- -->
+
+  <a class="button trigger more_trigger" href="#popup_more" data-rel="popup" data-transition="pop" data-position-to="window">
+    <span class="trigger_description"><%= t :more %></span>
+  </a>
+</div>
+
+<!-- ------------------------------------------------- -->
+
+<div id="popup_more" data-role="popup">
+  <div class="panel">
+    <a href="https://facebook.com/sharer/sharer.php?u=<%= url_encode main_app.forum_topic_url(topic.forum, topic) %>"><%= t :share %></a>
+
+    <!-- ------------------------------------------------- -->
+
+    <%= render partial: "flags/flag_link", locals: { type: "post", post: post } %>
+
+    <!-- ------------------------------------------------- -->
+
+    <% if !topic.sponsored? && (forem_admin? || (post.reply_to.nil? && !forem_user.anonymous?) || (forem_user == post.user)) %>
+      <% if post.reply_to.nil? && forem_user && !forem_user.anonymous? %>
+        <% if !topic.subscriber?(forem_user.id) %>
+          <%= link_to t(:subscribe), main_app.subscribe_forum_topic_path(topic.forum, topic) %>
+        <% else %>
+          <%= link_to t(:unsubscribe), main_app.unsubscribe_forum_topic_path(topic.forum, topic) %>
+        <% end %>
+      <% end %>
+
+      <!-- ------------------------------------------------- -->
+
+      <%# if forem_admin_or_moderator?(topic.forum) %>
+        <%#= link_to t("hide.#{ topic.hidden }"), forem.toggle_hide_admin_forum_topic_path(topic.forum, topic), method: :put %>
+        <%#= link_to t("lock.#{ topic.locked }"), forem.toggle_lock_admin_forum_topic_path(topic.forum, topic), method: :put %>
+        <%#= link_to t("pin.#{ topic.pinned }"), forem.toggle_pin_admin_forum_topic_path(topic.forum, topic), method: :put %>
+      <%# end %>
+
+      <!-- ------------------------------------------------- -->
+
+      <% if forem_user == post.user || forem_admin? %>
+        <%= link_to t(:edit), main_app.edit_topic_post_path(topic, post) %>
+
+        <!-- Redirect to root if topic path -->
+
+        <%= link_to t(:delete), main_app.topic_post_path(topic, post, redirect: topic_show_path?), method: :delete, confirm: t(:are_you_sure), class: "progress_trigger" %>
+      <% end %>
+
+      <!-- ------------------------------------------------- -->
+
+      <a data-rel="back"><%= t :cancel %></a>
+    <% end %>
+  </div>
+</div>
+

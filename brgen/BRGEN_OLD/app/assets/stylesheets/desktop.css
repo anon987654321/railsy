@@ -1,0 +1,858 @@
+/*= require_self
+ *= require form_desktop
+ *= require selectize_desktop */
+
+/* -------------------------------------------------- */
+
+/* Image paths are overriden by `draft/shared/stylesheets/draft.css` */
+
+/* Don't use `background` shorthand - Ruby brackets will mess up `repeat` and `position` in draft */
+
+/* -------------------------------------------------- */
+
+body {
+  font: 13px Arial, sans-serif;
+}
+
+/* -------------------------------------------------- */
+
+h2 {
+  font-size: 20px;
+}
+
+/* -------------------------------------------------- */
+
+.post_options .sub, .panel {
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.20);
+}
+
+/* -------------------------------------------------- */
+
+.search_trigger.active:hover, .overflow_panel_trigger.active:hover {
+  background: inherit;
+}
+
+.search label, .search input, .sorting_triggers *, header h2 {
+
+  /* On mobile this is set on the body */
+
+  font-size: 18px;
+}
+
+.search label {
+  cursor: text;
+}
+
+/* -------------------------------------------------- */
+
+.sorting_triggers a:hover, .display_mode_triggers a:hover {
+  text-decoration: none;
+}
+
+/* -------------------------------------------------- */
+
+.trigger_description, .trigger_description:after {
+  position: absolute;
+  background-color: #333;
+}
+
+.trigger_description {
+  border-radius: 2px;
+  color: #fff;
+  padding: 4px 6px;
+  white-space: nowrap;
+  visibility: hidden;
+
+  /* If inside a `text-indent: -9999px` container */
+
+  text-indent: 0;
+}
+
+.trigger_description:after {
+  content: "";
+  height: 12px;
+  width: 12px;
+  transform: rotate(45deg);
+  z-index: -1;
+}
+
+.trigger_description.arrow_top:after {
+  top: -3px;
+}
+
+.trigger_description.arrow_bottom:after {
+  bottom: -3px;
+}
+
+.trigger_description.arrow_center {
+  left: calc(50% - 1px);
+  transform: translateX(-50%);
+}
+
+.trigger_description.arrow_center:after {
+  left: calc(50% - 6px);
+}
+
+.trigger_description.arrow_left {
+  left: -1px;
+}
+
+.trigger_description.arrow_left:after {
+  left: 5px;
+}
+
+.trigger_description.arrow_right {
+  right: -1px;
+}
+
+.trigger_description.arrow_right:after {
+  right: 5px;
+}
+
+/* -------------------------------------------------- */
+
+/* FIXME */
+
+.post_options .sub, .overflow_panel {
+  line-height: 24px;
+}
+
+.overflow_panel a {
+  display: block;
+  padding: 4px 11px;
+  color: #333;
+  font-weight: bold;
+}
+
+.post_options .sub a:hover, .overflow_panel .item a:hover {
+  text-decoration: none;
+}
+
+.post_options .sub, .overflow_panel {
+  visibility: hidden;
+}
+
+/* -------------------------------------------------- */
+
+nav .item {
+  position: relative;
+  line-height: 24px;
+}
+
+nav .item ul {
+  list-style-type: none;
+}
+
+nav .item:first-of-type h3 {
+  margin-top: 0;
+}
+
+nav .item h3 {
+  font-size: 13px;
+  font-weight: bold;
+  margin: 12px 0 4px;
+}
+
+nav .item a {
+  display: block;
+  color: #333;
+}
+
+nav > .item a {
+  padding-left: 12px;
+}
+
+/* -------------------------------------------------- */
+
+nav .help {
+  float: left;
+  margin: 22px 0 0 11px;
+  line-height: 21px;
+}
+
+nav .help a {
+  color: #999;
+  font-size: 12px;
+  margin-right: 5px;
+  float: left;
+}
+
+nav .help a:nth-of-type(1):after {
+  content: "-";
+  margin-left: 5px;
+  display: inline-block;
+}
+
+nav .help a:nth-of-type(3) {
+  clear: left;
+}
+
+/* -------------------------------------------------- */
+
+.post_options .sub, .overflow_panel {
+  line-height: 24px;
+}
+
+.post_options .sub a:first-of-type:before, .post_options .sub a:first-of-type:after, .overflow_panel .item:first-of-type > a:before, .overflow_panel .item:first-of-type > a:after {
+
+  /* Use CSS triangles as opposed to squares to avoid cutting into the anchor text */
+
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 10px solid;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-left-color: transparent;
+  border-bottom-color: #fff;
+  top: -18px;
+}
+
+.post_options .sub a:first-of-type:before, .overflow_panel .item:first-of-type > a:before {
+  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.25));
+  -webkit-filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.25));
+
+  /* Move the drop shadow triangle behind the panel */
+
+  z-index: -1;
+}
+
+.post_options .sub a:first-of-type:after, .overflow_panel .item:first-of-type > a:after {
+
+  /* Move the actual triangle to the front */
+
+  z-index: 1;
+}
+
+.post_options .sub a:first-of-type:before, .post_options .sub a:first-of-type:after {
+  left: calc(50% - 11px);
+}
+
+.post_options .sub a:first-of-type:hover:after, .item:first-of-type > a.hoverintent:after {
+
+  /* Color the triangles on hover */
+
+  border-bottom-color: #e9e9e9
+}
+
+.post_options .sub, .overflow_panel {
+  border-radius: 8px;
+}
+
+/* -------------------------------------------------- */
+
+.overflow_panel {
+  top: 50px;
+  left: 3px;
+}
+
+.overflow_panel .item:first-of-type > a {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.overflow_panel .item:first-of-type > a:before, .overflow_panel .item:first-of-type > a:after {
+  left: 7px;
+}
+
+/* -------------------------------------------------- */
+
+.has_regular_feed .ui-content:not(#media_feed_container), .help .ui-content {
+  background: #f7f7f7;
+  /* background: #fff; */
+
+  /* Overrides `jquery_mobile.css.erb` */
+
+  padding: 13px 11px !important;
+}
+
+/* -------------------------------------------------- */
+
+#regular_feed .topic .embed, #regular_feed .topic iframe {
+  left: 1px;
+}
+
+/* -------------------------------------------------- */
+
+.topic_show_path .topic {
+  margin-top: 15px;
+}
+
+/* -------------------------------------------------- */
+
+.topic .photos {
+  float: left;
+}
+
+.thumbnails img {
+  cursor: pointer;
+}
+
+/* -------------------------------------------------- */
+
+.post_options {
+  clear: left;
+}
+
+.post_options > div {
+  float: left;
+}
+
+.post_options .progressive {
+  visibility: hidden;
+}
+
+.post_options .trigger {
+  height: 22px;
+  padding: 0 13px;
+  position: relative;
+}
+
+.post_options .visible .trigger:first-of-type {
+  padding-left: 0;
+}
+
+.post_options .reply_trigger:after, .post_options .new_email_reply_trigger:after {
+  top: 1px;
+}
+
+.post_options .trigger:hover {
+  cursor: pointer;
+}
+
+.post_options .trigger:hover:after, .more_trigger.hovered:after {
+  /* CSS4: background-position-y: -30px; */
+}
+
+.post_options .like_trigger:hover:after {
+
+  /* Remove come CSS4 */
+
+  background-position: -150px -30px;
+}
+
+.post_options .like_trigger .trigger_description {
+  left: 7px;
+}
+
+.post_options .more_trigger:hover:after {
+
+  /* Remove come CSS4 */
+
+  background-position: -180px -30px;
+}
+
+.post_options .reply_trigger:hover:after {
+
+  /* Remove come CSS4 */
+
+  background-position: -210px -30px;
+}
+
+.post_options .new_email_reply_trigger:hover:after {
+
+  /* Remove come CSS4 */
+
+  background-position: -250px -30px;
+}
+
+.post_options .count {
+  font-size: 12px;
+  top: 2px;
+}
+
+.post_options .trigger_description {
+  top: -34px;
+
+  /* Prevent from being overshadowed by `.topic:after` or `.reply:after` */
+
+  z-index: 1;
+}
+
+.post_options .sub {
+  margin-left: -5px;
+  line-height: 23px;
+  border-radius: 5px;
+  top: 26px;
+  z-index: 2;
+  visibility: hidden;
+}
+
+.post_options .sub a {
+  display: block;
+  width: 100%;
+  padding: 3px 11px 4px;
+  position: relative;
+  background: #fff;
+}
+
+.post_options .sub a:first-of-type {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.post_options .sub a:last-of-type {
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.topic > .post_options {
+  padding-bottom: 12px;
+}
+
+/* -------------------------------------------------- */
+
+.source {
+  display: none;
+}
+
+/* -------------------------------------------------- */
+
+.packery_item .title, .photo .triggers {
+  background-color: #fff;
+  height: 31px;
+  position: absolute;
+  width: 100%;
+}
+
+.packery_item .title {
+  font-size: 13px;
+  font-weight: bold;
+  color: #333;
+  bottom: 0;
+  padding: 2px 11px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* -------------------------------------------------- */
+
+.new_topic {
+  position: relative;
+}
+
+.new_topic_trigger, .new_topic_trigger label, .reply_trigger, .reply_trigger label {
+  cursor: text;
+}
+
+.new_topic_trigger {
+  padding: 9px 8px 8px;
+}
+
+.new_topic_trigger label {
+  font-size: 18px;
+  color: #ababab;
+}
+
+.new_topic_expanded {
+  padding: 0 8px;
+  margin-top: 0;
+  overflow: hidden;
+}
+
+.new_topic .selectize-dropdown .optgroup {
+  line-height: 22px;
+}
+
+.new_topic .triggers, .new_reply .triggers, #photo_editor .triggers, .ui-popup:not(.local_auth) form > .triggers {
+  float: right;
+  position: relative;
+}
+
+.new_topic .triggers, .post_options {
+
+  /* `.post_options` not needed on mobile as they have extra padding due to `.button` */
+
+  margin-bottom: 9px;
+}
+
+/* jQuery Mobile override */
+
+.new_topic_expanded.ui-page {
+  margin-top: 0;
+}
+
+/* -------------------------------------------------- */
+
+form .photos {
+  padding: 10px 0;
+  overflow: hidden;
+}
+
+form .photo, .target {
+  height: 140px;
+  width: 140px;
+  position: relative;
+  float: left;
+}
+
+form .photo {
+  margin-right: 7px;
+}
+
+form .photo .triggers {
+  position: absolute;
+  top: 0;
+  padding: 7px 9px;
+  border: 1px solid #ddd;
+  border-bottom: none;
+  display: none;
+}
+
+form .photo:hover .triggers {
+  display: inline-block;
+}
+
+form .photo .edit, form .photo .edit:after, form .photo .triggers .delete, form .photo .triggers .delete:after {
+  position: absolute;
+  height: 10px;
+  width: 10px;
+}
+
+form .photo .edit, form .photo .delete {
+  text-indent: -9999px;
+}
+
+form .photo .edit:after, form .photo .delete:after {
+  content: "";
+  position: absolute;
+  background-image: url(<%= asset_path "sprite_desktop.svg" %>);
+  background-repeat: no-repeat;
+  top: 0;
+  right: 0;
+}
+
+form .photo .edit {
+  left: 7px;
+  top: 10px;
+}
+
+form .photo .edit:after {
+  /* CSS4: background-position-x: -30px; */
+  background-position: -30px 0;
+}
+
+form .photo .delete {
+  right: 7px;
+  top: 10px;
+}
+
+form .photo .delete:after {
+  /* CSS4: background-position-x: -60px; */
+  background-position: -60px 0;
+}
+
+form .photo .edit .trigger_description, form .photo .delete .trigger_description {
+  top: -37px;
+}
+
+form .photo .edit .trigger_description {
+  left: -8px;
+}
+
+form .photo .delete .trigger_description {
+  right: -8px;
+}
+
+form > .triggers a:not(.button), #photo_editor .triggers a:not(.button) {
+  color: #888;
+  margin-right: 15px;
+}
+
+.target {
+  border: 3px dashed #ccc;
+  text-indent: -9999px;
+}
+
+.target:after {
+  content: "";
+  background-image: url(<%= asset_path "sprite.svg" %>);
+  background-repeat: no-repeat;
+  /* CSS4: background-position-x: -270px; */
+  background-position: -270px 0;
+  height: 20px;
+  width: 20px;
+  opacity: 0.3;
+  position: absolute;
+  top: 55px;
+  left: 55px;
+}
+
+/* -------------------------------------------------- */
+
+#photo_editor .effect {
+  margin: 5px 0;
+  height: 35px;
+  width: 320px;
+}
+
+#photo_editor .effect:first-of-type {
+  margin-top: 0;
+}
+
+#photo_editor .effect select {
+  width: 150px;
+  float: left;
+}
+
+#photo_editor .effect input[type="range"] {
+  left: 15px;
+}
+
+/* -------------------------------------------------- */
+
+.local_auth {
+  padding: 15px;
+}
+
+.local_auth a:not(.button) {
+  text-decoration: underline;
+}
+
+.local_auth .or {
+  margin: 10px 0;
+}
+
+.local_auth .forgot_password {
+  margin: 5px 0 15px;
+}
+
+.local_auth .button {
+  display: block;
+  width: 100%;
+  margin-bottom: 9px;
+}
+
+.local_auth .button:last-of-type {
+  margin-bottom: 0;
+}
+
+.local_auth .switch_popup {
+  margin-top: 12px;
+}
+
+#create_account.local_auth .triggers {
+  padding-top: 15px;
+}
+
+/* -------------------------------------------------- */
+
+.button.primary.facebook {
+  padding-left: 36px;
+}
+
+.button.primary.facebook:after {
+  top: 7px;
+  left: 14px;
+}
+
+/* -------------------------------------------------- */
+
+.affiliate_products_banner, #affiliate_products_jqm_popup .product {
+  cursor: pointer;
+}
+
+.affiliate_products_banner .slides {
+
+  /* Prevent from being overshadowed by `.product` */
+
+  z-index: 1200;
+}
+
+#affiliate_products_jqm_popup {
+  width: 800px;
+  height: 600px;
+  overflow: hidden;
+}
+
+#affiliate_products_jqm_popup .products {
+  height: 1000px;
+  width: 1000px;
+  position: absolute;
+  top: -500px !important;
+  left: 0 !important;
+  float: right;
+  visibility: hidden;
+}
+
+#affiliate_products_jqm_popup .product, #affiliate_products_jqm_popup .name {
+  width: 160px;
+}
+
+#affiliate_products_jqm_popup .product.active, #affiliate_products_jqm_popup .name {
+  border: 1px solid #ddd;
+}
+
+#affiliate_products_jqm_popup .product {
+  border: 1px solid transparent;
+}
+
+#affiliate_products_jqm_popup .product a {
+  text-decoration: none;
+}
+
+#affiliate_products_jqm_popup .retailer, #affiliate_products_jqm_popup .price {
+  background: rgba(26, 26, 26, 0.6);
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
+  line-height: 18px;
+  position: absolute;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}
+
+#affiliate_products_jqm_popup .retailer {
+  top: 0;
+}
+
+#affiliate_products_jqm_popup .retailer:hover, #affiliate_products_jqm_popup .price:hover {
+  background: rgba(255, 255, 255, 0.6);
+  color: #333;
+}
+
+#affiliate_products_jqm_popup .retailer p:last-of-type, #affiliate_products_jqm_popup .name {
+  font-size: 12px;
+}
+
+#affiliate_products_jqm_popup .price {
+  top: auto;
+  bottom: 0;
+}
+
+#affiliate_products_jqm_popup .name {
+  background: #fff;
+  color: #333;
+  line-height: 16px;
+  padding: 6px 8px 7px;
+  margin: 0 -1px;
+  position: absolute;
+  display: none;
+}
+
+#affiliate_products_jqm_popup .name:hover {
+  text-decoration: underline;
+}
+
+#affiliate_products_jqm_popup .log_in_to_remove_ads, #affiliate_products_jqm_popup .close_trigger {
+  z-index: 2000;
+}
+
+#affiliate_products_jqm_popup .log_in_to_remove_ads {
+  position: absolute;
+  padding: 4px 0 0 6px;
+}
+
+#affiliate_products_jqm_popup .close_trigger, #affiliate_products_jqm_popup .close_trigger:after {
+  top: 4px;
+  right: 4px;
+}
+
+/* -------------------------------------------------- */
+
+.help .column_wrapper {
+  overflow: hidden;
+  width: 80%;
+  margin: 30px auto 50px;
+}
+
+.help .column {
+  float: left;
+}
+
+.help .column:nth-of-type(1) {
+  width: 17%;
+}
+
+.help .column:nth-of-type(2) {
+  width: 83%;
+}
+
+.help .toc {
+  line-height: 24px;
+}
+
+.help .toc a {
+  color: #888;
+  display: block;
+  position: relative;
+  font-size: 14px;
+  margin-right: 11px;
+  padding: 8px 0 5px;
+}
+
+.help .toc a:hover {
+  text-decoration: none;
+  color: #ccc;
+}
+
+/* Caro.js */
+
+.help .slides_wrapper {
+  margin-bottom: 30px;
+}
+
+.help .slide {
+  position: relative;
+}
+
+.help .slide img {
+  margin: 15px auto;
+}
+
+.help .previous_next, .help .previous_next a, .help .previous_next a:after {
+  position: absolute;
+}
+
+.help .previous_next {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.help .previous_next a {
+  text-indent: -9999px;
+  z-index: 1;
+}
+
+.help .previous_next a:after {
+  content: "";
+  background-image: url(<%= asset_path "sprite_desktop.svg" %>);
+  background-repeat: no-repeat;
+  background-position: -150px 0;
+  height: 40px;
+  width: 18px;
+  opacity: 0.2;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.help .previous_next a:hover:after {
+  opacity: 1;
+}
+
+.help .previous_next .previous {
+  left: 0;
+}
+
+.help .previous_next .next {
+  right: 18px;
+}
+
+.help .previous_next .next:after {
+  transform: rotate(180deg);
+}
+
+.help .count {
+  color: #aaa;
+  text-align: center;
+}
+

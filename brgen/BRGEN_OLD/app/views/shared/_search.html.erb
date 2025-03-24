@@ -1,0 +1,11 @@
+
+<!-- TODO: RDFa Lite 1.1: http://schema.org/WebSite -->
+
+<div class="search">
+  <%= form_tag main_app.search_path, method: :get do %>
+    <label for="search"><%= t :search %>...</label>
+    <%= search_field_tag :keywords, params[:keywords], id: "search" %>
+  <% end %>
+  <a class="close_trigger"><%= t :close %></a>
+</div>
+

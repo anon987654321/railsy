@@ -1,0 +1,28 @@
+@forum = Forem::Forum.find_by_name("")
+@topic1 = @forum.topics.build({ subject: "",  posts_attributes: [text: ""] })
+@topic1.user = create_anon_user
+@topic1.save!
+@topic1.update_column(:created_at, (rand * 5).days.ago)
+@topic1.update_column(:updated_at, @topic1.created_at)
+@topic1.update_column(:published_at, @topic1.created_at)
+@topic1.update_column(:state, "published")
+@topic1.posts.first.update_column(:created_at, @topic1.created_at)
+@topic1.posts.first.update_column(:updated_at, @topic1.created_at)
+@forum.increment(:published_topics_count)
+@forum.save!
+reply1 = @topic1.posts.build({ text: "",  reply_to_id: @topic1.posts.first.id })
+reply1.user = create_anon_user
+reply1.save!
+reply1.update_column(:created_at, @topic1.created_at + (rand * 1440).minutes)
+reply1.update_column(:updated_at, reply1.created_at)
+reply2 = @topic1.posts.build({ text: "",  reply_to_id: reply1.id })
+reply2.user = create_anon_user
+reply2.save!
+reply2.update_column(:created_at, reply1.created_at + (rand * 1440).minutes)
+reply2.update_column(:updated_at, reply2.created_at)
+reply3 = @topic1.posts.build({ text: "",  reply_to_id: reply2.id })
+reply3.user = create_anon_user
+reply3.save!
+reply3.update_column(:created_at, reply2.created_at + (rand * 1440).minutes)
+reply3.update_column(:updated_at, reply3.created_at)
+

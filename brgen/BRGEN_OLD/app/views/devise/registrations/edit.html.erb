@@ -1,0 +1,53 @@
+
+<!-- Mobile only -->
+
+<!-- TODO: Render in profile on desktop -->
+
+<div data-iscroll>
+  <header data-role="header">
+
+    <!-- Wrapper to prevent jQuery Mobile from adding CSS to elements -->
+
+    <!-- TODO: Remove come v1.5: GH #7230 -->
+
+    <div class="jqm_prevent_class_injection">
+      <a class="back_trigger" data-rel="back"><%= t :back %></a>
+
+      <!-- ------------------------------------------------- -->
+
+      <h2><%= t :edit %> <%= resource_name.to_s.humanize %></h2>
+
+      <!-- ------------------------------------------------- -->
+
+      <div class="progress_wrapper">
+
+        <!-- Filled by NProgress -->
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ------------------------------------------------- -->
+
+  <div data-role="content">
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: put }) do |f| %>
+      <%= f.error_notification %>
+
+      <!-- ------------------------------------------------- -->
+
+      <%= f.input :email, label: t(:email), required: true, autofocus: true, wrapper_html: { class: "text" } %>
+      <%= f.input :name, label: t(:real_name), required: true, wrapper_html: { class: "text" } %>
+      <%= f.input :password, label: t(:password), autocomplete: "off", required: true, wrapper_html: { class: "text" } %>
+      <%= f.input :password_confirmation, label: t(:repeat_password), required: true, wrapper_html: { class: "text" } %>
+      <%= f.input :current_password, label: t(:current_password), required: true, wrapper_html: { class: "text" } %>
+
+      <!-- ------------------------------------------------- -->
+
+      <div class="triggers">
+        <%= f.submit t(:edit_account), class: "button primary large" %>
+        <%= link_to t(:cancel_account), registration_path(resource_name), confirm: t(:are_you_sure), method: delete, class: "button large" %>
+      </div>
+    <% end %>
+  </div>
+</div> 
+

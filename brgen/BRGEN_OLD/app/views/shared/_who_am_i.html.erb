@@ -1,0 +1,31 @@
+<div class="who_am_i">
+  <%= brgen_avatar(forem_user) %>
+
+  <!-- ------------------------------------------------- -->
+
+  <% if !forem_user_signed_in? %>
+    <%= display_user(t(:anonymous), anonymous: true) %>
+
+    <!-- ------------------------------------------------- -->
+
+    <% unless mobile? %>
+
+      <!-- Corresponds to popup in `application.html.erb` -->
+
+      <a href="#sign_in" data-rel="popup" data-transition="pop" data-position-to="window"><%= t :sign_in %></a>
+    <% else %>
+      <%= link_to t(:sign_in), main_app.new_user_session_path %>
+    <% end %>
+  <% else %>
+    <% if forem_admin? %>
+      <%= link_to t(:admin), forem.admin_root_path %>
+    <% else %>
+      <%= display_user forem_user %>
+    <% end %>
+
+    <!-- ------------------------------------------------- -->
+
+    <%= link_to t(:sign_out), main_app.destroy_user_session_path, method: "delete", data: { ajax: "#{ 'false' unless mobile? }" } %>
+  <% end %>
+</div>
+

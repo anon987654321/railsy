@@ -1,0 +1,52 @@
+
+  general:
+    name: General
+    value: general
+    expires_in: 30
+
+  parent_category:
+    name: Parent Category
+    value: parent_category
+
+  events_category:
+    name: Events Category
+    value: events
+
+  child_category:
+    name: Child Category
+    value: child_category
+    parent: parent_category
+
+  dating:
+    name: Dating
+    value: dating
+
+  for_sale:
+    name: For Sale
+    value: for_sale
+
+  housing:
+    name: Housing
+    value: housing
+
+  buy_category:
+    name: Buy Category
+    value: buy_category
+    parent: for_sale
+
+  sell_category:
+    name: Sell Category
+    value: sell_category
+    parent: for_sale
+    expires_in: 1
+
+  offering_category:
+    name: Offering Housing
+    value: offering_category
+    parent: housing
+
+  seeking_category:
+    name: Seeking Housing
+    value: seeking_category
+    parent: housing
+

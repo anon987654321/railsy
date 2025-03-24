@@ -1,0 +1,4 @@
+<% if @query.present? %>
+  <%= tag.div "Clear search", data: { action: "click->search#reset" } %>
+<% end %>
+

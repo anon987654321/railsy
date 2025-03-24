@@ -1,0 +1,140 @@
+
+/* TODO: Style as `.flash .error` in `all.css.erb` */
+
+.field_with_errors .selectize-control {
+  background: #fff;
+  border: solid 2px #ff0000;
+  margin: -2px 0 0 4px;
+}
+
+/* -------------------------------------------------- */
+
+.selectize-input, .selectize-dropdown {
+  border-bottom: 1px solid #eee;
+}
+
+.selectize-input {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.selectize-input:after {
+  content: "";
+  position: absolute;
+  background-image: url(<%= asset_path "sprite.svg" %>);
+  background-repeat: no-repeat;
+  background-position: -30px 0;
+  opacity: 0.4;
+
+  /* TODO: Why is this needed? */
+
+  transform: scale(1.1);
+}
+
+.selectize-input > input {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.selectize-input > input:focus {
+  outline: none;
+}
+
+.selectize-input .item {
+  display: inline-block;
+}
+
+.selectize-input, .selectize-input input, .selectize-dropdown {
+  font-family: inherit;
+}
+
+/* -------------------------------------------------- */
+
+.selectize-input input::-webkit-input-placeholder {
+
+  /* Style input placeholder */
+
+  /* http://goo.gl/aMXM3 */
+
+  color: #888;
+}
+
+.selectize-input.input-active input::-webkit-input-placeholder {
+
+  /* Add fading opacity */
+
+  opacity: 0.5;
+  transition: all .3s ease;
+}
+
+/* Requires separate rules for Mozilla */
+
+.selectize-input input:-moz-placeholder {
+  color: #888;
+}
+
+.selectize-input.input-active input:-moz-placeholder {
+  opacity: 0.5;
+  transition: all .3s ease;
+}
+
+/* -------------------------------------------------- */
+
+.selectize-dropdown {
+  background: #fff;
+  position: absolute;
+  z-index: 10;
+}
+
+.selectize-dropdown-content {
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 250px;
+}
+
+.selectize-dropdown .optgroup-header, .selectize-dropdown [data-selectable] {
+  padding: 5px 12px;
+}
+
+.selectize-dropdown .optgroup-header {
+  font-weight: bold;
+  padding-top: 7px;
+  cursor: default;
+}
+
+.selectize-dropdown .optgroup {
+  float: left;
+  border-right: 1px solid #ddd;
+}
+
+.selectize-dropdown [data-selectable] .highlight {
+  background: #19558d;
+  color: #fff;
+}
+
+/* -------------------------------------------------- */
+
+/* optgroup_packery.js */
+
+.selectize-dropdown-content .optgroup {
+
+  /* Higher than 33% to hide last column border */
+
+  width: 34% !important;
+}
+
+@media screen and (max-width: 900px) {
+  .selectize-dropdown-content .optgroup {
+    width: 50% !important;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .selectize-dropdown-content .optgroup {
+    width: 100% !important;
+  }
+}
+

@@ -1,0 +1,49 @@
+
+# Automatically reloads the browser when views are modified
+
+# https://github.com/guard/guard-livereload
+
+guard "livereload" do
+  extensions = {
+    css: :css,
+    js: :js,
+    html: :html,
+    svg: :svg,
+    png: :png
+  }
+
+  rails_view_exts = %w(erb)
+
+  # File types LiveReload may optimize refresh for
+
+  compiled_exts = extensions.values.uniq
+  watch(%r{public/.+\.(#{ compiled_exts * '|' })})
+
+  extensions.each do |ext, type|
+    watch(%r{
+      (?:app|vendor)
+
+      # Path and base without extension
+
+      (?:/assets/\w+/(?<path>[^.]+)
+
+      # Matching extension, on first encounter
+
+      (?<ext>\.#{ext}))
+
+      # Other extensions
+
+      (?:\.\w+|$)
+    }x) do |m|
+      path = m[1]
+      "/assets/#{path}.#{type}"
+    end
+  end
+
+  # File needing a full reload of the page anyway
+
+  watch(%r{app/views/.+\.(#{rails_view_exts * '|'})$})
+  watch(%r{app/helpers/.+\.rb})
+  watch(%r{config/locales/.+\.yml})
+end
+

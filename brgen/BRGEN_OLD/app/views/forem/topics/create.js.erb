@@ -1,0 +1,14 @@
+<% if @topic.errors.any? %>
+  <% if @topic.errors.include?(:subject) %>
+    console.log('Server: <%= @post.errors[:subject] %>');
+  <% end %>
+
+  <% if @topic.errors.include?(:forum) %>
+    console.log('Server: <%= @post.errors[:forum] %>');
+  <% end %>
+
+  <% if @topic.errors.include?(:"posts.text") %>
+    console.log('Server: <%= @post.errors[:"posts.text"] %>');
+  <% end %>
+<% end %>
+

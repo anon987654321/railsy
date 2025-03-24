@@ -1,0 +1,35 @@
+
+<!-- Snap.js replaces jQuery Mobile's panel widget -->
+
+<div class="snap-drawers">
+  <div class="panel_wrapper snap-drawer snap-drawer-left" data-iscroll>
+    <%= link_to t(:brgen), main_app.root_path, id: "logo" %>
+
+    <!-- ------------------------------------------------- -->
+
+    <a class="close_trigger"><%= t :close %></a>
+
+    <!-- ------------------------------------------------- -->
+
+    <div class="panel overflow_panel">
+      <%#= render partial: "shared/who_am_i" %>
+
+      <!-- ------------------------------------------------- -->
+
+      <%= link_to t(:help), main_app.intro_path %>
+
+      <!-- ------------------------------------------------- -->
+
+      <a href="/generelt/gi-oss-tilbakemelding"><%= t :send_feedback %></a>
+    </div>
+  </div>
+
+  <!-- Access panel through both left and right swipes -->
+
+  <div class="snap-drawer snap-drawer-right">
+
+    <!-- Filled by Snap.js -->
+
+  </div>
+</div> 
+

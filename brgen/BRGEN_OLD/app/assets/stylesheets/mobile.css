@@ -1,0 +1,649 @@
+/*= require snapjs/snap.scss
+ *= require_self
+ *= require form_mobile
+ *= require selectize_mobile */
+
+/* -------------------------------------------------- */
+
+/* Image paths are overriden by `draft/shared/stylesheets/draft.css` */
+
+/* Don't use `background` shorthand - Ruby brackets will mess up `repeat` and `position` in draft */
+
+/* -------------------------------------------------- */
+
+body {
+  font: 18px sans-serif;
+
+  /* https://github.com/cubiq/iscroll/blob/master/demos/barebone/index.html */
+
+  /* Prevent page from bouncing */
+
+  overflow: hidden;
+
+  /* Prevent callout on tap-hold and text selection */
+
+  user-select: none;
+
+  /* Prevent text resize on orientation change */
+
+  text-size-adjust: none;
+}
+
+/* -------------------------------------------------- */
+
+h2 {
+  font-size: 18px;
+}
+
+/* -------------------------------------------------- */
+
+/* jQuery Mobile override */
+
+.has_regular_feed {
+  height: 100%;
+}
+
+/* -------------------------------------------------- */
+
+[data-iscroll] .scroller_wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+[data-iscroll] .scroller {
+  position: relative;
+}
+
+/* Prevent highlight on tap */
+
+[data-iscroll] .scroller_wrapper {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+/* Send to hardware compositing layer */
+
+[data-iscroll] .scroller_wrapper {
+  transform: translateZ(0);
+}
+
+/* Prevent links being tapped while scrolling */
+
+[data-iscroll] .scroller_wrapper.scrolling a {
+  pointer-events: none;
+}
+
+/* -------------------------------------------------- */
+
+/* http://tobiasahlin.com/spinkit/ */
+
+.spinkit_parent_wrapper {
+  position: relative;
+  height: 100%;
+}
+
+.spinkit_wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.spinkit_double_bounce {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  margin: 40px auto;
+}
+
+.spinkit_double_bounce div {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #333;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-animation: doubleBounce 2s infinite ease-in-out;
+  animation: doubleBounce 2s infinite ease-in-out;
+}
+
+.spinkit_double_bounce .bounce2 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+@-webkit-keyframes doubleBounce {
+  0%, 100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+
+  50% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes doubleBounce {
+  0%, 100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+
+  50% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+/* -------------------------------------------------- */
+
+.spinkit_parent_wrapper, .touch_indicator_template {
+  display: none;
+}
+
+.spinkit_wrapper, .touch_indicator_template {
+
+  /* Exceed jQuery Mobile's `z-index: 1000` */
+
+  position: absolute;
+  z-index: 2000;
+}
+
+.touch_indicator {
+
+  /* Prevent targets from becoming untouchable after first touch */
+
+  pointer-events: none;
+}
+
+/* -------------------------------------------------- */
+
+/* Hide bars on scroll to free up space */
+
+header, footer {
+  transition: all .25s ease;
+}
+
+header.slide_up {
+  transform: translateY(-48px);
+}
+
+footer.slide_down {
+  transform: translateY(48px);
+}
+
+/* -------------------------------------------------- */
+
+/* jQuery Mobile popup widget */
+
+.popup a {
+  text-align: center;
+  padding-left: 22px;
+  padding-right: 22px;
+}
+
+.popup a[data-rel="back"] {
+  color: #aaa;
+}
+
+/* -------------------------------------------------- */
+
+footer {
+  background: #fff;
+
+  /* Overrides `all.css.erb` */
+
+  border-top: 1px solid #ddd !important;
+}
+
+nav {
+  white-space: nowrap;
+  padding: 10px;
+  margin-right: 50px;
+  height: 41px;
+}
+
+nav .item {
+  display: inline;
+  padding: 10px;
+  line-height: 40px;
+}
+
+nav .arrow {
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  top: 0;
+  right: 50px;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 80%);
+}
+
+nav .arrow:after {
+  content: ">";
+  position: absolute;
+  font-size: 45px;
+  right: -37px;
+}
+
+nav .arrow_left {
+}
+
+nav .arrow_left:after {
+}
+
+nav .arrow_right {
+}
+
+nav .arrow_right:after {
+}
+
+.nav_popup .ui-content {
+  overflow-y: auto;
+}
+
+.nav_popup .ui-content a, .panel a {
+  display: block;
+  padding: 16px 11px;
+}
+
+.nav_popup .ui-content a, .panel .item a {
+  border-bottom: 1px solid #ddd;
+}
+
+.nav_popup .ui-content li:last-of-type a {
+  border-bottom: none;
+}
+
+/* -------------------------------------------------- */
+
+/* Snap.js replaces jQuery Mobile's panel widget */
+
+.panel_wrapper, .panel_wrapper a {
+  color: #fff;
+}
+
+.panel_wrapper {
+  background-color: #222;
+}
+
+.panel_wrapper #logo {
+  padding-left: 11px;
+  position: relative;
+  top: 9px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.panel_wrapper .close_trigger {
+  top: 11px;
+  right: 11px;
+}
+
+.panel.overflow_panel {
+  margin-top: 22px;
+}
+
+.panel > a {
+  border-bottom: 1px solid #666;
+}
+
+.panel > a:last-of-type {
+  border-bottom: none;
+}
+
+.panel .item > a {
+  position: relative;
+}
+
+/* Open panel via left and right swipes */
+
+.snapjs-right .snap-drawer-left {
+  display: block;
+  right: 0;
+  left: auto;
+}
+
+.snapjs-right .snap-drawer-right {
+  display: none;
+}
+
+/* Rearrange layers */
+
+.snap-drawers .panel_wrapper {
+  z-index: 100;
+}
+
+.has_regular_feed, .has_media_feed {
+  z-index: 200;
+}
+
+/* Hide panel */
+
+.has_regular_feed {
+  background-color: #fff;
+}
+
+/* -------------------------------------------------- */
+
+#regular_feed > .scroller_wrapper {
+
+  /* Overrides `jquery_mobile.css.erb` */
+
+  /* Make way for the header */
+
+  padding-top: 81px !important;
+}
+
+/* -------------------------------------------------- */
+
+#regular_feed > .scroller_wrapper, #compose .ui-content, #photo_editor .ui-content, .local_auth .ui-content {
+
+  /* Overrides `jquery_mobile.css.erb` */
+
+  padding-left: 11px !important;
+  padding-right: 11px !important;
+}
+
+/* -------------------------------------------------- */
+
+#media_feed_container .scroller {
+  background-color: #000;
+}
+
+/* -------------------------------------------------- */
+
+.intro {
+  padding: 18px 0 16px;
+}
+
+/* -------------------------------------------------- */
+
+.button.primary.facebook {
+  padding-left: 45px;
+}
+
+.button.primary.facebook:after {
+  left: 20px;
+  transform: scale(1.3);
+}
+
+/* -------------------------------------------------- */
+
+/* Reposition replies due to iScroll containers */
+
+.replies {
+  left: 41px;
+  position: relative;
+}
+
+/* -------------------------------------------------- */
+
+.topic_show_path .topic {
+  margin-top: 25px;
+}
+
+.topic_show_path .topic .title {
+  top: -45px;
+}
+
+.fetch_replies_trigger, .show_all_comments, .source {
+  font-size: 14px;
+  color: #ccc;
+}
+
+.reply.truncated .user_textarea {
+  position: relative;
+  overflow: hidden;
+}
+
+.reply.truncated .user_textarea .fade_overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding-top: 40px;
+  margin: 0;
+  background: linear-gradient(rgba(245, 245, 245, 0) 0%, rgba(245, 245, 245, 0.9) 50%, rgba(245, 245, 245, 0.9) 50%, white 100%);
+}
+
+/* -------------------------------------------------- */
+
+.post_options .trigger {
+  background: #fff;
+  height: 30px;
+  padding: 5px 10px 0;
+  margin-right: 11px;
+}
+
+.post_options .count {
+  font-size: 14px;
+  top: -3px;
+}
+
+.reply_trigger:after, .new_email_reply_trigger:after {
+  top: -5px;
+}
+
+.like_trigger:after {
+  top: -3px;
+}
+
+.more_trigger:after {
+  top: -7px;
+}
+
+.trigger_description {
+  display: none;
+}
+
+/* Overrides `form.css.erb` and adjust space */
+
+.post_options .button:not(.primary) {
+  background: none;
+  border: none;
+}
+
+.post_options .button:first-of-type {
+  padding-left: 0;
+}
+
+/* -------------------------------------------------- */
+
+a.new_topic_trigger {
+  display: block;
+  height: 41px;
+  width: 100%;
+  border: 1px solid #d6d6d6;
+  border-radius: 4px;
+  padding: 9px 0 0 11px;
+  margin: 13px 0 13px -1px;
+  font-size: 18px;
+  color: #ccc;
+  text-decoration: none;
+}
+
+.add_photo_trigger, .add_photo_trigger:after {
+  position: absolute;
+}
+
+.add_photo_trigger {
+  text-indent: -9999px;
+  right: 0;
+}
+
+.add_photo_trigger:after {
+  content: "";
+  background-image: url(<%= asset_path "sprite.svg" %>);
+  background-repeat: no-repeat;
+  height: 22px;
+  width: 25px;
+  top: 11px;
+  right: 11px;
+}
+
+/* -------------------------------------------------- */
+
+.triggers {
+  text-align: center;
+  margin: 22px 0;
+}
+
+.triggers .button {
+  margin-bottom: 10px;
+}
+
+/* -------------------------------------------------- */
+
+/* Reset values from `form_mobile.css.erb` */
+
+.new_reply label, .new_reply input {
+  font-size: 13px !important;
+}
+
+/* -------------------------------------------------- */
+
+form .photos {
+  padding: 22px 0;
+}
+
+form .photo {
+  display: flex;
+}
+
+form .photo img {
+  margin-right: 7px;
+}
+
+form .photo .triggers .button {
+  display: block;
+  margin-bottom: 7px;
+}
+
+form .photo .triggers .button:last-of-type {
+  margin-bottom: 0;
+}
+
+/* -------------------------------------------------- */
+
+#photo_editor [data-role="content"] {
+  padding: 10px;
+}
+
+#photo_editor #main {
+  text-align: center;
+}
+
+#photo_editor #photo_container {
+  margin: 15px 0;
+
+  /* Prevent shadow on the outside of photo */
+
+  overflow: hidden;
+}
+
+#photo_editor .effects {
+  clear: left;
+  position: relative;
+}
+
+#photo_editor .slides {
+
+  /* Overrides Caro's height */
+
+  height: 70px !important;
+}
+
+#photo_editor .previous_next {
+  position: absolute;
+  width: 100%;
+}
+
+#photo_editor .previous_next a, #photo_editor .previous_next a:after {
+  position: absolute;
+}
+
+#photo_editor .previous_next a {
+  text-indent: -9999px;
+  top: 10px;
+  z-index: 1;
+}
+
+#photo_editor .previous_next a:after {
+  content: "";
+  background-image: url(<%= asset_path "sprite.svg" %>);
+  background-repeat: no-repeat;
+  background-position: -150px -30px;
+  height: 20px;
+  width: 9px;
+  position: absolute;
+  top: 15px;
+}
+
+#photo_editor .previous_next .previous, #photo_editor .previous_next .previous:after {
+  left: 0;
+}
+
+#photo_editor .previous_next .next, #photo_editor .previous_next .next:after {
+  right: 10px;
+}
+
+#photo_editor .previous_next .next:after {
+  transform: rotate(180deg);
+}
+
+/* --------------------------------------------------*/
+
+#affiliate_products_jqm_page .products {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#affiliate_products_jqm_page .scroller_wrapper {
+
+  /* Make way for the header */
+
+  margin-top: 55px;
+}
+
+#affiliate_products_jqm_page .products img {
+  margin: 10px auto;
+}
+
+#affiliate_products_jqm_page .products p {
+  margin: 5px 0;
+}
+
+#affiliate_products_jqm_page .products .button {
+  margin: 10px 0 55px;
+}
+
+/* --------------------------------------------------*/
+
+.local_auth .facebook {
+  margin-top: 30px;
+}
+
+.local_auth .or {
+  margin: 15px 0;
+}
+
+.local_auth .forgot_password {
+  margin: 13px 0 25px;
+}
+
+.local_auth .switch_page {
+  margin: 40px 0 15px;
+}
+
+/* --------------------------------------------------*/
+
+@media screen and (min-width: 380px) {
+  video {
+    width: 100%;
+  }
+}
+

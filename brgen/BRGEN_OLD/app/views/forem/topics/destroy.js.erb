@@ -1,0 +1,18 @@
+<% if @topic && !flash[:alert] %>
+  <% if params[:redirect] == "true" %>
+
+    // Redirect to root if topic path
+
+    window.location = '<%= root_url %>';
+  <% end %>
+
+  // TODO: I18n
+
+  $('#topic_<%= @topic.id %>').html('<%= t :removed %>');
+  $('#topic_<%= @topic.id %>').hide('slow');
+
+  NProgress.done();
+<% else %>
+  $('#topic_<%= @topic.id %>').append('<%= escape_javascript(render template: "forem/topics/destroy", formats: [:html], handlers: [:erb]) %>');
+<% end %>
+
