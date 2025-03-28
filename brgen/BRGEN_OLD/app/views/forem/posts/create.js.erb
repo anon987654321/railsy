@@ -1,9 +1,0 @@
-
-/* FIXME */
-
-<% if @post.errors.any? %>
-  <% if @post.errors.include?(:text) %>
-    console.log('Server: <%= @post.errors[:text] %>');
-  <% end %>
-<% end %>
-

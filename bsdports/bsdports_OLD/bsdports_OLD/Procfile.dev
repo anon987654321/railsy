@@ -1,4 +1,0 @@
-web: bundle exec falcon31 serve --threaded --bind http://0.0.0.0:6969
-js: yarn build
-css: yarn build:css
-

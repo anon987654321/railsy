@@ -1,9 +1,0 @@
-$('<%= escape_javascript render("like_link", post: @post) %>')
-  .insertAfter($('#like<%= @post.id %>'));
-
-if(!GLOBAL_CONFIG.isMobile) {
-  $.triggerDescriptions($('.like_trigger'));
-}
-
-$('#like<%= @post.id %>').remove();
-

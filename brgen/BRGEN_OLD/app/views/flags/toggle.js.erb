@@ -1,4 +1,0 @@
-var postOptions = $("#flag_post<%= @post.id %>").parent();
-$("#flag_post<%= @post.id %>").remove();
-postOptions.append("<%= escape_javascript render('flag_link', post: @post) %>");
-

@@ -1,6 +1,0 @@
-<% if flag = post.flags.find_by_user_id(forem_user.id) %>
-  <%= link_to t(:not_spam), main_app.flag_path(flag), method: :delete, remote: true, class: "#{ 'button' if mobile? }", id: "flag_post#{ post.id }" %>
-<% else %>
-  <%= link_to t(:spam), main_app.flags_path(post_id: post.id), method: :post, remote: true, class: "#{ 'button' if mobile? }", id: "flag_post#{ post.id }" %>
-<% end %>
-

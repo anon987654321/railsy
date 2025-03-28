@@ -1,7 +1,0 @@
-
-/* form_desktop.css.erb */
-
-input[type="checkbox"]:checked:after {
-  background-image: url(../../../app/assets/images/sprite_desktop.svg);
-}
-
