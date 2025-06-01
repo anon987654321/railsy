@@ -1,0 +1,80 @@
+
+/* Responsive tables */
+
+/* https://goo.gl/mUE83s */
+
+table {
+  border-collapse: collapse;
+  width: calc(100% - 30px);
+  margin: 40px 0;
+}
+
+th {
+  padding: 10px 15px 13px;
+  text-align: left;
+}
+
+tr {
+  border-top: 1px solid #ddd;
+}
+
+tr:nth-of-type(1), tr:nth-of-type(2) {
+  border-top: none;
+}
+
+td {
+  padding: 11px 15px;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 640px) {
+  table, tbody, tr, td {
+    display: block;
+  }
+
+  th {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tr {
+    border-top: none;
+    margin-bottom: 15px;
+  }
+
+  td:after {
+    content: attr(data-title);
+    font-weight: bold;
+    padding: 15px 13px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 25%;
+  }
+
+  td {
+    border-bottom: 1px solid #e5e5e5;
+    position: relative;
+    padding: 15px 15px 15px 33%;
+  }
+
+  td:last-of-type {
+    border-bottom: none;
+  }
+
+  td .button {
+    margin-top: -6px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  td:after {
+    width: 33%;
+  }
+
+  td {
+    padding-left: 47%;
+  }
+}
+

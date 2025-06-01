@@ -1,0 +1,105 @@
+
+.button {
+  font: bold 12px Tahoma, sans-serif;
+  padding: 7px 18px 9px;
+  cursor: pointer;
+}
+
+.button:not(.primary) {
+  color: #222;
+}
+
+.button:hover {
+  text-decoration: none;
+}
+
+.button.large {
+  padding: 9px 20px 11px;
+}
+
+.button.primary {
+  text-transform: uppercase;
+}
+
+/* -------------------------------------------------- */
+
+.text input, .textarea textarea {
+  padding: 9px 6px 10px;
+}
+
+.text label, .textarea label {
+  top: 9px;
+  left: 6px;
+  cursor: text;
+}
+
+.text input {
+  border-bottom: 1px solid #eee;
+}
+
+/* -------------------------------------------------- */
+
+.text.boxed {
+
+  /* Reset the default style in `all.css.erb` */
+
+  margin: 0;
+}
+
+.text.boxed input {
+  border: 1px solid #e1e1e1;
+  padding: 9px 8px 8px;
+  margin: 3px 0;
+  border-radius: 2px;
+}
+
+.text.boxed input:focus {
+  border-color: #55acee;
+}
+
+.text.boxed label {
+  top: 13px;
+  left: 8px;
+}
+
+/* -------------------------------------------------- */
+
+.checkbox {
+  margin: 10px 0;
+}
+
+.checkbox input {
+  vertical-align: middle;
+  margin: 1px 7px 0 0;
+}
+
+.checkbox label {
+  cursor: pointer;
+}
+
+.checkbox a {
+  text-decoration: underline;
+  position: static;
+}
+
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  top: -2px;
+  position: relative;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+
+input[type="checkbox"]:checked:after {
+  content: "";
+  background-image: url(<%= asset_path "sprite_desktop.svg" %>);
+  background-repeat: no-repeat;
+  height: 8px;
+  width: 10px;
+  position: absolute;
+  top: 3px;
+  left: 2px;
+}
+

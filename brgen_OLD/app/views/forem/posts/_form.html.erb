@@ -1,0 +1,71 @@
+
+<input type="hidden" id="compose_view" />
+
+<!-- ------------------------------------------------- -->
+
+<%= f.hidden_field :reply_type %>
+
+<!-- ------------------------------------------------- -->
+
+<%= f.input :email, label: "#{ t :email }", wrapper_html: { class: "text hide" } %>
+
+<!-- ------------------------------------------------- -->
+
+<% if @post.try(:new_record?) %>
+  <%= f.input :password, label: "#{ t :password }", autocomplete: "off", wrapper_html: { class: "text hide" } %>
+<% end %>
+
+<!-- ------------------------------------------------- -->
+
+<% if local_assigns[:topic_form] %>
+
+  <!-- Show textareas for new topics -->
+
+  <%= f.input :text, label: "#{ t :body }", wrapper_html: { class: "textarea" } %>
+
+  <!-- ------------------------------------------------- -->
+
+  <div class="photos" style="display: none;">
+
+    <!-- Filled by `$.feeds.processAttachments` -->
+
+    <!-- ------------------------------------------------- -->
+
+    <% unless mobile? %>
+      <%= render partial: "photos/photo_file_field" %>
+      <a class="add_photo_trigger target"><%= t :add_photo %></a>
+    <% end %>
+  </div>
+
+  <!-- ------------------------------------------------- -->
+
+  <div class="checkbox enable_comments hide">
+    <label><%= f.check_box :enable_comments %><%= t :enable_comments %></label>
+  </div>
+<% elsif local_assigns[:reply_form] %>
+
+  <!-- Show text inputs for new replies: http://goo.gl/bqXl0o -->
+
+  <%= f.input :text, as: :string, label: "#{ t :comment }...", wrapper_html: { class: "text" } %>
+
+  <!-- ------------------------------------------------- -->
+
+  <%= '<script id="template_photo_editor" type="text/template">'.html_safe %>
+    <%= render partial: "/photos/new" %>
+  <%= '</script>'.html_safe %>
+<% end %>
+
+<!-- ------------------------------------------------- -->
+
+<div class="embed_preview">
+
+  <!-- Filled by `$.feeds.embedPreview` -->
+
+</div>
+
+<!-- ------------------------------------------------- -->
+
+<% if params[:reply_to_id] %>
+  <%= f.hidden_field :reply_to_id, value: params[:reply_to_id] %>
+<% end %>
+

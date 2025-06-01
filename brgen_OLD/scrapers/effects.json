@@ -1,0 +1,10 @@
+[
+  { 
+    "filter": "film_grain",
+    "value": 10 
+  }, { 
+    "filter": "winter_night", 
+    "value": 10 
+  }
+]
+

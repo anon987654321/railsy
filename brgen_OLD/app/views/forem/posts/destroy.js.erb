@@ -1,0 +1,21 @@
+<% if @post && !flash[:alert] && flash[:notice] %>
+  <% if @post.topic.posts.count == 0 %>
+    <% if params[:redirect] == "true" %>
+
+      // Redirect to root if user is in topic path
+
+      window.location = "<%= root_url %>";
+    <% end %>
+    var element = $("#topic_<%= @post.topic.id %>");
+  <% else %>
+    var element = $("#topic<%= @post.topic.id %>-post<%= @post.id %>");
+  <% end %>
+
+  // TODO: I18n
+
+  element.html("Post removed");
+  element.hide("slow");
+<% else %>
+  $("#post_<%= @post.id %>").append('<%= escape_javascript(render template: "forem/posts/destroy", formats: [:html], handlers: [:erb]) %>');
+<% end %>
+

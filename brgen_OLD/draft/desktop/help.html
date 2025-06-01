@@ -1,0 +1,412 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>desktop/help.html</title>
+    <link rel="stylesheet" type="text/css" href="../../vendor/assets/stylesheets/jquery_mobile_structure_1.4.5.custom.min.css">
+    <link rel="stylesheet" type="text/css" href="../../app/assets/stylesheets/all.css.erb">
+    <link rel="stylesheet" type="text/css" href="../../app/assets/stylesheets/desktop.css.erb">
+    <link rel="stylesheet" type="text/css" href="../../app/assets/stylesheets/form.css.erb">
+    <link rel="stylesheet" type="text/css" href="../../app/assets/stylesheets/form_desktop.css.erb">
+    <link rel="stylesheet" type="text/css" href="../../app/assets/stylesheets/jquery_mobile.css.erb">
+    <link rel="stylesheet" type="text/css" href="../../app/assets/stylesheets/selectize.css.erb">
+    <link rel="stylesheet" type="text/css" href="../../app/assets/stylesheets/selectize_desktop.css.erb">
+    <link rel="stylesheet" type="text/css" href="../shared/stylesheets/draft.css">
+    <link rel="stylesheet" type="text/css" href="../shared/stylesheets/draft_desktop.css">
+
+    <!-- ------------------------------------------------- -->
+
+    <link rel="icon" href="../../app/assets/images/favicon_16x16.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../../app/assets/images/favicon_16x16.png" type="image/x-icon">
+
+    <!-- ------------------------------------------------- -->
+
+    <meta name="description" content="Bergen's social network. For web and mobile. Culture and nightlife, jobs, housing, buy and sell, dating etc.">
+  </head>
+  <body>
+    <div id="intro" class="help" data-role="page">
+      <header data-role="header" data-position="fixed" data-tap-toggle="false" data-hide-during-focus="">
+
+        <!-- Wrapper to prevent jQuery Mobile from adding CSS to elements -->
+
+        <!-- TODO: Remove come v1.5: GH #7230 -->
+
+        <div class="jqm_prevent_class_injection">
+          <div class="overflow_panel_wrapper">
+            <a class="overflow_panel_trigger">
+            </a>
+          </div>
+
+          <!-- ------------------------------------------------- -->
+
+          <a class="search_trigger">Search</a>
+
+          <!-- ------------------------------------------------- -->
+
+          <div class="progress_wrapper">
+
+            <!-- Filled by NProgress -->
+
+          </div>
+        </div>
+      </header>
+
+      <!-- ------------------------------------------------- -->
+
+      <div data-role="content">
+        <div class="intro">
+          <h2>Social network, anonymous app and search engine for Bergen</h2>
+          <h3>Culture, studies and nightlife, jobs, housing, buy and sell, dating etc.</h3>
+        </div>
+
+        <!-- ------------------------------------------------- -->
+
+        <div class="devices">
+          <img class="macbook" src="../../app/assets/images/device_macbook_pro.png">
+          <img class="iphone" src="../../app/assets/images/device_iphone_6.png">
+        </div>
+
+        <!-- ------------------------------------------------- -->
+
+        <div class="slides_wrapper">
+          <p class="count">
+            <span class="current_amount"></span> / <span class="total_amount"></span>
+          </p>
+
+          <!-- ------------------------------------------------- -->
+
+          <div class="previous_next">
+            <a class="previous">Previous</a>
+            <a class="next">Next</a>
+          </div>
+
+          <!-- ------------------------------------------------- -->
+
+          <div class="slides">
+            <div class="slide">
+              <img src="../../app/assets/images/screenshot_regular_feed.png">
+              <div class="guidance_wrapper">
+                <div class="guidance">
+                  <h3>Mobile web</h3>
+                  <p>Next generation mobile technology. No installation required.</p>
+                </div>
+                <div class="guidance">
+                  <h3>Everything is temporary</h3>
+                  <p>All content is automatically deleted after a while.</p>
+                </div>
+                <div class="guidance">
+                  <h3>Community moderation</h3>
+                  <p>Help keep Brgen clean and safe by flagging unwanted content.</p>
+                </div>
+                <div class="guidance">
+                  <h3>Formatting</h3>
+                  <p><a>Emoji</a> and basic <a>Markdown</a> supported.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- ------------------------------------------------- -->
+
+            <div class="slide">
+              <img src="../../app/assets/images/screenshot_compose.png">
+              <div class="guidance_wrapper">
+                <div class="guidance">
+                  <h3>Anonymous posting</h3>
+                  <p>Posting on Brgen is 100% anonymous.</p>
+                </div>
+                <div class="guidance">
+                  <h3>Share whatever you want</h3>
+                  <p>URLs to videos or sounds are automatically embedded.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- ------------------------------------------------- -->
+
+            <div class="slide">
+              <img src="../../app/assets/images/screenshot_photo_editor.png">
+              <div class="guidance_wrapper">
+                <div class="guidance">
+                  <h3>Photo editor</h3>
+                  <p>Add cool effects to your photos. Like Instagram, only better.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="copyright">Copyright &copy; 2014 brgen.no</p>
+        <p class="credits"><a>Johann Manaf Tepstad</a>, <a>Kunal Chaudhari</a>, <a>Juho Vepsäläinen</a></p>
+      </div>
+    </div>
+
+    <!-- ------------------------------------------------- -->
+
+    <div id="safety" class="help" data-role="page">
+      <header data-role="header" data-position="fixed" data-tap-toggle="false" data-hide-during-focus="">
+
+        <!-- FIXME -->
+
+      </header>
+
+      <!-- ------------------------------------------------- -->
+
+      <div data-role="content">
+        <div class="column_wrapper">
+          <div class="column">
+            <div class="toc">
+              <a class="progress_trigger" href="#intro" data-ajax="false">About Brgen</a>
+              <a class="progress_trigger" href="#safety" data-ajax="false">Your safety</a>
+              <a class="progress_trigger" href="#rules" data-ajax="false">Rules</a>
+              <a class="progress_trigger" href="#privacy" data-ajax="false">Privacy policy</a>
+            </div>
+          </div>
+
+          <!-- ------------------------------------------------- -->
+
+          <div class="column">
+            <article>
+              <h1>Your safety</h1>
+              <p>Use these guidelines to stay safe on Brgen. If you've been the victim of a serious crime, contact <a href="https://politi.no/hordaland/">Hordaland politidistrikt</a>.</p>
+              <h3>When dating</h3>
+              <ul>
+                <li>always meet in an open public place</li>
+                <li>never invite strangers into your home</li>
+                <li>always carry a phone</li>
+                <li>consider bringing a friend</li>
+                <li>tell a friend or family member where you're going</li>
+              </ul>
+              <h3>When buying or selling</h3>
+              <ul>
+                <li>only deal locally with people you can meet in person</li>
+                <li>avoid wire transfers and shipping</li>
+                <li>avoid clicking links from strangers</li>
+                <li>beware of strangers bearing gifts</li>
+                <li>do not publish ads on behalf of others</li>
+                <li>do your research</li>
+                <li>when in doubt, trust your gut</li>
+              </ul>
+              <h3>Medical info</h3>
+              <ol>
+                <li>this is not a site for the exchange of medical information, advice or the promotion of self-destructive behavior (eg. eating disorders, suicide)</li>
+                <li>we disclaim any liability or loss in connection with the use of such info</li>
+                <li>always ask your doctor for such info</li>
+              </ol>
+              <h3>Recommended sites</h3>
+              <ul class="site_list">
+                <li><a href="http://slettmeg.no" title="Advice for those who feel offended online">slettmeg.no</a></li>
+                <li><a href="http://dubestemmer.no" title="Increasing young people's knowledge of privacy">dubestemmer.no</a></li>
+                <li><a href="http://nettvett.no" title="Safety advice from the Norwegian Post and Telecommunications Authority">nettvett.no</a></li>
+                <li><a href="http://norsis.no" title="Norwegian Center for Information Security">norsis.no</a></li>
+                <li><a href="http://idtyveri.info" title="About identity theft and identity fraud">idtyveri.info</a></li>
+                <li><a href="http://forbrukerportalen.no" title="The Norwegian Consumer Agency">forbrukerportalen.no</a></li>
+                <li><a href="http://forbrukerombudet.no" title="Regulatory body for marketing and contract terms">forbrukerombudet.no</a></li>
+                <li><a href="http://datatilsynet.no" title="Regulatory body for privacy and information security">datatilsynet.no</a></li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ------------------------------------------------- -->
+
+    <div id="rules" class="help" data-role="page">
+      <header data-role="header" data-position="fixed" data-tap-toggle="false" data-hide-during-focus="">
+
+        <!-- FIXME -->
+
+      </header>
+
+      <!-- ------------------------------------------------- -->
+
+      <div data-role="content">
+        <div class="column_wrapper">
+          <div class="column">
+            <div class="toc">
+              <a href="#intro" data-ajax="false">About Brgen</a>
+              <a href="#safety" data-ajax="false">Your safety</a>
+              <a href="#rules" data-ajax="false">Rules</a>
+              <a href="#privacy" data-ajax="false">Privacy policy</a>
+            </div>
+          </div>
+
+          <!-- ------------------------------------------------- -->
+
+          <div class="column">
+            <article>
+              <h1>Rules</h1>
+              <p class="last_revised">Last revised September 15, 2014</p>
+              <p>These rules govern the use of <a href="http://brgen.no">brgen.no</a> ("Brgen"). Use of Brgen constitutes consent to these rules as well as to our <a href="#privacy" data-ajax="false">privacy policy</a>.</p>
+              <p>Violation of these rules are strictly prohibited. If Brgen's actual damages cannot be reasonably determined in a court of law, you agree to pay Brgen liquidated damages of 5.000 kr for each such violation.</p>
+              <h3 id="forbidden_activities">Forbidden activities</h3>
+              <ol>
+                <li>the use of multiple email addresses, IP addresses or user accounts</li>
+                <li>URL shortening</li>
+                <li>collecting users' personal information</li>
+                <li>copying Brgen's content</li>
+                <li>accessing Brgen using automated means</li>
+                <li>engaging in activities that may harm Brgen</li>
+              </ol>
+              <h3 id="posting">Posting</h3>
+              <p>Brgen is not responsible for user posts. You are responsible for anything you post. Please do not post:</p>
+              <ol>
+                <li>illegal, offensive, malicious, false or fraudulent content</li>
+                <li>affiliate marketing</li>
+                <li>in categories not related to your posts</li>
+                <li>the same or similar content in multiple categories, or more than once every 48 hours</li>
+                <li>on behalf of others, or get others to post for you</li>
+                <li>using automated means—you may only post personally and manually</li>
+              </ol>
+              <p></p>
+              <h3 id="impersonation">Impersonation</h3>
+              <p>Impersonating someone on Brgen is strictly forbidden. If you've impersonated someone, you authorize Brgen to release any and all information intro you to the one you impersonated.</p>
+              <h3 id="discriminatory_housing_ads">Discriminatory housing ads</h3>
+              <p>Discriminatory preferences in housing ads is <a href="http://law.cornell.edu/uscode/text/42/3604">illegal</a> and prohibited. You can be fined more than 50.000 kr for each discriminatory ad, plus damages in court, plus loss of license if you are a professional. Please do not discriminate against:</p>
+              <ol>
+                <li>race, color or origin</li>
+                <li>religion</li>
+                <li>age or familial status</li>
+                <li>disability</li>
+                <li>sexual orientation</li>
+                <li>source of income</li>
+              </ol>
+              <h3 id="flagging">Flagging</h3>
+              <p>Help make Brgen a cleaner, safer place. Please do not flag:</p>
+              <ol>
+                <li>without a personal, good-faith belief that the content is relevant to the flag</li>
+                <li>on behalf others, or get others to flag for you</li>
+                <li>a specific post multiple times</li>
+                <li>using automated means—you may only flag personally and manually</li>
+              </ol>
+              <h3 id="disclaimer">Disclaimer</h3>
+              <p>Brgen makes no representation that its material is appropriate or legal. You acknowledge that you are using Brgen at your own risk. Brgen is provided "as is", and hereby disclaim any loss or liability arising out of your use of Brgen. Furthermore, you agree to:</p>
+              <ol>
+                <li>grant Brgen all rights to anything you post, and to prohibit and enforce against anything you post</li>
+                <li>indemnify and hold Brgen harmless from and against anything you post</li>
+                <li>release Brgen from any claims, demands or damages arising out of your use of Brgen</li>
+              </ol>
+              <p>These rules shall be governed in accordance with the laws of the city of Bergen, Norway.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ------------------------------------------------- -->
+
+    <div id="privacy" data-role="page">
+      <header data-role="header" data-position="fixed" data-tap-toggle="false" data-hide-during-focus="">
+
+        <!-- FIXME -->
+
+      </header>
+
+      <!-- ------------------------------------------------- -->
+
+      <div data-role="content">
+        <div class="column_wrapper">
+          <div class="column">
+            <div class="toc">
+              <a href="#intro" data-ajax="false">About Brgen</a>
+              <a href="#safety" data-ajax="false">Your safety</a>
+              <a href="#rules" data-ajax="false">Rules</a>
+              <a href="#privacy" data-ajax="false">Privacy policy</a>
+            </div>
+          </div>
+
+          <!-- ------------------------------------------------- -->
+
+          <div class="column">
+            <article>
+              <h1>Privacy policy</h1>
+              <p class="last_revised">Last revised September 15, 2014</p>
+              <p>This privacy policy summarizes the way <a href="http://brgen.no">brgen.no</a> ("Brgen") treats your information. Use of Brgen constitutes consent to this privacy policy as well as to our <a href="#rules" data-ajax="false">rules</a>.</p>
+              <h3 id="information_type">The information Brgen collects</h3>
+              <ol>
+                <li>your email and IP address</li>
+                <li>your device, browser and operating system</li>
+                <li>your GPS signal</li>
+                <li>your general activity</li>
+              </ol>
+              <h3 id="information_usage">How Brgen uses this information</h3>
+              <ol>
+                <li>to grant you access to Brgen's services</li>
+                <li>to create your account</li>
+                <li>to analyze your usage pattern for improvements to our user interface</li>
+                <li>to prevent crime</li>
+                <li>to occasionally send you emails promoting other products, services and events</li>
+              </ol>
+              <p>Note that this information will never be shared with a 3rd party.</p>
+              <h3 id="cookies">Cookies</h3>
+              <p>Brgen uses <a href="http://en.wikipedia.org/wiki/HTTP_cookie">cookies</a>—small pieces of information that lets your web browser remember your login info, which ads to show you etc.</p>
+              <p>Some of our advertisers, such as Google, might occasionally serve you cookies as well. We have no control over these cookies, which are subject to Google's own privacy policies. Brgen disclaims any liability in connection with 3rd party cookies.</p>
+              <p>If you don't want cookies, your web browser most likely has an option to disable them. This is, however, not recommended, as it might cause Brgen to not function properly.</p>
+              <h3 id="information_security">Information security</h3>
+              <p>Brgen can not guarantee the security of the information you send to us. In the unlikely event we've been hacked, we may seek to notify you.</p>
+              <h3 id="kids_and_parents">Kids and parents</h3>
+              <p>Brgen is not intended for children under 13. If your children post information intro themselves on Brgen, they may be subjected to unwanted attention.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ------------------------------------------------- -->
+
+    <script type="text/javascript" src="../shared/javascripts/vendor/jquery_2.1.3.min.js"></script>
+    <script type="text/javascript" src="../../vendor/assets/javascripts/jquery_mobile_1.4.5.custom.min.js"></script>
+
+    <!-- Core -->
+
+    <script type="text/javascript" src="../shared/javascripts/vendor/cssfx_0.9.7.min.js"></script>
+    <script type="text/javascript" src="../shared/javascripts/vendor/enquire_2.1.1.min.js"></script>
+    <script type="text/javascript" src="../shared/javascripts/vendor/jquery_nprogress_0.1.6.min.js"></script>
+    <script type="text/javascript" src="../shared/javascripts/vendor/jquery_visible_f95a16d.min.js"></script>
+
+    <!-- Posts -->
+
+    <script type="text/javascript" src="../shared/javascripts/vendor/jquery_embedly_3.1.1.min.js"></script>
+    <script type="text/javascript" src="../shared/javascripts/vendor/jquery_oembed_5a8c530.min.js"></script>
+    <script type="text/javascript" src="../shared/javascripts/vendor/imagesloaded_3.1.8.min.js"></script>
+    <script type="text/javascript" src="../shared/javascripts/vendor/packery_1.3.0.min.js"></script>
+    <script type="text/javascript" src="../shared/javascripts/vendor/jquery_ellipsis_0.6.2.min.js"></script>
+
+    <!-- Forms -->
+
+    <script type="text/javascript" src="../shared/javascripts/vendor/jquery_typeahead_0.10.5.min.js"></script>
+    <script type="text/javascript" src="../shared/javascripts/vendor/jquery_in-field_labels_76bb092.min.js"></script>
+    <script type="text/javascript" src="../shared/javascripts/vendor/jquery_selectize_0.8.5.min.js"></script>
+    <script type="text/javascript" src="../../app/assets/javascripts/optgroup_packery.js"></script>
+
+    <!-- Affiliate products -->
+
+    <script type="text/javascript" src="../shared/javascripts/vendor/jquery_parallax_2.1.2.min.js"></script>
+
+    <!-- ------------------------------------------------- -->
+
+    <!-- Desktop -->
+
+      <!-- Core -->
+
+      <script type="text/javascript" src="../shared/javascripts/vendor/jquery_hoverintent_r7.min.js"></script>
+
+      <!-- Help -->
+
+      <script type="text/javascript" src="../shared/javascripts/vendor/jquery_caro_1.0.0.min.js"></script>
+
+    <!-- ------------------------------------------------- -->
+
+    <!-- Custom -->
+
+    <script type="text/javascript" src="../../app/assets/javascripts/all.js"></script>
+    <script type="text/javascript" src="../../app/assets/javascripts/desktop.js"></script>
+    <script type="text/javascript" src="../../app/assets/javascripts/scrolling.js"></script>
+    <script type="text/javascript" src="../../app/assets/javascripts/scrolling_desktop.js"></script>
+    <script type="text/javascript" src="../../app/assets/javascripts/feeds.js"></script>
+    <script type="text/javascript" src="../../app/assets/javascripts/affiliate_products.js"></script>
+    <script type="text/javascript" src="../../app/assets/javascripts/help.js"></script>
+    <script type="text/javascript" src="../shared/javascripts/draft.js"></script>
+    <script type="text/javascript" src="../shared/javascripts/draft_desktop.js"></script>
+  </body>
+</html>
+

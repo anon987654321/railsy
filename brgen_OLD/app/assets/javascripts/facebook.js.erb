@@ -1,0 +1,47 @@
+// Start asynchronously
+
+var fbAsyncInit = function(document) {
+  var js,
+    id = 'facebook-jssdk',
+    referrer = document.getElementsByTagName('script')[0];
+
+  if(document.getElementById(id)) { return; }
+
+  js = document.createElement('script'); js.id = id; js.async = true;
+  js.src = '//connect.facebook.net/en_US/all.js';
+  referrer.parentNode.insertBefore(js, referrer);
+};
+fbAsyncInit(document);
+
+// Start on load
+
+window.fbAsyncInit = function() {
+
+  // Debugger
+
+  FB.init({
+    appId: '<%#= Rails.application.secrets.facebook_key %>',
+    channelUrl: 'http://locahost:3000/channel.html',
+    status: true,
+    cookie: true,
+    xfbml: true
+  });
+
+  $('.facebook').on('tap', function(event) {
+    event.preventDefault();
+
+    FB.login(function(response) {
+      if(response.authResponse) {
+        window.location = '/auth/facebook/callback';
+      }
+    }, { scope: 'email, publish_stream' });
+  });
+
+  $('#logout').on('tap', function() {
+
+    // Uncomment if on logout we also want to log out from Facebook
+
+    // FB.logout();
+  });
+}
+

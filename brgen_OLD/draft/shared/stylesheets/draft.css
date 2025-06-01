@@ -1,0 +1,43 @@
+
+/* Image path overrides */
+
+/* all.css.erb */
+
+.search_trigger:after, .overflow_panel_trigger:after, .overflow_panel_trigger:after, .close_trigger:after, .back_trigger:after, .post_options .trigger:after, .button.primary.facebook:after {
+  background-image: url(../../../app/assets/images/sprite.svg);
+}
+
+.embed .play_arrow {
+  background-image: url(../../../app/assets/images/play_arrow.svg);
+}
+
+@media screen and (max-width: 480px) {
+  .first_post:after, .reply:after {
+    background: none;
+  }
+}
+
+/* -------------------------------------------------- */
+
+/* desktop.css.erb */
+
+.photo .edit:after, .photo .delete:after, .help .previous_next a:after {
+  background-image: url(../../../app/assets/images/sprite_desktop.svg);
+}
+
+/* -------------------------------------------------- */
+
+/* mobile.css.erb */
+
+.panel_wrapper .close_trigger:after, #photo_editor .previous_next a:after {
+  background-image: url(../../../app/assets/images/sprite.svg);
+}
+
+/* -------------------------------------------------- */
+
+/* selectize.css.erb */
+
+.selectize-control.single .selectize-input:after {
+  background-image: url(../../../app/assets/images/sprite.svg);
+}
+

@@ -1,0 +1,52 @@
+<% page_title t(:privacy_policy) %>
+
+<!-- ------------------------------------------------- -->
+
+<%= render partial: "shared/header" %>
+
+<!-- ------------------------------------------------- -->
+
+<div id="privacy" data-role="content">
+  <div class="column_wrapper">
+    <div class="column">
+      <div class="toc">
+        <%= render partial: "shared/help_links" %>
+      </div>
+    </div>
+
+    <!-- ------------------------------------------------- -->
+
+    <div class="column">
+      <article>
+        <h1><%= t :privacy_policy %></h1>
+        <p class="last_revised"><%= t :privacy_policy_last_revised %></p>
+        <p><%= translate_with_link(:this_privacy_policy_summarizes, brgen_no: "http://brgen.no") %></p>
+        <h3 id="information_type"><%= t :the_info_brgen_collects %></h3>
+        <ol>
+          <li><%= t :your_email_and_ip %></li>
+          <li><%= t :your_device_browser_and_os %></li>
+          <li><%= t :your_gps_signal %></li>
+          <li><%= t :your_general_activity %></li>
+        </ol>
+        <h3 id="information_usage"><%= t :how_brgen_uses_this_info %></h3>
+        <ol>
+          <li><%= t :to_grant_you_access %></li>
+          <li><%= t :to_create_your_account %></li>
+          <li><%= t :to_analyze_your_usage_pattern %></li>
+          <li><%= t :to_prevent_crime %></li>
+          <li><%= t :to_send_newsletters %></li>
+        </ol>
+        <p><%= t :no_3rd_parties %></p>
+        <h3 id="cookies"><%= t :cookies %></h3>
+        <p><%= translate_with_link(:brgen_uses_cookies, cookies_link: "http://en.wikipedia.org/wiki/HTTP_cookie") %></p>
+        <p><%= t :some_of_our_advertisers %></p>
+        <p><%= t :disable_cookies %></p>
+        <h3 id="information_security"><%= t :information_security %></h3>
+        <p><%= t :no_guarantee %></p>
+        <h3 id="kids_and_parents"><%= t :kids_and_parents %></h3>
+        <p><%= t :no_children_under_13 %></p>
+      </article>
+    </div>
+  </div>
+</div>
+

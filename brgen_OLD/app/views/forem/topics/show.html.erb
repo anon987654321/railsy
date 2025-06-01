@@ -1,0 +1,65 @@
+
+<% page_title @topic.subject %>
+
+<!-- ------------------------------------------------- -->
+
+<% meta_description @topic.posts.first.text %>
+
+<!-- ------------------------------------------------- -->
+
+<% content_for :head do %>
+  <meta property="fb:app_id" content="<%= ENV["FACEBOOK_APP_ID"] %>" />
+  <meta property="og:type" content="<%= Brgen::Facebook.app_namespace %>:post" />
+  <meta property="og:url" content="<%= main_app.forum_topic_url(@topic.forum, @topic) %>" />
+  <meta property="og:title" content="<%= @topic.subject %>" />
+
+  <!-- ------------------------------------------------- -->
+
+  <% if @topic.photo.nil? %>
+    <meta property="og:image" content="https://s-static.ak.fbcdn.net/images/devsite/attachment_blank.png" />
+  <% else %>
+    <meta property="og:image" content="<%= @topic.photo.processed_attachment.url(:medium) %>" />
+  <% end %>
+<% end %>
+
+<!-- ------------------------------------------------- -->
+
+<%= render partial: "shared/header" %>
+
+<!-- ------------------------------------------------- -->
+
+<!-- Corresponds to `isTopicShowPath` in `all.js` -->
+
+<!-- Cannot be set on jQM page container due to page change -->
+
+<div class="topic_show_path" data-role="content">
+
+  <!-- Ditch columns on tablets due to complexity of iScroll containers -->
+
+  <!-- TODO: Remove come jQM v1.5: GH #7230 -->
+
+  <% if desktop? %>
+    <div class="column big">
+      <div id="regular_feed" data-url="<%= request.fullpath %>">
+        <%= render @topic %>
+      </div>
+    </div>
+
+    <!-- ------------------------------------------------- -->
+
+    <div class="column tiny">
+      <%= render partial: "shared/info_bar", locals: { topic: @topic } %>
+    </div>
+  <% elsif mobile? %>
+    <div id="regular_feed" data-url="<%= request.fullpath %>" data-iscroll>
+      <%= render @topic %>
+    </div>
+  <% end %>
+</div>
+
+<!-- ------------------------------------------------- -->
+
+<% if mobile? %>
+  <%= render partial: "shared/footer" %>
+<% end %>
+

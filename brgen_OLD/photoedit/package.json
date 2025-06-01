@@ -1,0 +1,18 @@
+{
+  "name": "photoedit",
+  "private": true,
+  "description": "Photo and commands go in, modified photo goes out",
+  "author": "Juho Vepsalainen <bebraw@gmail.com>",
+  "version": "0.1.0",
+  "dependencies": {
+    "caman": "4.1.2",
+    "commander": "2.0.0",
+    "mmmagic": "^0.3.11",
+    "seedrandom": "2.3.1"
+  },
+  "directories": {
+    "lib": "./lib"
+  },
+  "main": "./lib/convert.js"
+}
+

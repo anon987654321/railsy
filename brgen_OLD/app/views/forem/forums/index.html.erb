@@ -1,0 +1,44 @@
+<%= render partial: "shared/header" %>
+
+<!-- ------------------------------------------------- -->
+
+<% if display_mode == "regular" %>
+
+  <!-- Corresponds to `isRootPath` in `all.js` -->
+
+  <!-- Cannot be set on jQM page container due to page change -->
+
+  <div class="root_path" data-role="content">
+
+    <!-- Ditch columns on tablets due to complexity of iScroll containers -->
+
+    <!-- TODO: Remove come jQM v1.5: GH #7230 -->
+
+    <% if desktop? %>
+      <div class="column tiny">
+        <%= render partial: "shared/who_am_i" %>
+
+        <!-- ------------------------------------------------- -->
+
+        <%= render partial: "shared/nav" %>
+      </div>
+
+      <!-- ------------------------------------------------- -->
+
+      <div class="column big">
+        <%= render partial: "shared/feed_regular" %>
+      </div>
+    <% elsif mobile? %>
+      <%= render partial: "shared/feed_regular" %>
+    <% end %>
+  </div>
+<% elsif display_mode == "media" %>
+  <%= render partial: "shared/feed_media" %>
+<% end %>
+
+<!-- ------------------------------------------------- -->
+
+<% if mobile? %>
+  <%= render partial: "shared/footer" %>
+<% end %>
+

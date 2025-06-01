@@ -1,0 +1,69 @@
+<header data-role="header" data-position="fixed" data-tap-toggle="false" data-hide-during-focus="" class="<%= "has_display_triggers" if root_path? %>">
+
+  <!-- Wrapper to prevent jQuery Mobile from adding CSS to elements -->
+
+  <!-- TODO: Remove come v1.5: GH #7230 -->
+
+  <div class="jqm_prevent_class_injection">
+    <% if first_visit? %>
+      <%#= render partial: "shared/intro" %>
+    <% end %>
+
+    <!-- ------------------------------------------------- -->
+
+    <% if root_path? %>
+      <a class="search_trigger"><%= t :search %> </a>
+      <%= render partial: "shared/search" %>
+
+      <!-- ------------------------------------------------- -->
+
+      <div class="sorting_triggers">
+        <%= sorting_mode_links %>
+      </div>
+
+      <!-- ------------------------------------------------- -->
+
+      <a class="overflow_panel_trigger"><%= t :menu %></a>
+      <% if desktop? %>
+
+        <!-- See `application.html.erb` for call to `panel_overflow_mobile` -->
+
+        <%= render partial: "shared/panel_overflow_desktop" %>
+      <% end %>
+
+      <!-- ------------------------------------------------- -->
+
+      <div class="display_mode_triggers">
+        <%= display_mode_links %>
+      </div>
+    <% else %>
+
+      <!-- TODO: Add `data-rel="back"` unless visited directly -->
+
+      <a class="back_trigger progress_trigger" href="/"><%= t :back %></a>
+
+      <!-- ------------------------------------------------- -->
+
+      <% if topic_show_path? %>
+        <h2><%= link_to @topic.forum.name, @topic.forum, class: "progress_trigger" %></h2>
+      <% elsif forum_show_path? %>
+        <h2><%= @topic.forum.name %></h2>
+      <% elsif help_path? %>
+        <h2><%= t :help %></h2>
+      <% end %>
+    <% end %>
+
+    <!-- ------------------------------------------------- -->
+
+    <%= render partial: "shared/flash", locals: { flash: flash } %>
+
+    <!-- ------------------------------------------------- -->
+
+    <div class="progress_wrapper">
+
+      <!-- Filled by NProgress -->
+
+    </div>
+  </div>
+</header>
+

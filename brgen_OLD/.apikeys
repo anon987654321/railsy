@@ -1,0 +1,16 @@
+
+# Production
+
+export SCRAPERS_API_KEY="657d0a489dbab6b4b71de371a2a937cf"
+export SCRAPERS_HOST="http://brgen.no"
+
+# Development
+
+# export SCRAPERS_API_KEY=""
+# export SCRAPERS_HOST="http://localhost:3000"
+
+# Demo
+
+# export SCRAPERS_API_KEY="demo"
+# export SCRAPERS_HOST="http://localhost:3000"
+

@@ -1,0 +1,51 @@
+
+<% if desktop? %>
+  <%= render partial: "shared/new_topic_desktop" %>
+<% end %>
+
+<!-- ------------------------------------------------- -->
+
+<%# if @topics.empty? %>
+  <!--<h2><%#= t :section_is_empty %></h2>-->
+<%# else %>
+  <div id="regular_feed" data-url="<%= request.fullpath %>"<%= " data-iscroll" if mobile? %>>
+    <% if mobile? %>
+      <a class="new_topic_trigger" href="<%= main_app.new_posting_path %>" data-transition="slide"><%= topic_show_path? ? t(:reply_to_post) : t(:post_anonymously) %>...</a>
+    <% end %>
+
+    <!-- ------------------------------------------------- -->
+
+    <% if !forem_user_signed_in? %>
+
+      <!-- Split topics into batches -->
+
+      <% @topics.in_groups_of(2, false).each_with_index do |grouped_topics, index| %>
+        <%= render partial: "forem/topics/topic", collection: grouped_topics %>
+
+        <!-- ------------------------------------------------- -->
+
+        <% if index < 1 %>
+
+          <!-- Insert affiliate products after the first batch -->
+
+          <%= render partial: "affiliate_products/banner" %>
+
+          <!-- Insert Google ads after the second and third batch -->
+
+        <% elsif desktop? && index < 3 %>
+          <%#= render partial: "shared/google_adsense" %>
+        <% end %>
+      <% end %>
+    <% else %>
+
+      <!-- No ads -->
+
+      <%= render @topics %>
+    <% end %>
+  </div>
+
+  <!-- ------------------------------------------------- -->
+
+  <%= link_to_next_page @topics, t(:next), params: set_filter_params, class: "pagination" %>
+<%# end %>
+

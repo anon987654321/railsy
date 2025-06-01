@@ -1,0 +1,44 @@
+
+<!-- Mobile only -->
+
+<% page_title t(:new_reply) %>
+
+<!-- ------------------------------------------------- -->
+
+<div data-iscroll>
+  <header data-role="header">
+
+    <!-- Wrapper to prevent jQuery Mobile from adding CSS to elements -->
+
+    <!-- TODO: Remove come v1.5: GH #7230 -->
+
+    <div class="jqm_prevent_class_injection">
+      <a class="back_trigger" data-rel="back"><%= t :back %></a>
+
+      <!-- ------------------------------------------------- -->
+
+      <h2>
+        <% if @reply_to_post %>
+          <%= "#{ t :reply_to } #{ @reply_to_post.user }" %>
+        <% else %>
+          <%= "#{ t :reply_to } #{ @topic.subject }" %>
+        <% end %>
+      </h2>
+
+      <!-- ------------------------------------------------- -->
+
+      <div class="progress_wrapper">
+
+        <!-- Filled by NProgress -->
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ------------------------------------------------- -->
+
+  <div class="new_reply" data-role="content">
+    <%= render partial: "forem/posts/reply_form" %>
+  </div>
+</div>  
+

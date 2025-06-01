@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="no">
+  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# brgen-app: http://ogp.me/ns/fb/brgen-app#">
+
+    <!-- Page titles and meta descriptions: http://goo.gl/5UIjc -->
+
+    <!-- Wrap in `raw` to preserve apostrophes: http://goo.gl/qNnXpz -->
+
+    <title><%= raw(content_for?(:page_title) ? yield(:page_title) + " - " + t(:brgen) : t(:brgen)) %></title>
+
+    <!-- ------------------------------------------------- -->
+
+    <%= stylesheet_link_tag "all" %>
+    <% if desktop? %>
+      <%= stylesheet_link_tag "desktop" %>
+    <% elsif mobile? %>
+      <%= stylesheet_link_tag "mobile" %>
+    <% end %>
+
+    <!-- ------------------------------------------------- -->
+
+    <% if desktop? %>
+      <%= favicon_link_tag "favicon_16x16.png" %>
+    <% else %>
+
+      <!-- https://github.com/h5bp/html5-boilerplate/blob/master/doc/extend.md#web-apps -->
+
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="mobile-web-app-capable" content="yes">
+
+      <!-- Android homescreen icon -->
+
+      <!-- https://developer.chrome.com/multidevice/android/installtohomescreen -->
+
+      <!--<link rel="icon" sizes="196x196" href="icon_android_196x196.png">-->
+
+      <!-- iOS homescreen icon -->
+
+      <!--<link rel="apple-touch-icon-precomposed" href="icon_ios_152x152.png">-->
+    <% end %>
+
+    <!-- ------------------------------------------------- -->
+
+    <%= csrf_meta_tags %>
+
+    <!-- ------------------------------------------------- -->
+
+    <meta name="description" content="<%= raw(content_for?(:meta_description) ? yield(:meta_description) : t(:standard_meta_description)) %>">
+
+    <!-- ------------------------------------------------- -->
+
+    <%= yield :head %>
+
+    <!-- ------------------------------------------------- -->
+
+    <!-- JSON-LD: https://schema.org/WebSite -->
+
+    <!-- http://json-ld.org/ -->
+
+    <!-- Add site name and search box to SERPs -->
+
+    <!-- https://developers.google.com/structured-data/site-name -->
+
+    <!-- https://developers.google.com/structured-data/slsb-overview -->
+
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "WebSite",
+        "name": "Brgen",
+        "url": "http://brgen.no/",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "http://brgen.no/search?keywords={search_term}",
+          "query-input": "required name=search_term"
+        }
+      }
+    </script>
+  </head>
+
+  <!-- ------------------------------------------------- -->
+
+  <body class="hide_while_loading">
+    <% if mobile? %>
+      <div class="spinkit_parent_wrapper">
+        <div class="spinkit_wrapper">
+          <div class="spinkit_double_bounce">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ------------------------------------------------- -->
+
+      <%= render partial: "shared/touch_indicator" %>
+    <% end %>
+
+    <!-- ------------------------------------------------- -->
+
+    <div id="<%= mobile_page_id %>" class="<%= display_mode == "regular" ? "has_regular_feed" : "has_media_feed" %>" data-role="page" data-url="<%= request.fullpath %>">
+      <%= yield %>
+    </div>
+
+    <!-- ------------------------------------------------- -->
+
+    <% if desktop? %>
+      <div id="photo_editor" data-role="popup" data-dismissible="false">
+
+        <!-- Filled by JavaScript -->
+
+      </div>
+
+      <!-- ------------------------------------------------- -->
+
+      <% if !forem_user_signed_in? %>
+        <%= render partial: "shared/popup_sign_in" %>
+        <%= render partial: "shared/popup_create_account" %>
+        <%#= render partial: "shared/popup_forgot_password" %>
+      <% end %>
+
+      <!-- ------------------------------------------------- -->
+
+      <%= render partial: "affiliate_products/jqm_popup" %>
+    <% elsif mobile? %>
+      <%= render partial: "shared/panel_overflow_mobile" %>
+
+      <!-- ------------------------------------------------- -->
+
+      <div id="photo_editor" data-role="page">
+
+        <!-- Filled by JavaScript -->
+
+      </div>
+
+      <!-- ------------------------------------------------- -->
+
+      <%= render partial: "affiliate_products/jqm_page" %>
+    <% end %>
+
+    <!-- ------------------------------------------------- -->
+
+    <%= javascript_include_tag "all" %>
+    <% if desktop? %>
+      <%= javascript_include_tag "desktop" %>
+    <% elsif mobile? %>
+      <%= javascript_include_tag "mobile" %>
+    <% end %>
+
+    <!-- ------------------------------------------------- -->
+
+    <script type="text/javascript">
+      I18n.defaultLocale = "<%= I18n.default_locale %>";
+      I18n.locale = "<%= I18n.locale %>";
+    </script>
+
+    <!-- ------------------------------------------------- -->
+
+    <%= render partial: "shared/google_analytics" if Rails.env == "production" %>
+  </body>
+</html>
+

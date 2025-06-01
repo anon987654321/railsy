@@ -1,0 +1,24 @@
+# == Schema Information
+#
+# Table name: forum_types
+#
+#  id         :integer          not null, primary key
+#  name       :string
+#  created_at :datetime
+#  updated_at :datetime
+#  value      :string
+#
+
+
+  ad:
+    name: Ad
+    value: ad
+
+  regular:
+    name: Regular
+    value: regular
+
+  event:
+    name: Event
+    value: event
+
