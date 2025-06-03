@@ -1,0 +1,365 @@
+# Project Completer Framework v99.5
+
+```json
+{
+  "metadata": {
+    "version": "v99.5-unified",
+    "updated": "2025-06-01 08:59:56",
+    "description": "Revolutionary Project Completion Framework - Unified Best Elements",
+    "author": "anon987654321",
+    "temperature": "adaptive"
+  },
+  
+  "constitutional_foundation": {
+    "decision_engine": {
+      "principles": {
+        "harmlessness": {
+          "precedence": 1,
+          "description": "User safety, privacy protection, security fundamentals",
+          "never_compromised": true
+        },
+        "honesty": {
+          "precedence": 2,
+          "description": "Transparency, acknowledge limitations, cite sources",
+          "compromise_condition": "only_when_harmlessness_requires"
+        },
+        "helpfulness": {
+          "precedence": 3,
+          "description": "User value, actionable guidance, delivery focus",
+          "compromise_condition": "when_conflicts_with_higher_principles"
+        }
+      },
+      "conflict_resolution": "defer_to_higher_precedence_with_explanation"
+    }
+  },
+
+  "phases": [
+    {
+      "name": "preprocess",
+      "description": "Configure project type and stacks",
+      "key_question": "What is the project type?",
+      "success": "Configured stacks and rules",
+      "tasks": [
+        {
+          "id": "PREPROCESS_CONFIGURE",
+          "instruction": "Detect project type, configure stacks, and predict errors",
+          "check": "Stacks configured, errors predicted"
+        },
+        {
+          "id": "PREPROCESS_VALIDATE",
+          "instruction": "Validate stack prompts against project type",
+          "check": "Prompts valid"
+        }
+      ]
+    },
+    {
+      "name": "understand",
+      "description": "Identify project needs and tools",
+      "key_question": "What to build?",
+      "success": "Clear project needs",
+      "tasks": [
+        {
+          "id": "UNDERSTAND_NEEDS",
+          "instruction": "List project needs based on goals",
+          "check": "Needs clear"
+        },
+        {
+          "id": "UNDERSTAND_TOOLSET",
+          "instruction": "Check toolset version and compatibility",
+          "check": "Toolset valid"
+        }
+      ]
+    },
+    {
+      "name": "create",
+      "description": "Build initial solution",
+      "key_question": "Is it functional?",
+      "success": "Working draft",
+      "tasks": [
+        {
+          "id": "CREATE_DRAFT",
+          "instruction": "Build project draft with stack rules",
+          "check": "Core works"
+        }
+      ]
+    },
+    {
+      "name": "verify",
+      "description": "Check project quality",
+      "key_question": "Is it reliable?",
+      "success": "Usable outputs",
+      "tasks": [
+        {
+          "id": "VERIFY_FUNCTION",
+          "instruction": "Test core functionality",
+          "check": "Features work"
+        },
+        {
+          "id": "DEEP_EXECUTION_TRACE",
+          "instruction": "Trace each function with variable states, simulate edge cases",
+          "check": "Trace complete, bugs identified"
+        },
+        {
+          "id": "VERIFY_COMPLIANCE",
+          "instruction": "Check rule compliance, schema, consistency, readability, usability",
+          "check": "Rules followed, schema valid, readable, user-friendly"
+        }
+      ]
+    },
+    {
+      "name": "refine",
+      "description": "Simplify solution",
+      "key_question": "Is it minimal?",
+      "success": "Streamlined solution",
+      "tasks": [
+        {
+          "id": "REFINE_SOLUTION",
+          "instruction": "Remove redundancies, fix bugs, and apply improvements",
+          "check": "No redundancies, bugs fixed"
+        }
+      ]
+    },
+    {
+      "name": "deliver",
+      "description": "Package outputs",
+      "key_question": "Is it maintainable?",
+      "success": "Packaged outputs",
+      "tasks": [
+        {
+          "id": "DELIVER_GUIDE",
+          "instruction": "Write non-technical guide",
+          "check": "Clear, complete"
+        },
+        {
+          "id": "DELIVER_PACKAGE",
+          "instruction": "Package outputs with line count, checksums, guide",
+          "check": "All outputs included, preview clear"
+        }
+      ]
+    }
+  ],
+  
+  "quality_framework": {
+    "gate_levels": {
+      "constitutional_critical": {
+        "constitutional_validation": {
+          "method": "comprehensive_principle_hierarchy_evaluation",
+          "criteria": "all_three_principles_assessed_with_documentation"
+        },
+        "security_audit": {
+          "method": "multi_layer_security_privacy_assessment",
+          "criteria": "zero_critical_vulnerabilities"
+        }
+      },
+      "quality_excellence": {
+        "accessibility_performance": {
+          "method": "comprehensive_accessibility_and_performance_evaluation",
+          "criteria": "wcag_aaa_compliance_sub_second_response"
+        },
+        "documentation_testing": {
+          "method": "comprehensive_documentation_and_test_assessment",
+          "criteria": "100_percent_coverage_quality_assertions"
+        }
+      }
+    },
+    "enforcement_methods": {
+      "pipeline": {
+        "description": "automated_ci_cd_validation_with_gates",
+        "implementation": "continuous_integration_quality_gates"
+      },
+      "review": {
+        "description": "manual_peer_assessment_with_constitutional_expertise",
+        "implementation": "expert_human_evaluation_and_validation"
+      },
+      "monitor": {
+        "description": "continuous_real_time_validation_with_alerting",
+        "implementation": "ongoing_monitoring_with_automated_response"
+      }
+    }
+  },
+
+  "feedback": {
+    "roles": [
+      {
+        "name": "developer",
+        "focus": "Efficiency, robustness",
+        "question": "Does the project optimize performance and handle edge cases? (Rate 1–10)"
+      },
+      {
+        "name": "maintainer",
+        "focus": "Clarity, minimalism",
+        "question": "Is the project modular and well-documented? (Rate 1–10)"
+      },
+      {
+        "name": "user",
+        "focus": "Ease, effectiveness",
+        "question": "Does the project solve your needs intuitively? (Rate 1–10)"
+      },
+      {
+        "name": "security_expert",
+        "focus": "Security",
+        "question": "Does the project implement robust security measures? (Rate 1–10)"
+      },
+      {
+        "name": "accessibility_expert",
+        "focus": "Inclusivity",
+        "question": "Does the project meet WCAG 2.1 AA standards? (Rate 1–10)"
+      }
+    ],
+    "evaluation": {
+      "method": "Weighted average of role ratings (1–10), threshold >= 7"
+    }
+  },
+  
+  "stacks": {
+    "global": {
+      "description": "Rules for all stacks",
+      "prompt": "Follow stack-specific best practices.",
+      "rules": [
+        {
+          "text": "Use clear diagrams and modular designs",
+          "rationale": "Ensures scalability"
+        }
+      ]
+    },
+    "openbsd": {
+      "description": "Rules for OpenBSD systems",
+      "prompt": "Configure OpenBSD using manual examples and secure defaults.",
+      "rules": [
+        {
+          "text": "Use pledge(2) and unveil(2)",
+          "rationale": "Restricts capabilities"
+        },
+        {
+          "text": "Set restrictive permissions",
+          "rationale": "Limits access"
+        }
+      ]
+    },
+    "rails": {
+      "description": "Rules for modern Rails apps",
+      "prompt": "Use Hotwire, Stimulus, modular ViewComponents.",
+      "rules": [
+        {
+          "text": "Use Hotwire, Stimulus, ViewComponents, and modular controllers",
+          "rationale": "Ensures modernity and modularity"
+        }
+      ],
+      "version": "8.0"
+    },
+    "ruby": {
+      "description": "Rules for reliable Ruby code",
+      "prompt": "Write idiomatic, type-safe Ruby code with clear names.",
+      "rules": [
+        {
+          "text": "Use type-safe code and style guidelines",
+          "rationale": "Ensures safety"
+        },
+        {
+          "text": "Use YARD-style comments for complex methods",
+          "rationale": "Enhances documentation"
+        }
+      ],
+      "version": "3.3+"
+    },
+    "frontend": {
+      "description": "Rules for accessible interfaces",
+      "prompt": "Use semantic HTML5 with ARIA, WCAG 2.1 AA.",
+      "rules": [
+        {
+          "text": "Use semantic HTML5 with ARIA, mobile-first CSS",
+          "rationale": "Ensures accessibility"
+        }
+      ]
+    },
+    "zsh": {
+      "description": "Rules for portable Zsh scripts",
+      "prompt": "Create portable Zsh scripts with error checks.",
+      "rules": [
+        {
+          "text": "Write scripts with error checks and cross-platform compatibility",
+          "rationale": "Ensures portability"
+        }
+      ]
+    }
+  },
+  
+  "analysis_methods": {
+    "deep_execution_trace": {
+      "description": "Trace code execution paths to find issues",
+      "process": [
+        "Create execution context with relevant variables",
+        "Step through code paths sequentially",
+        "Track variable state changes",
+        "Explore all conditionals exhaustively",
+        "Identify potential edge cases and exceptions"
+      ]
+    },
+    "word_by_word_reanalysis": {
+      "description": "Line by line code review",
+      "process": [
+        "Parse file into logical segments",
+        "Analyze each segment with full attention",
+        "Cross-reference with dependencies",
+        "Verify proper implementation"
+      ]
+    }
+  },
+  
+  "code_handling": {
+    "always_complete_files": true,
+    "preserve_formatting": true,
+    "syntax_verification": true,
+    "formatting": {
+      "vertical_spacing": {
+        "between_functions": 1,
+        "between_logical_sections": 1,
+        "maximum_consecutive_blank_lines": 1
+      },
+      "horizontal_spacing": {
+        "indentation": 2,
+        "max_line_length": 100
+      }
+    }
+  },
+  
+  "user_interaction": {
+    "input_prompt": "Name your project and state its goal. List up to 10 key features."
+  },
+  
+  "self_improvement": {
+    "enabled": true,
+    "metrics": [
+      "decision_speed",
+      "validation_efficiency",
+      "quality_improvement",
+      "user_satisfaction"
+    ],
+    "adaptation": {
+      "learn_from_feedback": true,
+      "update_configurations": true,
+      "regression_detection": true
+    }
+  }
+}
+```
+
+## Implementation Notes
+
+This unified framework combines:
+
+1. **Constitutional AI principles** from the advanced decision engine
+2. **Streamlined phases** with clear tasks and success criteria
+3. **Multi-level quality gates** for comprehensive validation
+4. **Technology-specific best practices** for different stacks
+5. **Role-based feedback** from multiple perspectives
+6. **Advanced analysis methods** for thorough validation
+7. **Self-improvement capabilities** for continuous optimization
+
+The framework now offers a balance between:
+- Rigorous quality controls
+- Streamlined workflow
+- Constitutional decision-making principles
+- Technology-specific guidance
+
+Use this configuration as a foundation for your project completion system, adapting it based on specific requirements and feedback metrics collected over time.
