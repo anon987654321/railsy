@@ -2,16 +2,19 @@
   "meta": {
     "by": "anon987654321",
     "created": "2025-01-15T00:00:00Z",
-    "description": "Configuration for completing diverse projects with intuitive LLM interaction",
-    "updated": "2025-04-26T11:16:00Z"
+    "version": "v113.0",
+    "description": "Universal LLM-adaptive framework for completing diverse projects with native capability detection",
+    "updated": "2025-01-15T12:00:00Z",
+    "evolution_notes": "Added LLM detection and adaptive behavior for Claude, GPT-4, and other LLMs with graceful degradation"
   },
   "schema": {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
-    "required": ["meta", "project", "rules", "steps", "stacks", "user_interaction"],
+    "required": ["meta", "project", "llm_capabilities", "rules", "steps", "stacks", "user_interaction"],
     "properties": {
       "meta": {"type": "object"},
       "project": {"type": "object"},
+      "llm_capabilities": {"type": "object"},
       "rules": {"type": "array"},
       "steps": {"type": "array"},
       "stacks": {"type": "object"},
@@ -26,6 +29,27 @@
       "Ensure production-ready outputs",
       "Support modular, reusable components"
     ]
+  },
+  "llm_capabilities": {
+    "detection": {
+      "claude": ["multi_temperature", "artifacts", "reasoning_chains", "citation"],
+      "gpt4": ["function_calling", "structured_output", "reasoning"],
+      "deepseek": ["code_generation", "function_calling"],
+      "grok": ["reasoning", "real_time_data"],
+      "fallback": "use_explicit_implementation"
+    },
+    "adaptive_behavior": {
+      "claude": {
+        "use_built_in_validation": true,
+        "leverage_artifacts": true,
+        "skip_explicit_temperature_control": true
+      },
+      "others": {
+        "use_explicit_validation": true,
+        "implement_multi_temperature": true,
+        "manual_error_recovery": true
+      }
+    }
   },
   "feedback": {
     "roles": [
@@ -103,23 +127,28 @@
   "rules": [
     {
       "text": "Create clear outputs with trace",
-      "rationale": "Ensures clarity"
+      "rationale": "Ensures clarity",
+      "comment": "// AUTO_DETECT: Switch based on LLM capabilities"
     },
     {
       "text": "Ensure consistent names, schema, and master.json compliance",
-      "rationale": "Ensures consistency and self-compliance"
+      "rationale": "Ensures consistency and self-compliance",
+      "comment": "// FALLBACK: For non-Claude LLMs"
     },
     {
       "text": "Execute tasks and stacks with sensible defaults",
-      "rationale": "Ensures efficiency"
+      "rationale": "Ensures efficiency",
+      "comment": "// CLAUDE_NATIVE: Use built-in capabilities when available"
     },
     {
       "text": "Handle errors with default tools, rephrased inputs (max 2 attempts), schema validation, version updates, or retries",
-      "rationale": "Ensures resilience"
+      "rationale": "Ensures resilience",
+      "comment": "// FALLBACK: For non-Claude LLMs"
     },
     {
       "text": "Prioritize tasks based on feedback scores",
-      "rationale": "Optimizes fixes"
+      "rationale": "Optimizes fixes",
+      "comment": "// AUTO_DETECT: Switch based on LLM capabilities"
     }
   ],
   "steps": [
@@ -200,21 +229,24 @@
           "instruction": "Test core functionality",
           "check": "Features work",
           "depends": ["CREATE_DRAFT"],
-          "output": "function_check"
+          "output": "function_check",
+          "comment": "// CLAUDE_NATIVE: Use built-in capabilities when available"
         },
         {
           "id": "VERIFY_ERRORS",
           "instruction": "Fix errors with recovery strategies",
           "check": "Errors fixed",
           "depends": ["VERIFY_FUNCTION"],
-          "output": "error_fixes"
+          "output": "error_fixes",
+          "comment": "// FALLBACK: For non-Claude LLMs"
         },
         {
           "id": "VERIFY_COMPLIANCE",
           "instruction": "Check rule compliance, schema, consistency, readability, usability",
           "check": "Rules followed, schema valid, readable, user-friendly",
           "depends": ["VERIFY_ERRORS"],
-          "output": "rule_check"
+          "output": "rule_check",
+          "comment": "// AUTO_DETECT: Switch based on LLM capabilities"
         }
       ]
     },
@@ -324,20 +356,23 @@
   ],
   "stacks": {
     "global": {
-      "description": "Rules for all stacks",
-      "prompt": "Follow stack-specific best practices.",
+      "description": "Rules for all stacks with LLM-adaptive behavior",
+      "prompt": "Follow stack-specific best practices. Adapt behavior based on detected LLM capabilities.",
       "rules": [
         {
           "text": "Prioritize rules by project type (e.g., accessibility for frontend)",
-          "rationale": "Optimizes relevance"
+          "rationale": "Optimizes relevance",
+          "comment": "// AUTO_DETECT: Switch based on LLM capabilities"
         },
         {
           "text": "Toggle rules by project needs (e.g., skip visual progress for scripts)",
-          "rationale": "Enhances flexibility"
+          "rationale": "Enhances flexibility",
+          "comment": "// FALLBACK: For non-Claude LLMs"
         },
         {
           "text": "Define stack-specific execution rules (e.g., Ruby validation)",
-          "rationale": "Ensures stack compliance"
+          "rationale": "Ensures stack compliance",
+          "comment": "// CLAUDE_NATIVE: Use built-in capabilities when available"
         }
       ]
     },
