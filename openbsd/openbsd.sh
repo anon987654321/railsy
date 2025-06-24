@@ -432,6 +432,86 @@ EOF
   exit 0
 }
 
+# Service management functions
+
+setup_services() {
+  # Start core services, but only enable relayd (don't start it yet)
+  print -r -- "Setting up services" >&2
+  
+  # Start SMTP
+  rcctl enable smtpd
+  rcctl start smtpd || { print -r -- "ERROR: smtpd failed" >&2; exit 1 }
+  sleep 5
+  rcctl check smtpd | grep -q "smtpd(ok)" || { print -r -- "ERROR: smtpd not running" >&2; exit 1 }
+
+  # Test SMTP
+  if ! timeout 5 telnet $BRGEN_IP 25 >/dev/null 2>&1; then
+    print -r -- "Warning: SMTP port 25 not responding" >&2
+  fi
+
+  # Start PostgreSQL
+  rcctl enable postgresql
+  rcctl start postgresql || { print -r -- "ERROR: PostgreSQL failed" >&2; exit 1 }
+  sleep 5
+  rcctl check postgresql | grep -q "postgresql(ok)" || { print -r -- "ERROR: PostgreSQL not running" >&2; exit 1 }
+
+  # Start Redis
+  rcctl enable redis
+  rcctl start redis || { print -r -- "ERROR: Redis failed" >&2; exit 1 }
+  sleep 5
+  rcctl check redis | grep -q "redis(ok)" || { print -r -- "ERROR: Redis not running" >&2; exit 1 }
+
+  # Only enable relayd for boot, don't start it yet (config doesn't exist)
+  rcctl enable relayd
+  print -r -- "Services configured. relayd enabled but not started (awaiting configuration)" >&2
+}
+
+configure_relayd() {
+  # Validate APP_PORTS array is populated
+  if (( ${#APP_PORTS} == 0 )); then
+    print -r -- "ERROR: APP_PORTS array is empty. Rails apps must be deployed first." >&2
+    exit 1
+  fi
+
+  print -r -- "Configuring relayd with ${#APP_PORTS} app(s)" >&2
+
+  # Configure relayd
+  cat > /etc/relayd.conf <<'EOF'
+# relayd for HTTPS (relayd.conf(5))
+ext_if=$BRGEN_IP
+table <web> { $BRGEN_IP }
+http protocol https {
+  tls { no tlsv1.0, ciphers HIGH:!aNULL }
+  header append Strict-Transport-Security max-age=31536000; includeSubDomains; preload
+  return error
+}
+EOF
+  for app_entry in $ALL_APPS; do
+    local app=${app_entry[(ws:*:)1]} port=$APP_PORTS[$app]
+    cat >> /etc/relayd.conf <<EOF
+table <$app> { $BRGEN_IP port $port }
+relay $app {
+  listen on \$ext_if port 443 tls
+  protocol https
+  forward to <$app> port $port check http "/" code 200
+}
+EOF
+  done
+
+  # Test relayd configuration before starting
+  relayd -n -f /etc/relayd.conf || { print -r -- "ERROR: relayd.conf invalid" >&2; exit 1 }
+  print -r -- "relayd configuration valid" >&2
+
+  # Allow Rails apps to start fully
+  sleep 10
+  
+  # Start relayd service
+  rcctl start relayd || { print -r -- "ERROR: relayd failed to start" >&2; exit 1 }
+  sleep 5
+  rcctl check relayd | grep -q "relayd(ok)" || { print -r -- "ERROR: relayd not running" >&2; exit 1 }
+  print -r -- "relayd started successfully" >&2
+}
+
 # Stage 2: Services and Rails Apps
 
 stage_2() {
@@ -481,15 +561,6 @@ EOF
   [[ ! -f /etc/ssl/private/smtp.key ]] && openssl genpkey -algorithm RSA -out /etc/ssl/private/smtp.key -pkeyopt rsa_keygen_bits:4096
   [[ ! -f /etc/ssl/smtp.crt ]] && openssl req -x509 -new -key /etc/ssl/private/smtp.key -out /etc/ssl/smtp.crt -days 365 -subj "/CN=mail.pub.attorney"
   chmod 640 /etc/ssl/private/smtp.key /etc/ssl/smtp.crt
-  rcctl enable smtpd
-  rcctl start smtpd || { print -r -- "ERROR: smtpd failed" >&2; exit 1 }
-  sleep 5
-  rcctl check smtpd | grep -q "smtpd(ok)" || { print -r -- "ERROR: smtpd not running" >&2; exit 1 }
-
-  # Test SMTP
-  if ! timeout 5 telnet $BRGEN_IP 25 >/dev/null 2>&1; then
-    print -r -- "Warning: SMTP port 25 not responding" >&2
-  fi
 
   # Configure PostgreSQL
   mkdir -p /var/postgresql/data
@@ -509,10 +580,6 @@ EOF
 local   all   all                    trust
 host    all   all   127.0.0.1/32   scram-sha-256
 EOF
-  rcctl enable postgresql
-  rcctl start postgresql || { print -r -- "ERROR: PostgreSQL failed" >&2; exit 1 }
-  sleep 5
-  rcctl check postgresql | grep -q "postgresql(ok)" || { print -r -- "ERROR: PostgreSQL not running" >&2; exit 1 }
 
   # Configure Redis
   mkdir -p /var/redis
@@ -526,10 +593,8 @@ dir /var/redis/
 maxmemory 512mb
 EOF
   redis-server --dry-run /etc/redis.conf || { print -r -- "ERROR: redis.conf invalid" >&2; exit 1 }
-  rcctl enable redis
-  rcctl start redis || { print -r -- "ERROR: Redis failed" >&2; exit 1 }
-  sleep 5
-  rcctl check redis | grep -q "redis(ok)" || { print -r -- "ERROR: Redis not running" >&2; exit 1 }
+
+  setup_services
 
   # Deploy Rails apps
   for app_entry in $ALL_APPS; do
@@ -574,34 +639,8 @@ EOF
     rcctl check $app | grep -q "$app(ok)" || { print -r -- "ERROR: $app not running" >&2; exit 1 }
   done
 
-  # Configure relayd
-  cat > /etc/relayd.conf <<'EOF'
-# relayd for HTTPS (relayd.conf(5))
-ext_if=$BRGEN_IP
-table <web> { $BRGEN_IP }
-http protocol https {
-  tls { no tlsv1.0, ciphers HIGH:!aNULL }
-  header append Strict-Transport-Security max-age=31536000; includeSubDomains; preload
-  return error
-}
-EOF
-  for app_entry in $ALL_APPS; do
-    local app=${app_entry[(ws:*:)1]} port=$APP_PORTS[$app]
-    cat >> /etc/relayd.conf <<EOF
-table <$app> { $BRGEN_IP port $port }
-relay $app {
-  listen on \$ext_if port 443 tls
-  protocol https
-  forward to <$app> port $port check http "/" code 200
-}
-EOF
-  done
-  relayd -n -f /etc/relayd.conf || { print -r -- "ERROR: relayd.conf invalid" >&2; exit 1 }
-  rcctl enable relayd
-  sleep 10  # Allow Rails apps to start
-  rcctl start relayd || { print -r -- "ERROR: relayd failed" >&2; exit 1 }
-  sleep 5
-  rcctl check relayd | grep -q "relayd(ok)" || { print -r -- "ERROR: relayd not running" >&2; exit 1 }
+  # Configure and start relayd now that APP_PORTS is populated
+  configure_relayd
 
   print -r -- stage_2_complete > $STATE_FILE
   print -r -- "Stage 2 complete. Setup complete. Test: 'curl https://brgen.no', 'curl https://amberapp.com', 'curl https://bsdports.org'." >&2
