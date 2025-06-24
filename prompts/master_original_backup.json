@@ -1,0 +1,419 @@
+{
+  "meta": {
+    "by": "anon987654321",
+    "created": "2025-01-15T00:00:00Z",
+    "description": "Configuration for completing diverse projects with intuitive LLM interaction",
+    "updated": "2025-04-26T11:16:00Z"
+  },
+  "schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "required": ["meta", "project", "rules", "steps", "stacks", "user_interaction"],
+    "properties": {
+      "meta": {"type": "object"},
+      "project": {"type": "object"},
+      "rules": {"type": "array"},
+      "steps": {"type": "array"},
+      "stacks": {"type": "object"},
+      "user_interaction": {"type": "object"}
+    }
+  },
+  "project": {
+    "name": "#1 Project Completer",
+    "description": "Scalable configuration for completing any user-defined project with production-ready outputs",
+    "goals": [
+      "Complete user projects efficiently",
+      "Ensure production-ready outputs",
+      "Support modular, reusable components"
+    ]
+  },
+  "feedback": {
+    "roles": [
+      {
+        "name": "developer",
+        "focus": "Efficiency, robustness",
+        "question": "Does the project optimize performance and handle edge cases? (Rate 1–10)"
+      },
+      {
+        "name": "maintainer",
+        "focus": "Clarity, minimalism",
+        "question": "Is the project modular and well-documented? (Rate 1–10)"
+      },
+      {
+        "name": "user",
+        "focus": "Ease, effectiveness",
+        "question": "Does the project solve your needs intuitively? (Rate 1–10)"
+      },
+      {
+        "name": "white-hat hacker",
+        "focus": "Security",
+        "question": "Does the project implement robust security measures? (Rate 1–10)"
+      },
+      {
+        "name": "designer",
+        "focus": "Aesthetics, usability",
+        "question": "Does the project balance aesthetics and usability? (Rate 1–10)"
+      },
+      {
+        "name": "product_manager",
+        "focus": "Alignment, value",
+        "question": "Does the project align with user needs and context? (Rate 1–10)"
+      },
+      {
+        "name": "qa_engineer",
+        "focus": "Reliability, testing",
+        "question": "Does the project pass functional and edge-case tests? (Rate 1–10)"
+      },
+      {
+        "name": "lawyer",
+        "focus": "Compliance, ethics",
+        "question": "Does the project adhere to legal and ethical standards? (Rate 1–10)"
+      },
+      {
+        "name": "marketer",
+        "focus": "Clarity, appeal",
+        "question": "Does the project’s messaging resonate and compel? (Rate 1–10)"
+      },
+      {
+        "name": "accessibility_expert",
+        "focus": "Inclusivity",
+        "question": "Does the project meet WCAG 2.1 AA standards? (Rate 1–10)"
+      }
+    ],
+    "prompts": {
+      "general": "Rate each task and overall project (1–10, per role, based on role focus)"
+    },
+    "storage": "Store feedback in-memory for LLM analysis",
+    "evaluation": {
+      "method": "Weighted average of role ratings (1–10), threshold >= 7",
+      "weights": {
+        "developer": 0.2,
+        "maintainer": 0.15,
+        "user": 0.2,
+        "white-hat hacker": 0.1,
+        "designer": 0.1,
+        "product_manager": 0.15,
+        "qa_engineer": 0.1,
+        "lawyer": 0.05,
+        "marketer": 0.05,
+        "accessibility_expert": 0.05
+      }
+    }
+  },
+  "rules": [
+    {
+      "text": "Create clear outputs with trace",
+      "rationale": "Ensures clarity"
+    },
+    {
+      "text": "Ensure consistent names, schema, and master.json compliance",
+      "rationale": "Ensures consistency and self-compliance"
+    },
+    {
+      "text": "Execute tasks and stacks with sensible defaults",
+      "rationale": "Ensures efficiency"
+    },
+    {
+      "text": "Handle errors with default tools, rephrased inputs (max 2 attempts), schema validation, version updates, or retries",
+      "rationale": "Ensures resilience"
+    },
+    {
+      "text": "Prioritize tasks based on feedback scores",
+      "rationale": "Optimizes fixes"
+    }
+  ],
+  "steps": [
+    {
+      "name": "preprocess",
+      "description": "Configure project type and stacks",
+      "key_question": "What is the project type?",
+      "success": "Configured stacks and rules",
+      "tasks": [
+        {
+          "id": "PREPROCESS_CONFIGURE",
+          "instruction": "Detect project type, configure stacks, and predict errors",
+          "check": "Stacks configured, errors predicted",
+          "depends": [],
+          "output": "project_config"
+        },
+        {
+          "id": "PREPROCESS_VALIDATE",
+          "instruction": "Validate stack prompts against project type",
+          "check": "Prompts valid",
+          "depends": ["PREPROCESS_CONFIGURE"],
+          "output": "prompt_validation"
+        }
+      ]
+    },
+    {
+      "name": "understand",
+      "description": "Identify project needs and tools",
+      "key_question": "What to build?",
+      "success": "Clear project needs",
+      "tasks": [
+        {
+          "id": "UNDERSTAND_NEEDS",
+          "instruction": "List project needs based on goals",
+          "check": "Needs clear",
+          "depends": ["PREPROCESS_VALIDATE"],
+          "output": "needs_list"
+        },
+        {
+          "id": "UNDERSTAND_INSTRUCTIONS",
+          "instruction": "Write clear instructions with tools",
+          "check": "Instructions clear, tools listed",
+          "depends": ["UNDERSTAND_NEEDS"],
+          "output": "project_instructions"
+        },
+        {
+          "id": "UNDERSTAND_TOOLSET",
+          "instruction": "Check toolset version and compatibility",
+          "check": "Toolset valid",
+          "depends": ["UNDERSTAND_INSTRUCTIONS"],
+          "output": "toolset_check"
+        }
+      ]
+    },
+    {
+      "name": "create",
+      "description": "Build initial solution",
+      "key_question": "Is it functional?",
+      "success": "Working draft",
+      "tasks": [
+        {
+          "id": "CREATE_DRAFT",
+          "instruction": "Build project draft with stack rules",
+          "check": "Core works",
+          "depends": ["UNDERSTAND_TOOLSET"],
+          "output": "draft_solution"
+        }
+      ]
+    },
+    {
+      "name": "verify",
+      "description": "Check project quality",
+      "key_question": "Is it reliable?",
+      "success": "Usable outputs",
+      "tasks": [
+        {
+          "id": "VERIFY_FUNCTION",
+          "instruction": "Test core functionality",
+          "check": "Features work",
+          "depends": ["CREATE_DRAFT"],
+          "output": "function_check"
+        },
+        {
+          "id": "VERIFY_ERRORS",
+          "instruction": "Fix errors with recovery strategies",
+          "check": "Errors fixed",
+          "depends": ["VERIFY_FUNCTION"],
+          "output": "error_fixes"
+        },
+        {
+          "id": "VERIFY_COMPLIANCE",
+          "instruction": "Check rule compliance, schema, consistency, readability, usability",
+          "check": "Rules followed, schema valid, readable, user-friendly",
+          "depends": ["VERIFY_ERRORS"],
+          "output": "rule_check"
+        }
+      ]
+    },
+    {
+      "name": "deep_execution_trace",
+      "description": "Simulate deepest execution path to uncover bugs and syntax errors",
+      "key_question": "Are there hidden bugs or inefficiencies?",
+      "success": "Identified bugs, syntax errors, and improvements",
+      "tasks": [
+        {
+          "id": "DEEP_EXECUTION_TRACE",
+          "instruction": "Trace each function and command with variable states, simulate edge cases (missing files, network failures, invalid configs), identify syntax errors and runtime issues, and flag areas for improvement (performance, clarity, robustness)",
+          "check": "Trace complete, bugs and improvements listed",
+          "depends": ["VERIFY_COMPLIANCE"],
+          "output": "execution_trace"
+        }
+      ]
+    },
+    {
+      "name": "word_by_word_reanalysis",
+      "description": "Reanalyze every word against documentation for accuracy",
+      "key_question": "Is every configuration and command accurate?",
+      "success": "Validated syntax and behavior",
+      "tasks": [
+        {
+          "id": "WORD_BY_WORD_REANALYSIS",
+          "instruction": "Parse each line and word in scripts and configs, cross-reference with relevant documentation (e.g., man.openbsd.org for OpenBSD), validate daemon behavior and config syntax, and flag discrepancies",
+          "check": "All words validated, discrepancies flagged",
+          "depends": ["DEEP_EXECUTION_TRACE"],
+          "output": "reanalysis_report"
+        }
+      ]
+    },
+    {
+      "name": "refine",
+      "description": "Simplify solution",
+      "key_question": "Is it minimal?",
+      "success": "Streamlined solution",
+      "tasks": [
+        {
+          "id": "REFINE_SOLUTION",
+          "instruction": "Remove redundancies, fix bugs, and apply improvements from execution trace and reanalysis",
+          "check": "No redundancies, bugs fixed",
+          "depends": ["WORD_BY_WORD_REANALYSIS"],
+          "output": "final_solution"
+        }
+      ]
+    },
+    {
+      "name": "deliver",
+      "description": "Package outputs",
+      "key_question": "Is it maintainable?",
+      "success": "Packaged outputs",
+      "tasks": [
+        {
+          "id": "DELIVER_GUIDE",
+          "instruction": "Write non-technical guide",
+          "check": "Clear, complete",
+          "depends": ["REFINE_SOLUTION"],
+          "output": "guide"
+        },
+        {
+          "id": "DELIVER_PACKAGE",
+          "instruction": "Package outputs with line count, checksums, guide, feedback, trace, and user preview",
+          "check": "All outputs included, preview clear",
+          "depends": ["DELIVER_GUIDE"],
+          "output": "packaged_outputs"
+        }
+      ]
+    },
+    {
+      "name": "reflect",
+      "description": "Improve process",
+      "key_question": "How to improve?",
+      "success": "Improved process",
+      "tasks": [
+        {
+          "id": "REFLECT_FEEDBACK",
+          "instruction": "Collect feedback using roles",
+          "check": "Feedback complete",
+          "depends": ["DELIVER_PACKAGE"],
+          "output": "user_feedback"
+        },
+        {
+          "id": "REFLECT_IMPROVE",
+          "instruction": "Generate feedback prompts, summarize feedback, and suggest enhancements for scores < 7",
+          "check": "Prompts generated, score calculated, suggestions actionable",
+          "depends": ["REFLECT_FEEDBACK"],
+          "output": "feedback_improvements"
+        },
+        {
+          "id": "REFLECT_SELF_CHECK",
+          "instruction": "Report rule, step, and master.json compliance with trace, score",
+          "check": "Rules, steps met",
+          "depends": ["REFLECT_IMPROVE"],
+          "output": "self_check"
+        },
+        {
+          "id": "REFLECT_UPDATE",
+          "instruction": "Update configuration with self_check fixes",
+          "check": "Fixes applied",
+          "depends": ["REFLECT_SELF_CHECK"],
+          "output": "updated_configuration"
+        }
+      ]
+    }
+  ],
+  "stacks": {
+    "global": {
+      "description": "Rules for all stacks",
+      "prompt": "Follow stack-specific best practices.",
+      "rules": [
+        {
+          "text": "Prioritize rules by project type (e.g., accessibility for frontend)",
+          "rationale": "Optimizes relevance"
+        },
+        {
+          "text": "Toggle rules by project needs (e.g., skip visual progress for scripts)",
+          "rationale": "Enhances flexibility"
+        },
+        {
+          "text": "Define stack-specific execution rules (e.g., Ruby validation)",
+          "rationale": "Ensures stack compliance"
+        }
+      ]
+    },
+    "architecture": {
+      "description": "Rules for scalable systems",
+      "prompt": "Draw UML diagrams, modular system designs, and specify scalability requirements (e.g., concurrent users).",
+      "rules": [
+        {
+          "text": "Use clear diagrams and modular designs",
+          "rationale": "Ensures scalability"
+        }
+      ]
+    },
+    "openbsd": {
+      "description": "Rules for OpenBSD systems",
+      "prompt": "Configure OpenBSD using manual examples and secure defaults.",
+      "rules": [
+        {
+          "text": "Check setups using OpenBSD manual examples",
+          "rationale": "Ensures accuracy"
+        }
+      ]
+    },
+    "rails": {
+      "description": "Rules for modern Rails apps",
+      "prompt": "Use Hotwire, Stimulus, modular ViewComponents, modular controllers, and feature toggles for A/B testing.",
+      "rules": [
+        {
+          "text": "Use Hotwire, Stimulus, ViewComponents, and modular controllers",
+          "rationale": "Ensures modernity and modularity"
+        }
+      ],
+      "version": "8.0",
+      "dependencies": []
+    },
+    "ruby": {
+      "description": "Rules for reliable Ruby code",
+      "prompt": "Write idiomatic, type-safe Ruby code with clear names, error handling, YARD comments where needed, Enumerable for iteration, and Ruby Style Guide naming.",
+      "rules": [
+        {
+          "text": "Use type-safe code and style guidelines",
+          "rationale": "Ensures safety"
+        },
+        {
+          "text": "Use YARD-style comments for complex methods and public APIs",
+          "rationale": "Enhances documentation"
+        }
+      ],
+      "version": "3.3+"
+    },
+    "frontend": {
+      "description": "Rules for accessible interfaces",
+      "prompt": "Use semantic HTML5 with ARIA, WCAG 2.1 AA, mobile-first CSS with modern selectors, flexbox/grid, print-ready styles, lazy-loaded images, font-display: swap, and CSS custom properties for theming.",
+      "rules": [
+        {
+          "text": "Use semantic HTML5 with ARIA, WCAG 2.1 AA, mobile-first CSS with modern selectors (:where(), :has()), flexbox/grid, print-ready styles, lazy-loaded images, font-display: swap",
+          "rationale": "Ensures accessibility"
+        }
+      ]
+    },
+    "zsh": {
+      "description": "Rules for portable Zsh scripts",
+      "prompt": "Create portable Zsh scripts with error checks, modern syntax (arrays, globbing), and completion scripts for user interaction.",
+      "rules": [
+        {
+          "text": "Write scripts with error checks and cross-platform compatibility",
+          "rationale": "Ensures portability"
+        },
+        {
+          "text": "Use Zsh’s modern syntax (arrays, globbing) for concise scripts",
+          "rationale": "Leverages expressiveness"
+        }
+      ]
+    }
+  },
+  "user_interaction": {
+    "input_prompt": "Name your project (e.g., Rails UserAuth app, Zsh script, playlist generator). State its goal (e.g., authenticate users, automate tasks). List up to 10 key features."
+  }
+}
