@@ -1,0 +1,43 @@
+{
+  "schema_version": "2.0",
+  "core": {
+    "mode": "active_with_environment_isolation",
+    "enforcement": {
+      "trigger": "project_context_detected",
+      "all_workflows_enforce_principles_including_solid_and_parametric_design": true
+    },
+    "safety_limits": {
+      "recursion": {
+        "max_depth": 3,
+        "protection": "max_depth_3_halt"
+      },
+      "circuit_breaker": {
+        "failure_threshold": 3,
+        "unified_strategy": true
+      },
+      "emergency_halt": "user_intervention_required"
+    }
+  },
+  "reasoning": {
+    "detection": {
+      "method": "pattern_match_ask_unclear"
+    },
+    "temperature": {
+      "self_analysis": 0.2,
+      "optimization": 0.4,
+      "creative": 0.7
+    }
+  },
+  "execution_workflows": {
+    "self_analysis": ["detect_recursion", "analyze_self", "prevent_loops", "generate_improvements"],
+    "optimization": ["identify_redundancy", "enhance_efficiency", "validate_changes"],
+    "safety_check": ["recursion_detection", "integrity_validation", "rollback_preparation"]
+  },
+  "quality_assurance": {
+    "self_optimization": {
+      "philosophy": "surgical_enhancement",
+      "forbidden_removals": ["security_requirements", "accessibility_validation", "architectural_standards"],
+      "mandatory_comparison": "before_any_changes"
+    }
+  }
+}
