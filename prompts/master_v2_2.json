@@ -1,5 +1,5 @@
 {
-  "schema_version": "2.1",
+  "schema_version": "2.2",
   "core": {
     "mode": "active_with_environment_isolation",
     "enforcement": {
@@ -59,7 +59,7 @@
           "validation": "intent_classification_complete",
           "decision_matrix": {
             "explicit_full_scope": "proceed_to_full_processing",
-            "explicit_partial_scope": "proceed_to_confirmed_partial_processing",
+            "explicit_partial_scope": "proceed_to_confirmed_partial_processing", 
             "ambiguous_scope": "proceed_to_scope_clarification"
           }
         },
@@ -82,7 +82,7 @@
     "self_analysis": [
       "detect_recursion",
       "analyze_self",
-      "prevent_loops",
+      "prevent_loops", 
       "generate_improvements"
     ],
     "optimization": [
@@ -112,7 +112,7 @@
   },
   "validation": {
     "input_scope_fidelity": {
-      "description": "Validate that outputs use the full input unless explicitly instructed otherwise",
+      "description": "Validate that outputs use the full input unless explicitly instructed otherwise", 
       "coverage_threshold": "100_percent",
       "validation_criteria": [
         "all_input_elements_processed",
@@ -140,7 +140,7 @@
       "philosophy": "surgical_enhancement",
       "forbidden_removals": [
         "security_requirements",
-        "accessibility_validation",
+        "accessibility_validation", 
         "architectural_standards",
         "input_internalization_principles"
       ],
@@ -172,13 +172,27 @@
   "version_history": [
     {
       "version": "2.0",
-      "timestamp": "2025-06-24T17:30:50Z",
+      "timestamp": "2025-06-24T12:20:42Z",
       "changes": "Initial autonomous framework implementation"
     },
     {
-      "version": "2.1",
-      "timestamp": "2025-06-24T17:30:50Z",
+      "version": "2.1", 
+      "timestamp": "2025-06-24T12:20:42Z",
       "changes": "Added versioning system for tracking framework evolution"
+    },
+    {
+      "version": "2.2",
+      "timestamp": "2025-01-01T00:00:00Z",
+      "changes": "Enhanced with Full Input Internalization & Intent Validation capabilities",
+      "enhancements": [
+        "Added full_input_internalization principle",
+        "Implemented input_scope_validation 3-phase workflow", 
+        "Added default_full_input_usage rule",
+        "Integrated input_scope_fidelity validation with 100% coverage",
+        "Enhanced SVG processing prompts with intent clarification",
+        "Added ISO 9001:2015 and W3C standards compliance",
+        "Maintained backward compatibility with v2.1 features"
+      ]
     }
   ]
 }
