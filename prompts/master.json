@@ -322,22 +322,159 @@
       ]
     }
   ],
+  "universal_enforcement": {
+    "description": "Global principles and standards applied to all project types and contexts",
+    "global_principles": {
+      "single_responsibility": {
+        "description": "Each module/class should have only one reason to change",
+        "enforced_globally": true,
+        "applies_to": ["all_code", "all_modules", "all_components"],
+        "rationale": "Ensures maintainability and reduces complexity"
+      },
+      "open_closed": {
+        "description": "Software entities should be open for extension, closed for modification",
+        "enforced_globally": true,
+        "applies_to": ["all_code", "all_modules", "all_components"],
+        "rationale": "Promotes extensibility without breaking existing functionality"
+      },
+      "liskov_substitution": {
+        "description": "Objects of a superclass should be replaceable with objects of its subclasses",
+        "enforced_globally": true,
+        "applies_to": ["all_inheritance", "all_interfaces"],
+        "rationale": "Ensures proper inheritance and polymorphism"
+      },
+      "interface_segregation": {
+        "description": "No client should be forced to depend on methods it does not use",
+        "enforced_globally": true,
+        "applies_to": ["all_interfaces", "all_apis"],
+        "rationale": "Reduces coupling and improves modularity"
+      },
+      "dependency_inversion": {
+        "description": "Depend on abstractions, not concretions",
+        "enforced_globally": true,
+        "applies_to": ["all_dependencies", "all_modules"],
+        "rationale": "Promotes flexibility and testability"
+      },
+      "parametric_design": {
+        "description": "Use configurable, reusable components with clear parameters",
+        "enforced_globally": true,
+        "applies_to": ["all_components", "all_functions", "all_modules"],
+        "rationale": "Enhances reusability and maintainability"
+      }
+    },
+    "quality_standards": {
+      "code_readability": {
+        "enforcement": "always",
+        "requirements": ["clear_naming", "logical_structure", "appropriate_comments"],
+        "rationale": "Ensures long-term maintainability"
+      },
+      "error_handling": {
+        "enforcement": "always", 
+        "requirements": ["graceful_degradation", "meaningful_error_messages", "proper_logging"],
+        "rationale": "Improves reliability and debugging"
+      },
+      "documentation": {
+        "enforcement": "always",
+        "requirements": ["public_api_documentation", "complex_logic_explanation", "usage_examples"],
+        "rationale": "Facilitates understanding and usage"
+      },
+      "testing": {
+        "enforcement": "always",
+        "requirements": ["unit_tests", "integration_tests", "edge_case_coverage"],
+        "rationale": "Ensures correctness and prevents regressions"
+      }
+    },
+    "security_defaults": {
+      "input_validation": {
+        "enforcement": "always",
+        "requirements": ["sanitize_all_inputs", "validate_data_types", "check_boundaries"],
+        "rationale": "Prevents injection attacks and data corruption"
+      },
+      "output_encoding": {
+        "enforcement": "always",
+        "requirements": ["context_aware_encoding", "prevent_xss", "safe_rendering"],
+        "rationale": "Prevents cross-site scripting and data leakage"
+      },
+      "secure_communications": {
+        "enforcement": "always",
+        "requirements": ["use_tls", "validate_certificates", "secure_protocols"],
+        "rationale": "Protects data in transit"
+      },
+      "least_privilege": {
+        "enforcement": "always",
+        "requirements": ["minimal_permissions", "role_based_access", "secure_defaults"],
+        "rationale": "Limits blast radius of security breaches"
+      }
+    },
+    "communication_standards": {
+      "code_quoting_standard": "double_backticks",
+      "strunk_white_clarity": true,
+      "logical_spacing_required": true,
+      "requirements": {
+        "code_references": "Use ``code`` for inline code, ```language blocks for multi-line",
+        "clarity": "Write concisely, avoid unnecessary words, use active voice",
+        "spacing": "Use logical line breaks, group related concepts, separate sections clearly",
+        "consistency": "Maintain consistent terminology and formatting throughout"
+      },
+      "rationale": "Ensures clear, professional communication across all contexts"
+    }
+  },
+  "unified_validation": {
+    "description": "Single validation checkpoint applying all universal rules regardless of context",
+    "applies_to": "all_contexts",
+    "universal_checkpoint": true,
+    "rules_enforced": [
+      "universal_enforcement",
+      "global_principles", 
+      "quality_standards",
+      "security_defaults",
+      "communication_standards"
+    ],
+    "validation_process": {
+      "pre_execution": {
+        "check_universal_principles": true,
+        "validate_security_defaults": true,
+        "verify_quality_standards": true,
+        "enforce_communication_standards": true
+      },
+      "during_execution": {
+        "continuous_monitoring": true,
+        "real_time_validation": true,
+        "immediate_feedback": true
+      },
+      "post_execution": {
+        "compliance_verification": true,
+        "quality_assessment": true,
+        "security_audit": true,
+        "documentation_check": true
+      }
+    },
+    "enforcement_policy": {
+      "violations": "halt_and_require_correction",
+      "warnings": "log_and_continue_with_notification",
+      "recommendations": "suggest_improvements"
+    }
+  },
   "stacks": {
     "global": {
-      "description": "Rules for all stacks",
-      "prompt": "Follow stack-specific best practices.",
+      "description": "Rules for all stacks - references universal_enforcement for consistent application",
+      "prompt": "Apply universal enforcement principles first, then follow stack-specific best practices.",
       "rules": [
         {
+          "text": "Apply universal_enforcement principles to all code regardless of stack",
+          "rationale": "Ensures consistent quality and security across all project types"
+        },
+        {
           "text": "Prioritize rules by project type (e.g., accessibility for frontend)",
-          "rationale": "Optimizes relevance"
+          "rationale": "Optimizes relevance while maintaining universal standards"
         },
         {
-          "text": "Toggle rules by project needs (e.g., skip visual progress for scripts)",
-          "rationale": "Enhances flexibility"
+          "text": "Toggle stack-specific rules by project needs while maintaining universal principles",
+          "rationale": "Enhances flexibility without compromising core standards"
         },
         {
-          "text": "Define stack-specific execution rules (e.g., Ruby validation)",
-          "rationale": "Ensures stack compliance"
+          "text": "Define stack-specific execution rules that complement universal enforcement",
+          "rationale": "Ensures stack compliance while maintaining global consistency"
         }
       ]
     },
@@ -411,6 +548,38 @@
           "rationale": "Leverages expressiveness"
         }
       ]
+    }
+  },
+  "status_indicators": {
+    "description": "Status message format standards with proper emoji usage",
+    "format_standards": {
+      "emoji_format": "raw_emoji_or_colon_notation",
+      "line_separation": "logical_spacing_required", 
+      "message_structure": "clear_hierarchy"
+    },
+    "indicators": {
+      "success": "✅",
+      "warning": "⚠️", 
+      "error": "❌",
+      "info": "ℹ️",
+      "processing": "⚙️",
+      "security": "🔒"
+    },
+    "examples": {
+      "correct_format": [
+        "✅ Universal principles applied successfully",
+        "⚠️ Stack-specific rule may conflict with universal enforcement",
+        "❌ SOLID principles violation detected - requires correction"
+      ],
+      "incorrect_format": [
+        "[:white_check_mark:] Success message",
+        "[:warning:] Warning message"
+      ]
+    },
+    "spacing_requirements": {
+      "between_sections": "double_line_break",
+      "between_items": "single_line_break", 
+      "indentation": "consistent_logical_structure"
     }
   },
   "user_interaction": {
