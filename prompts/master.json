@@ -2,8 +2,11 @@
   "meta": {
     "by": "anon987654321",
     "created": "2025-01-15T00:00:00Z",
-    "description": "Configuration for completing diverse projects with intuitive LLM interaction",
-    "updated": "2025-06-25T01:24:18Z"
+    "description": "v2.2.11 - Unified framework with universal rule application and high scrutiny enforcement",
+    "updated": "2025-06-25T01:24:18Z",
+    "version": "v2.2.11",
+    "universal_application": true,
+    "high_scrutiny": "universal"
   },
   "schema": {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -100,26 +103,122 @@
       }
     }
   },
+  "core": {
+    "enforcement": {
+      "enabled": true,
+      "universal_application": true,
+      "high_scrutiny": "universal",
+      "scrutinize_heavily": {
+        "code_generation": true,
+        "communication": true,
+        "validation": true,
+        "workflow_execution": true
+      },
+      "validation_gates": ["functionality", "security", "compliance", "quality"],
+      "solid_principles": {
+        "single_responsibility": "required",
+        "open_closed": "required", 
+        "liskov_substitution": "required",
+        "interface_segregation": "required",
+        "dependency_inversion": "required"
+      },
+      "parametric_design": {
+        "enabled": true,
+        "enforce_modularity": true,
+        "require_clear_interfaces": true
+      }
+    },
+    "quality_assurance": {
+      "enabled": true,
+      "universal_application": true,
+      "unified_with_enforcement": true,
+      "standards": {
+        "code_quality": "high",
+        "documentation": "comprehensive",
+        "testing": "required",
+        "security": "paramount"
+      }
+    }
+  },
   "rules": [
     {
       "text": "Create clear outputs with trace",
-      "rationale": "Ensures clarity"
+      "rationale": "Ensures clarity",
+      "universal_application": true
     },
     {
       "text": "Ensure consistent names, schema, and master.json compliance",
-      "rationale": "Ensures consistency and self-compliance"
+      "rationale": "Ensures consistency and self-compliance",
+      "universal_application": true
     },
     {
       "text": "Execute tasks and stacks with sensible defaults",
-      "rationale": "Ensures efficiency"
+      "rationale": "Ensures efficiency",
+      "universal_application": true
     },
     {
       "text": "Handle errors with default tools, rephrased inputs (max 2 attempts), schema validation, version updates, or retries",
-      "rationale": "Ensures resilience"
+      "rationale": "Ensures resilience",
+      "universal_application": true
     },
     {
       "text": "Prioritize tasks based on feedback scores",
-      "rationale": "Optimizes fixes"
+      "rationale": "Optimizes fixes",
+      "universal_application": true
+    },
+    {
+      "text": "Use clear diagrams and modular designs",
+      "rationale": "Ensures scalability",
+      "universal_application": true,
+      "extracted_from": "architecture.rules"
+    },
+    {
+      "text": "Check setups using manual examples and secure defaults",
+      "rationale": "Ensures accuracy and security",
+      "universal_application": true,
+      "extracted_from": "openbsd.rules"
+    },
+    {
+      "text": "Use modular components and modern best practices",
+      "rationale": "Ensures modernity and modularity",
+      "universal_application": true,
+      "extracted_from": "rails.rules"
+    },
+    {
+      "text": "Use type-safe code and style guidelines",
+      "rationale": "Ensures safety",
+      "universal_application": true,
+      "extracted_from": "ruby.rules"
+    },
+    {
+      "text": "Use comprehensive documentation for complex methods and public APIs",
+      "rationale": "Enhances documentation",
+      "universal_application": true,
+      "extracted_from": "ruby.rules"
+    },
+    {
+      "text": "Use semantic markup with accessibility standards (WCAG 2.1 AA)",
+      "rationale": "Ensures accessibility",
+      "universal_application": true,
+      "extracted_from": "frontend.rules"
+    },
+    {
+      "text": "Write code with error checks and cross-platform compatibility",
+      "rationale": "Ensures portability",
+      "universal_application": true,
+      "extracted_from": "zsh.rules"
+    },
+    {
+      "text": "Apply SOLID principles to all code structures",
+      "rationale": "Ensures maintainable and extensible design",
+      "universal_application": true,
+      "core_principle": true
+    },
+    {
+      "text": "Implement parametric design patterns for reusability",
+      "rationale": "Enables flexible and configurable solutions",
+      "universal_application": true,
+      "core_principle": true
     }
   ],
   "steps": [
@@ -324,79 +423,43 @@
   ],
   "stacks": {
     "global": {
-      "description": "Rules for all stacks",
-      "prompt": "Follow stack-specific best practices.",
-      "rules": [
-        {
-          "text": "Prioritize rules by project type (e.g., accessibility for frontend)",
-          "rationale": "Optimizes relevance"
-        },
-        {
-          "text": "Toggle rules by project needs (e.g., skip visual progress for scripts)",
-          "rationale": "Enhances flexibility"
-        },
-        {
-          "text": "Define stack-specific execution rules (e.g., Ruby validation)",
-          "rationale": "Ensures stack compliance"
-        }
-      ]
+      "description": "Global stack configuration - rules moved to core enforcement",
+      "prompt": "Apply universal rules and stack-specific best practices.",
+      "universal_rules_applied": true,
+      "high_scrutiny": "universal"
     },
     "architecture": {
-      "description": "Rules for scalable systems",
+      "description": "Scalable system design configuration",
       "prompt": "Draw UML diagrams, modular system designs, and specify scalability requirements (e.g., concurrent users).",
-      "rules": [
-        {
-          "text": "Use clear diagrams and modular designs",
-          "rationale": "Ensures scalability"
-        }
-      ]
+      "universal_rules_applied": true,
+      "specific_requirements": ["UML_diagrams", "scalability_specs"]
     },
     "openbsd": {
-      "description": "Rules for OpenBSD systems",
+      "description": "OpenBSD system configuration",
       "prompt": "Configure OpenBSD using manual examples and secure defaults.",
-      "rules": [
-        {
-          "text": "Check setups using OpenBSD manual examples",
-          "rationale": "Ensures accuracy"
-        }
-      ]
+      "universal_rules_applied": true,
+      "specific_requirements": ["manual_examples", "secure_defaults"]
     },
     "rails": {
-      "description": "Rules for modern Rails apps",
+      "description": "Modern Rails application configuration",
       "prompt": "Use Hotwire, Stimulus, modular ViewComponents, modular controllers, and feature toggles for A/B testing.",
-      "rules": [
-        {
-          "text": "Use Hotwire, Stimulus, ViewComponents, and modular controllers",
-          "rationale": "Ensures modernity and modularity"
-        }
-      ],
+      "universal_rules_applied": true,
       "version": "8.0",
-      "dependencies": []
+      "dependencies": [],
+      "specific_requirements": ["Hotwire", "Stimulus", "ViewComponents", "modular_controllers", "feature_toggles"]
     },
     "ruby": {
-      "description": "Rules for reliable Ruby code",
+      "description": "Reliable Ruby code configuration",
       "prompt": "Write idiomatic, type-safe Ruby code with clear names, error handling, YARD comments where needed, Enumerable for iteration, and Ruby Style Guide naming.",
-      "rules": [
-        {
-          "text": "Use type-safe code and style guidelines",
-          "rationale": "Ensures safety"
-        },
-        {
-          "text": "Use YARD-style comments for complex methods and public APIs",
-          "rationale": "Enhances documentation"
-        }
-      ],
-      "version": "3.3+"
+      "universal_rules_applied": true,
+      "version": "3.3+",
+      "specific_requirements": ["idiomatic_code", "type_safety", "YARD_comments", "style_guide"]
     },
     "frontend": {
-      "description": "Rules for accessible interfaces",
+      "description": "Accessible interface configuration",
       "prompt": "Use semantic HTML5 with ARIA, WCAG 2.1 AA, mobile-first CSS with modern selectors, flexbox/grid, print-ready styles, lazy-loaded images, font-display: swap, and CSS custom properties for theming.",
-      "rules": [
-        {
-          "text": "Use semantic HTML5 with ARIA, WCAG 2.1 AA, mobile-first CSS with modern selectors (:where(), :has()), flexbox/grid, print-ready styles, lazy-loaded images, font-display: swap",
-          "rationale": "Ensures accessibility"
-        }
-      ]
+      "universal_rules_applied": true,
+      "specific_requirements": ["semantic_HTML5", "ARIA", "WCAG_2.1_AA", "mobile_first", "modern_CSS"]
     },
     "zsh": {
       "description": "Rules for portable Zsh scripts",
