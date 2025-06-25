@@ -1,48 +1,687 @@
 {
   "metadata": {
-    "version": "v2.8.3-ultimate",
-    "updated": "2025-01-15T10:30:00Z",
-    "description": "Ultimate Master Configuration - Autonomous Intelligence + Deep Analysis + Production Security",
+    "version": "v2.4.0",
+    "schema_version": "2.4",
+    "updated": "2025-06-25T00:50:35Z",
+    "description": "Comprehensive Master Framework v2.4.0 - Full Integration of Autonomous Processing, Multi-Role Feedback, Deep Analysis, and Production Security",
     "author": "anon987654321",
-    "framework_evolution": "Unified best practices from v79, v49, v85.5, v91.8 with leaked system prompt insights",
+    "framework_evolution": "Ultimate integration of master_v2.0.0.json, 3.txt v85.5 system, 2.txt weighted feedback, autonomous_processor.rb, self_processor.rb, and openbsd.sh security patterns",
     "production_ready": true,
-    "security_first": true
+    "security_first": true,
+    "compatibility": {
+      "previous_versions": ["v2.3.5", "v2.3.0", "v2.2.0"],
+      "migration_path": "automatic_with_safety_checks",
+      "rollback_support": true
+    },
+    "changelog": {
+      "v2.4.0": {
+        "date": "2025-06-25T00:50:35Z",
+        "changes": [
+          "Integrated autonomous self-processing framework from master_v2.0.0.json",
+          "Added multi-role weighted feedback system from 2.txt with temperature-based analysis",
+          "Incorporated v85.5 deep analysis methods with word-by-word reanalysis",
+          "Enhanced OpenBSD production security integration with pledge/unveil",
+          "Implemented comprehensive error recovery and progressive fallback",
+          "Added circuit breakers and emergency halt mechanisms",
+          "Enhanced version management with semantic versioning",
+          "Added comprehensive audit trail and state preservation",
+          "Implemented 300-second timeout protection",
+          "Added cross-LLM support (grok/claude/chatgpt)"
+        ]
+      }
+    }
   },
   "system_requirements": {
     "ruby_version": "3.3+",
     "rails_version": "8.0+", 
     "openbsd_version": "7.7+",
     "langchain_integration": true,
-    "security_framework": "pledge_unveil_first"
+    "security_framework": "pledge_unveil_first",
+    "supported_llms": ["claude", "grok", "chatgpt"],
+    "minimum_memory": "512MB",
+    "recommended_memory": "2GB"
+  },
+  "core_safety_mechanisms": {
+    "heavy_scrutiny_default": {
+      "enabled": true,
+      "universal_application": true,
+      "description": "Heavy scrutiny applied to all operations as universal default before any autonomous features",
+      "enforcement": "absolute"
+    },
+    "circuit_breaker": {
+      "enabled": true,
+      "failure_threshold": 3,
+      "timeout_seconds": 30,
+      "half_open_retry_count": 1,
+      "states": ["closed", "open", "half_open"],
+      "recovery_strategy": "exponential_backoff"
+    },
+    "emergency_halt": {
+      "enabled": true,
+      "triggers": [
+        "max_recursion_exceeded",
+        "infinite_loop_detected", 
+        "memory_threshold_exceeded",
+        "security_violation_detected",
+        "timeout_exceeded",
+        "circuit_breaker_open"
+      ],
+      "action": "preserve_state_and_halt",
+      "state_preservation": {
+        "save_current_state": true,
+        "create_recovery_checkpoint": true,
+        "log_failure_context": true
+      }
+    },
+    "recursion_limits": {
+      "max_depth": 3,
+      "current_depth_tracking": true,
+      "call_stack_preservation": true,
+      "depth_exceeded_action": "emergency_halt"
+    },
+    "timeout_protection": {
+      "max_execution_time_seconds": 300,
+      "warning_threshold_seconds": 240,
+      "protection_strategy": "graceful_halt_with_partial_results",
+      "timeout_recovery": "restore_last_valid_state"
+    },
+    "forbidden_removals": {
+      "protected_elements": [
+        "core_safety_mechanisms",
+        "circuit_breaker",
+        "emergency_halt", 
+        "recursion_limits",
+        "timeout_protection",
+        "heavy_scrutiny_default"
+      ],
+      "enforcement": "absolute",
+      "violation_action": "emergency_halt"
+    }
+  },
+  "autonomous_framework": {
+    "enabled": true,
+    "philosophy": "surgical_enhancement",
+    "mode": "active_with_environment_isolation",
+    "reasoning": {
+      "temperature": 0.2,
+      "mode": "self_analysis",
+      "detection_method": "pattern_match_ask_unclear",
+      "enforcement": "all_workflows_enforce_principles_including_solid_and_parametric_design"
+    },
+    "self_processing": {
+      "enabled": true,
+      "activation": "explicit_user_request_only",
+      "recursion_depth": 1,
+      "apply_own_rules_to_self": true,
+      "workflow": ["detect_recursion", "analyze_self", "prevent_loops", "generate_improvements"],
+      "description": "Core autonomous self-improvement workflow with safety constraints"
+    },
+    "safety_integration": {
+      "respect_heavy_scrutiny": true,
+      "require_safety_checks_before_autonomous_operation": true,
+      "complete_audit_trail": true,
+      "state_preservation": true,
+      "resource_limits_enforcement": true
+    }
+  },
+  "multi_role_feedback_system": {
+    "enabled": true,
+    "description": "Multi-role weighted feedback system with temperature-based analysis from 2.txt",
+    "roles": [
+      {
+        "id": "developer", 
+        "temperature": 0.4, 
+        "focus": ["code_quality", "efficiency", "maintainability", "robustness"], 
+        "weight": 0.20
+      },
+      {
+        "id": "security_expert", 
+        "temperature": 0.2, 
+        "focus": ["vulnerabilities", "attack_vectors", "defense_mechanisms", "access_controls"], 
+        "weight": 0.25
+      },
+      {
+        "id": "maintainer", 
+        "temperature": 0.35, 
+        "focus": ["readability", "documentation", "modification_ease", "long_term_sustainability"], 
+        "weight": 0.15
+      },
+      {
+        "id": "user", 
+        "temperature": 0.5, 
+        "focus": ["usability", "effectiveness", "user_experience", "accessibility"], 
+        "weight": 0.15
+      },
+      {
+        "id": "accessibility_expert", 
+        "temperature": 0.4, 
+        "focus": ["wcag_compliance", "inclusive_design", "screen_reader_support", "keyboard_navigation"], 
+        "weight": 0.10
+      },
+      {
+        "id": "performance_engineer", 
+        "temperature": 0.3, 
+        "focus": ["optimization", "scalability", "resource_efficiency", "bottleneck_elimination"], 
+        "weight": 0.10
+      },
+      {
+        "id": "creative_innovator", 
+        "temperature": 0.9, 
+        "focus": ["novel_solutions", "creative_approaches", "innovative_patterns", "user_delight"], 
+        "weight": 0.05
+      }
+    ],
+    "evaluation": {
+      "method": "weighted_average_of_role_ratings",
+      "rating_scale": "1_to_10",
+      "approval_threshold": 7,
+      "description": "Combines ratings from each role using weighted average. Ratings (1–10) assess quality, with minimum threshold of 7 for acceptance"
+    },
+    "temperature_analysis": {
+      "security_analysis": 0.2,
+      "optimization_analysis": 0.4, 
+      "creativity_analysis": 0.9,
+      "description": "Different temperature settings for different types of analysis to balance precision and creativity"
+    },
+    "iteration": {
+      "enabled": true,
+      "max_iterations": 15,
+      "temperatures": [0.2, 0.4, 0.6, 0.8],
+      "cherrypick_best_results": true,
+      "cross_validation": {
+        "check_against_previous_iterations": true,
+        "detect_unintended_changes": true,
+        "functional_preservation_score": "measure_of_how_well_existing_functionality_is_preserved"
+      }
+    }
+  },
+  "deep_analysis_methods": {
+    "version": "v85.5",
+    "description": "Comprehensive deep analysis capabilities from 3.txt v85.5 system",
+    "word_by_word_reanalysis": {
+      "enabled": true,
+      "description": "Exhaustive character-level inspection and word-by-word reanalysis",
+      "character_level_inspection": true,
+      "syntax_tree_analysis": true,
+      "semantic_validation": true,
+      "cross_reference_verification": {
+        "scope": "all_files",
+        "dependency_verification": true,
+        "documentation_alignment": true,
+        "requirement_traceability": true
+      },
+      "exhaustive_processing": {
+        "analyze_every_character": true,
+        "no_skipping_allowed": true,
+        "ignore_resource_constraints": true,
+        "complete_coverage_guarantee": true
+      }
+    },
+    "deep_execution_trace": {
+      "enabled": true,
+      "description": "Deep execution trace simulation of all code paths",
+      "simulation_modes": [
+        "static_analysis",
+        "dynamic_prediction", 
+        "edge_case_exploration",
+        "runtime_behavior_modeling"
+      ],
+      "execution_path_tracing": {
+        "trace_all_paths": true,
+        "simulate_conditionals": true,
+        "model_loop_behavior": true,
+        "track_variable_states": true,
+        "identify_edge_cases": true
+      },
+      "resource_prediction": {
+        "memory_usage": true,
+        "cpu_utilization": true,
+        "network_io": true,
+        "disk_operations": true
+      }
+    },
+    "comprehensive_state_tracking": {
+      "enabled": true,
+      "track_all_state_changes": true,
+      "maintain_execution_history": true,
+      "variable_flow_analysis": true,
+      "dependency_impact_assessment": true
+    },
+    "cross_reference_dependency_verification": {
+      "enabled": true,
+      "scope": "all_files",
+      "verify_all_references": true,
+      "check_dependency_integrity": true,
+      "validate_interface_contracts": true,
+      "detect_circular_dependencies": true
+    },
+    "exhaustive_quality_assurance": {
+      "enabled": true,
+      "validation_coverage": "100_percent",
+      "edge_case_testing": true,
+      "boundary_condition_analysis": true,
+      "error_handling_verification": true,
+      "performance_impact_analysis": true
+    }
+  },
+  "production_security_integration": {
+    "openbsd_patterns": {
+      "enabled": true,
+      "description": "Security patterns from openbsd.sh implementation",
+      "pledge_unveil_support": {
+        "automatic_pledge_generation": true,
+        "minimal_privilege_sets": ["stdio", "rpath", "wpath", "cpath", "inet", "unix", "proc"],
+        "context_aware_restrictions": true,
+        "runtime_privilege_verification": true
+      },
+      "unveil_configuration": {
+        "automatic_path_analysis": true,
+        "minimal_filesystem_access": true,
+        "readonly_by_default": true,
+        "security_boundary_enforcement": true
+      },
+      "security_first_configuration": {
+        "default_deny_principle": true,
+        "minimal_attack_surface": true,
+        "defense_in_depth": true,
+        "principle_of_least_privilege": true
+      }
+    },
+    "httpd_relayd_integration": {
+      "secure_web_server_config": true,
+      "tls_termination": true,
+      "security_headers": [
+        "strict_transport_security",
+        "content_security_policy",
+        "x_frame_options",
+        "x_content_type_options"
+      ],
+      "modern_cipher_suites": true
+    },
+    "pf_firewall_rules": {
+      "enabled": true,
+      "default_deny_inbound": true,
+      "brute_force_protection": true,
+      "rate_limiting": true,
+      "connection_state_tracking": true
+    },
+    "ssl_automation": {
+      "acme_client_integration": true,
+      "automatic_certificate_renewal": true,
+      "certificate_validation": true,
+      "secure_key_storage": true
+    }
+  },
+  "enhanced_error_recovery": {
+    "progressive_fallback_mechanisms": {
+      "enabled": true,
+      "fallback_stages": [
+        "retry_with_same_parameters",
+        "retry_with_reduced_complexity",
+        "progressive_simplification",
+        "alternative_implementation_path",
+        "component_isolation_for_debugging",
+        "restore_last_valid_state"
+      ],
+      "stage_transition_criteria": {
+        "failure_count_threshold": 2,
+        "timeout_threshold": 60,
+        "resource_exhaustion_threshold": 0.8
+      }
+    },
+    "alternative_implementation_paths": {
+      "enabled": true,
+      "path_discovery": "automatic",
+      "path_evaluation": "risk_benefit_analysis", 
+      "path_selection": "lowest_risk_highest_benefit",
+      "path_validation": "comprehensive_testing"
+    },
+    "component_isolation": {
+      "enabled": true,
+      "isolation_strategies": [
+        "dependency_bypass",
+        "service_decomposition",
+        "functionality_partitioning",
+        "resource_sandboxing"
+      ],
+      "debugging_support": {
+        "detailed_logging": true,
+        "state_inspection": true,
+        "execution_trace": true,
+        "dependency_analysis": true
+      }
+    },
+    "restore_mechanisms": {
+      "last_valid_state_restoration": true,
+      "checkpoint_creation": "automatic",
+      "rollback_capabilities": true,
+      "data_integrity_verification": true
+    }
+  },
+  "version_management_evolution": {
+    "semantic_versioning": {
+      "enabled": true,
+      "version_format": "major.minor.patch",
+      "automatic_increment": true,
+      "breaking_change_detection": true
+    },
+    "version_history": [
+      {
+        "version": "v2.0.0",
+        "timestamp": "2025-01-24T00:00:00Z",
+        "changes": "Initial autonomous framework implementation"
+      },
+      {
+        "version": "v2.1.0", 
+        "timestamp": "2025-02-15T12:00:00Z",
+        "changes": "Added versioning system for tracking framework evolution"
+      },
+      {
+        "version": "v2.2.0",
+        "timestamp": "2025-03-20T15:30:00Z", 
+        "changes": "Enhanced multi-role feedback system"
+      },
+      {
+        "version": "v2.3.0",
+        "timestamp": "2025-04-25T09:45:00Z",
+        "changes": "Integrated deep analysis methods"
+      },
+      {
+        "version": "v2.3.5",
+        "timestamp": "2025-05-30T14:20:00Z",
+        "changes": "Enhanced production security features"
+      },
+      {
+        "version": "v2.4.0",
+        "timestamp": "2025-06-25T00:50:35Z",
+        "changes": "Comprehensive integration of all components with enhanced safety mechanisms"
+      }
+    ],
+    "schema_validation": {
+      "enabled": true,
+      "validate_against_schema": true,
+      "schema_evolution_tracking": true,
+      "backward_compatibility_checks": true
+    },
+    "integrity_checks": {
+      "checksum_validation": true,
+      "structure_verification": true,
+      "capability_validation": true,
+      "regression_detection": true
+    },
+    "rollback_support": {
+      "enabled": true,
+      "automatic_rollback_triggers": [
+        "schema_validation_failure",
+        "capability_regression",
+        "security_vulnerability_introduced"
+      ],
+      "rollback_strategy": "restore_previous_stable_version"
+    }
+  },
+  "execution_workflows": {
+    "detect_recursion": {
+      "enabled": true,
+      "description": "Monitor recursive patterns and depth limits",
+      "implementation": {
+        "depth_tracking": true,
+        "pattern_recognition": true,
+        "early_warning_system": true,
+        "recursion_prevention": true
+      },
+      "safety_integration": true
+    },
+    "analyze_self": {
+      "enabled": true,
+      "description": "Perform deep self-analysis of framework structure", 
+      "implementation": {
+        "structure_analysis": true,
+        "redundancy_detection": true,
+        "improvement_identification": true,
+        "performance_assessment": true,
+        "security_audit": true
+      },
+      "analysis_depth": "comprehensive"
+    },
+    "prevent_loops": {
+      "enabled": true,
+      "description": "Detect and prevent infinite processing loops",
+      "implementation": {
+        "state_tracking": true,
+        "change_detection": true,
+        "convergence_monitoring": true,
+        "loop_breaking_mechanisms": true
+      },
+      "detection_algorithms": ["state_hash_comparison", "semantic_diff_analysis", "cycle_detection"]
+    },
+    "generate_improvements": {
+      "enabled": true,
+      "description": "Generate surgical improvements following enhancement philosophy",
+      "implementation": {
+        "targeted_enhancements": true,
+        "impact_assessment": true,
+        "rollback_capability": true,
+        "validation_before_application": true
+      },
+      "improvement_categories": [
+        "performance_optimization",
+        "security_enhancement", 
+        "code_quality_improvement",
+        "functionality_extension"
+      ]
+    }
+  },
+  "compliance_validation": {
+    "pre_deployment": {
+      "enabled": true,
+      "mandatory_checks": [
+        "feature_completeness",
+        "functionality_preservation",
+        "security_maintained",
+        "performance_acceptable",
+        "compliance_validation",
+        "principle_adherence"
+      ],
+      "validation_criteria": {
+        "feature_completeness": "all_required_features_implemented",
+        "functionality_preservation": "no_regression_in_existing_functionality",
+        "security_maintained": "security_level_not_decreased",
+        "performance_acceptable": "performance_within_acceptable_bounds"
+      }
+    },
+    "solid_principles": {
+      "single_responsibility": {
+        "enabled": true,
+        "validation": "automatic",
+        "enforcement": "strict"
+      },
+      "open_closed": {
+        "enabled": true,
+        "validation": "automatic",
+        "enforcement": "strict"
+      },
+      "liskov_substitution": {
+        "enabled": true,
+        "validation": "automatic", 
+        "enforcement": "strict"
+      },
+      "interface_segregation": {
+        "enabled": true,
+        "validation": "automatic",
+        "enforcement": "strict"
+      },
+      "dependency_inversion": {
+        "enabled": true,
+        "validation": "automatic",
+        "enforcement": "strict"
+      }
+    },
+    "parametric_design": {
+      "enabled": true,
+      "validation": "strict",
+      "principles": [
+        "configuration_driven",
+        "environment_adaptable",
+        "easily_customizable",
+        "maintainability_focused"
+      ]
+    },
+    "wcag_accessibility": {
+      "enabled": true,
+      "level": "AA",
+      "version": "2.1", 
+      "validation": "comprehensive",
+      "automated_testing": true
+    }
+  },
+  "processing_rules": {
+    "surgical_enhancement": {
+      "description": "Make minimal, targeted improvements only",
+      "constraints": [
+        "preserve_existing_functionality",
+        "minimal_structural_changes",
+        "evidence_based_improvements",
+        "reversible_modifications"
+      ],
+      "validation": {
+        "before_application": true,
+        "after_application": true,
+        "rollback_on_failure": true
+      }
+    },
+    "evidence_based_improvements": {
+      "require_justification": true,
+      "require_impact_analysis": true,
+      "require_risk_assessment": true,
+      "require_validation_plan": true
+    }
+  },
+  "execution_context": {
+    "environment": "isolated_with_monitoring",
+    "resource_limits": {
+      "memory_mb": 512,
+      "execution_time_seconds": 300,
+      "file_operations": 100,
+      "network_requests": 50
+    },
+    "monitoring": {
+      "resource_usage": true,
+      "performance_metrics": true,
+      "security_events": true,
+      "error_tracking": true
+    },
+    "logging": {
+      "level": "detailed",
+      "include_state_changes": true,
+      "include_safety_checks": true,
+      "include_decision_rationale": true,
+      "audit_trail": true
+    }
+  },
+  "output_specifications": {
+    "success_outputs": [
+      {
+        "type": "enhanced_version",
+        "format": "v2.5.0",
+        "condition": "improvements_identified_and_safe_to_apply"
+      },
+      {
+        "type": "self_audit_report",
+        "format": "detailed_analysis_with_recommendations",
+        "condition": "no_improvements_needed_or_unsafe_to_apply"
+      },
+      {
+        "type": "comprehensive_analysis_report",
+        "format": "multi_role_feedback_summary",
+        "condition": "analysis_completed_successfully"
+      }
+    ],
+    "safety_outputs": [
+      {
+        "type": "safety_halt_report",
+        "format": "detailed_halt_reason_and_recovery_options",
+        "condition": "safety_mechanism_triggered"
+      },
+      {
+        "type": "emergency_stop_report",
+        "format": "critical_failure_analysis_and_rollback_procedure",
+        "condition": "emergency_halt_triggered"
+      },
+      {
+        "type": "timeout_recovery_report",
+        "format": "partial_results_with_continuation_plan",
+        "condition": "timeout_protection_activated"
+      }
+    ],
+    "mandatory_comparison": {
+      "enabled": true,
+      "compare_against": ["v2.3.5", "previous_version"],
+      "validation_criteria": [
+        "feature_completeness_maintained",
+        "functionality_preservation_verified",
+        "security_level_maintained_or_improved",
+        "performance_within_acceptable_bounds",
+        "compliance_standards_met",
+        "principle_adherence_verified"
+      ],
+      "failure_action": "rollback_to_previous_version"
+    }
   },
   "autonomous_intelligence": {
     "context_detection": {
       "enabled": true,
       "auto_workflow_mapping": {
-        "project_type_detection": ["rails", "ruby_gem", "openbsd_script", "langchain_app", "ai3_assistant"],
-        "context_triggers": ["file_extensions", "directory_structure", "dependencies", "user_intent"],
-        "workflow_selection": "automatic_based_on_detection",
+        "project_type_detection": [
+          "rails_application",
+          "ruby_gem",
+          "openbsd_script", 
+          "langchain_app",
+          "ai3_assistant",
+          "security_configuration",
+          "web_application"
+        ],
+        "context_triggers": [
+          "file_extensions",
+          "directory_structure", 
+          "dependencies",
+          "user_intent",
+          "existing_configurations"
+        ],
+        "workflow_selection": "automatic_based_on_detection_with_user_confirmation",
         "confidence_threshold": 0.8
       },
       "session_context_management": {
         "maintain_across_interactions": true,
         "context_compression": {
           "enabled": true,
-          "priority_preservation": ["requirements", "decisions", "code_patterns", "security_choices"],
-          "compression_ratio": 0.7
+          "priority_preservation": [
+            "security_requirements",
+            "architectural_decisions",
+            "code_patterns",
+            "user_preferences"
+          ],
+          "compression_ratio": 0.7,
+          "quality_threshold": 0.9
         },
         "memory_hierarchy": {
-          "short_term": "current_session_state",
-          "medium_term": "project_context_cache",
-          "long_term": "pattern_recognition_data"
+          "short_term": "current_session_state_and_immediate_context",
+          "medium_term": "project_context_cache_and_decision_history",
+          "long_term": "pattern_recognition_data_and_learned_preferences"
         }
       }
     },
     "execution_framework": {
       "autonomous_progression": {
-        "enabled": true,
-        "phase_auto_advancement": true,
-        "validation_gates": ["functionality", "security", "compliance", "quality"],
+        "enabled": false,
+        "default_mode": "heavy_scrutiny_with_user_confirmation",
+        "phase_auto_advancement": false,
+        "validation_gates": [
+          "functionality_verified",
+          "security_validated", 
+          "compliance_checked",
+          "quality_assured",
+          "user_approved"
+        ],
         "backtrack_on_failure": true
       },
       "recovery_protocols": {
@@ -50,25 +689,28 @@
           "runtime_errors": true,
           "logical_inconsistencies": true,
           "security_violations": true,
-          "performance_degradation": true
+          "performance_degradation": true,
+          "compliance_violations": true
         },
         "recovery_strategies": [
           "identify_failure_point",
-          "determine_root_cause", 
-          "assess_impact_scope",
-          "implement_recovery_solution",
+          "determine_root_cause",
+          "assess_impact_scope", 
+          "develop_recovery_options",
+          "implement_preferred_solution",
           "validate_recovery_success"
         ],
         "fallback_mechanisms": {
           "component_isolation": true,
           "dependency_bypass": true,
           "graceful_degradation": true,
-          "emergency_rollback": true
+          "emergency_rollback": true,
+          "user_notification": true
         }
       },
       "completion_verification": {
         "integrity_checks": {
-          "syntax_validation": ["ruby", "rails", "json", "yaml", "shell"],
+          "syntax_validation": ["ruby", "rails", "json", "yaml", "shell", "openbsd_config"],
           "semantic_consistency": true,
           "security_compliance": true,
           "performance_benchmarks": true
@@ -77,7 +719,8 @@
           "functional_completeness": true,
           "code_quality_metrics": true,
           "documentation_coverage": true,
-          "test_coverage_minimum": 80
+          "test_coverage_minimum": 80,
+          "security_scan_passed": true
         }
       }
     }
@@ -85,22 +728,61 @@
   "deep_analysis_capabilities": {
     "multi_temperature_perspective_analysis": {
       "enabled": true,
+      "description": "Enhanced multi-temperature analysis integrating 2.txt weighted feedback system",
       "temperature_profiles": [
-        {"role": "security_expert", "temperature": 0.2, "focus": ["vulnerabilities", "attack_vectors", "defense_mechanisms"], "weight": 0.25},
-        {"role": "architect", "temperature": 0.4, "focus": ["structure", "scalability", "maintainability", "patterns"], "weight": 0.20},
-        {"role": "performance_engineer", "temperature": 0.3, "focus": ["optimization", "efficiency", "resource_usage"], "weight": 0.15},
-        {"role": "creative_innovator", "temperature": 0.9, "focus": ["novel_solutions", "user_experience", "innovative_approaches"], "weight": 0.15},
-        {"role": "openbsd_specialist", "temperature": 0.3, "focus": ["pledge", "unveil", "minimalism", "security"], "weight": 0.15},
-        {"role": "rails_expert", "temperature": 0.4, "focus": ["conventions", "best_practices", "modern_features"], "weight": 0.10}
+        {
+          "role": "security_expert",
+          "temperature": 0.2,
+          "focus": ["vulnerabilities", "attack_vectors", "defense_mechanisms", "compliance"],
+          "weight": 0.25
+        },
+        {
+          "role": "architect", 
+          "temperature": 0.4,
+          "focus": ["structure", "scalability", "maintainability", "design_patterns"],
+          "weight": 0.20
+        },
+        {
+          "role": "performance_engineer",
+          "temperature": 0.3,
+          "focus": ["optimization", "efficiency", "resource_usage", "bottlenecks"],
+          "weight": 0.15
+        },
+        {
+          "role": "user_experience_expert",
+          "temperature": 0.5,
+          "focus": ["usability", "accessibility", "user_satisfaction", "workflow_efficiency"],
+          "weight": 0.15
+        },
+        {
+          "role": "maintainer",
+          "temperature": 0.35,
+          "focus": ["code_quality", "documentation", "debugging_ease", "long_term_sustainability"],
+          "weight": 0.10
+        },
+        {
+          "role": "creative_innovator",
+          "temperature": 0.9,
+          "focus": ["novel_solutions", "innovative_approaches", "creative_problem_solving"],
+          "weight": 0.10
+        },
+        {
+          "role": "openbsd_specialist",
+          "temperature": 0.3,
+          "focus": ["pledge", "unveil", "minimalism", "security_by_design"],
+          "weight": 0.05
+        }
       ],
       "consensus_building": {
         "weighted_voting": true,
-        "conflict_resolution": "expert_domain_priority",
-        "minimum_agreement_threshold": 0.7
+        "conflict_resolution": "expert_domain_priority_with_security_override",
+        "minimum_agreement_threshold": 0.7,
+        "security_veto_power": true
       }
     },
     "word_for_word_code_examination": {
       "enabled": true,
+      "description": "Exhaustive analysis from 3.txt v85.5 system",
       "exhaustive_analysis": {
         "character_level_review": true,
         "syntax_tree_analysis": true,
@@ -109,14 +791,16 @@
           "ruby_docs": true,
           "rails_guides": true,
           "openbsd_manpages": true,
-          "langchain_api": true
+          "langchain_api": true,
+          "security_standards": true
         }
       },
       "execution_path_tracing": {
         "static_analysis": true,
         "dynamic_simulation": true,
         "edge_case_identification": true,
-        "resource_usage_prediction": true
+        "resource_usage_prediction": true,
+        "security_impact_analysis": true
       }
     },
     "cross_session_memory_management": {
@@ -124,13 +808,15 @@
         "pattern_recognition": true,
         "anti_pattern_detection": true,
         "best_practice_accumulation": true,
-        "failure_case_memory": true
+        "failure_case_memory": true,
+        "security_lesson_retention": true
       },
       "knowledge_graph": {
-        "concepts": ["technologies", "patterns", "solutions", "problems"],
-        "relationships": ["depends_on", "conflicts_with", "enhances", "replaces"],
+        "concepts": ["technologies", "patterns", "solutions", "problems", "security_measures"],
+        "relationships": ["depends_on", "conflicts_with", "enhances", "replaces", "secures"],
         "confidence_scoring": true,
-        "temporal_decay": false
+        "temporal_decay": false,
+        "security_knowledge_preservation": true
       }
     }
   },
@@ -139,60 +825,87 @@
       "use_builtin_validation": true,
       "avoid_reimplementing_reasoning": true,
       "focus_on_coordination": true,
-      "delegate_complex_analysis": true
+      "delegate_complex_analysis": true,
+      "respect_llm_strengths": true
     },
     "workflow_orchestration": {
       "phase_coordination": {
-        "discovery": ["requirements_gathering", "context_analysis", "technology_selection"],
-        "planning": ["architecture_design", "security_modeling", "resource_allocation"],
-        "implementation": ["code_generation", "configuration_setup", "integration_testing"],
-        "validation": ["security_audit", "performance_testing", "compliance_check"],
-        "delivery": ["documentation", "deployment_scripts", "monitoring_setup"]
+        "discovery": ["requirements_gathering", "context_analysis", "technology_selection", "security_requirements"],
+        "planning": ["architecture_design", "security_modeling", "resource_allocation", "risk_assessment"],
+        "implementation": ["code_generation", "configuration_setup", "integration_testing", "security_implementation"],
+        "validation": ["security_audit", "performance_testing", "compliance_check", "penetration_testing"],
+        "delivery": ["documentation", "deployment_scripts", "monitoring_setup", "security_hardening"]
       },
       "task_delegation": {
-        "analysis_tasks": "claude_builtin",
-        "coordination_tasks": "framework_orchestration",
-        "validation_tasks": "automated_checking",
-        "documentation_tasks": "template_generation"
+        "analysis_tasks": "claude_builtin_with_framework_coordination",
+        "coordination_tasks": "framework_orchestration_with_safety_checks",
+        "validation_tasks": "automated_checking_with_manual_verification",
+        "documentation_tasks": "template_generation_with_expert_review"
+      }
+    },
+    "cross_llm_support": {
+      "claude_optimization": {
+        "leverage_constitutional_ai": true,
+        "use_advanced_reasoning": true,
+        "respect_safety_guidelines": true
+      },
+      "grok_optimization": {
+        "leverage_real_time_knowledge": true,
+        "use_humor_appropriately": false,
+        "focus_on_practical_solutions": true
+      },
+      "chatgpt_optimization": {
+        "leverage_code_understanding": true,
+        "use_step_by_step_reasoning": true,
+        "maintain_consistency": true
       }
     }
   },
   "reasoning_frameworks": {
     "framework_selection": {
       "problem_classification": {
-        "simple_execution": "direct_implementation",
-        "complex_exploration": "tree_of_thoughts",
-        "interconnected_systems": "graph_of_thoughts",
-        "verification_needed": "self_consistency",
-        "tool_dependent": "react_reasoning",
-        "ethical_concerns": "constitutional_ai",
-        "stuck_or_stale": "reset_perspective"
+        "simple_execution": "direct_implementation_with_safety_checks",
+        "complex_exploration": "tree_of_thoughts_with_pruning",
+        "interconnected_systems": "graph_of_thoughts_with_dependency_mapping",
+        "verification_needed": "self_consistency_with_cross_validation",
+        "tool_dependent": "react_reasoning_with_error_handling",
+        "ethical_security_concerns": "constitutional_ai_with_security_focus",
+        "stuck_or_stale": "reset_perspective_with_context_preservation"
       },
       "auto_selection_triggers": {
-        "complexity_score": "ast_depth_analysis",
-        "interconnection_degree": "dependency_graph_analysis",
-        "uncertainty_level": "confidence_scoring",
-        "tool_requirements": "capability_detection"
+        "complexity_score": "ast_depth_analysis_with_security_weighting",
+        "interconnection_degree": "dependency_graph_analysis_with_risk_assessment",
+        "uncertainty_level": "confidence_scoring_with_safety_margin",
+        "tool_requirements": "capability_detection_with_security_validation"
       }
     },
     "constitutional_ai": {
       "principles": {
-        "security_first": ["no_vulnerabilities", "defense_in_depth", "least_privilege"],
-        "code_quality": ["readability", "maintainability", "testability"],
-        "production_ready": ["reliability", "scalability", "monitoring"]
+        "security_first": [
+          "no_vulnerabilities_introduced",
+          "defense_in_depth_maintained",
+          "least_privilege_enforced",
+          "security_by_design"
+        ],
+        "code_quality": [
+          "readability_prioritized",
+          "maintainability_ensured", 
+          "testability_built_in",
+          "documentation_comprehensive"
+        ],
+        "production_ready": [
+          "reliability_guaranteed",
+          "scalability_considered",
+          "monitoring_integrated",
+          "disaster_recovery_planned"
+        ]
       },
       "self_critique_cycle": {
-        "generate": "initial_solution",
-        "critique": "principle_evaluation", 
-        "revise": "improvement_implementation",
-        "validate": "principle_compliance_check"
+        "generate": "initial_solution_with_safety_analysis",
+        "critique": "principle_evaluation_with_security_focus",
+        "revise": "improvement_implementation_with_validation",
+        "validate": "principle_compliance_check_with_penetration_testing"
       }
-    },
-    "tree_of_thoughts": {
-      "branching_strategy": "solution_space_exploration",
-      "pruning_criteria": ["feasibility", "security", "performance", "maintainability"],
-      "depth_limit": 5,
-      "width_limit": 3
     }
   },
   "production_security": {
@@ -200,161 +913,184 @@
       "pledge_support": {
         "automatic_pledge_generation": true,
         "minimal_privilege_sets": ["stdio", "rpath", "wpath", "cpath", "inet", "unix", "proc"],
-        "context_aware_restrictions": true
+        "context_aware_restrictions": true,
+        "runtime_verification": true
       },
       "unveil_support": {
         "automatic_path_analysis": true,
         "minimal_filesystem_access": true,
         "readonly_by_default": true,
-        "security_validation": true
+        "security_validation": true,
+        "access_pattern_learning": true
       },
       "secure_defaults": {
         "httpd_configuration": "restrictive_with_security_headers",
-        "relayd_setup": "tls_termination_with_hsts",
-        "pf_rules": "default_deny_with_minimal_allow",
-        "user_separation": "dedicated_users_per_service"
+        "relayd_setup": "tls_termination_with_hsts_and_modern_ciphers",
+        "pf_rules": "default_deny_with_minimal_allow_and_rate_limiting",
+        "user_separation": "dedicated_users_per_service_with_privilege_separation"
       }
     },
     "rails_security": {
       "version_requirements": "8.0+",
       "security_features": {
-        "strong_parameters": "enforced",
-        "csrf_protection": "enabled",
-        "sql_injection_prevention": "parameterized_queries_only",
-        "xss_protection": "content_security_policy"
+        "strong_parameters": "enforced_with_validation",
+        "csrf_protection": "enabled_with_double_submit_cookies",
+        "sql_injection_prevention": "parameterized_queries_only_with_input_validation",
+        "xss_protection": "content_security_policy_with_nonce_and_strict_dynamic"
       },
       "modern_features": {
         "hotwire_integration": true,
         "stimulus_controllers": true,
         "view_components": true,
-        "importmap_usage": true
+        "importmap_usage": true,
+        "solid_queue_integration": true
       }
     },
     "ruby_security": {
       "version_requirements": "3.3+",
       "security_practices": {
-        "input_sanitization": "automatic",
-        "output_encoding": "context_aware",
-        "dependency_scanning": "bundler_audit",
-        "static_analysis": "rubocop_security"
+        "input_sanitization": "automatic_with_validation",
+        "output_encoding": "context_aware_with_escaping",
+        "dependency_scanning": "bundler_audit_with_continuous_monitoring",
+        "static_analysis": "rubocop_security_with_custom_rules"
       }
     }
   },
-  "project_lifecycle": {
-    "phases": {
-      "discovery": {
-        "context_detection": "automatic",
-        "requirements_extraction": "intelligent_parsing",
-        "technology_stack_selection": "best_fit_analysis"
+  "performance_optimization": {
+    "resource_management": {
+      "memory_optimization": {
+        "garbage_collection_tuning": true,
+        "object_allocation_tracking": true,
+        "memory_leak_detection": true,
+        "memory_usage_profiling": true
       },
-      "planning": {
-        "architecture_design": "security_first_patterns",
-        "component_breakdown": "modular_decomposition",
-        "dependency_analysis": "vulnerability_assessment"
+      "cpu_optimization": {
+        "algorithm_efficiency_analysis": true,
+        "concurrent_processing_opportunities": true,
+        "bottleneck_identification": true,
+        "performance_profiling": true
       },
-      "implementation": {
-        "code_generation": "best_practice_templates",
-        "configuration_management": "environment_specific",
-        "integration_setup": "automated_testing"
-      },
-      "validation": {
-        "security_audit": "comprehensive_scanning",
-        "performance_testing": "benchmark_validation",
-        "compliance_checking": "standard_adherence"
-      },
-      "delivery": {
-        "documentation_generation": "auto_generated_guides",
-        "deployment_scripts": "one_click_install",
-        "monitoring_setup": "production_ready_observability"
+      "context_window_management": {
+        "intelligent_summarization": true,
+        "priority_based_retention": true,
+        "adaptive_compression": true,
+        "context_relevance_scoring": true
       }
     },
-    "quality_gates": {
-      "security": ["no_critical_vulnerabilities", "secure_configuration", "access_controls"],
-      "performance": ["response_time_sla", "resource_efficiency", "scalability_testing"],
-      "quality": ["code_coverage_80_percent", "documentation_complete", "tests_passing"],
-      "compliance": ["style_guide_adherence", "security_standards", "best_practices"]
-    }
-  },
-  "installer_integration": {
-    "openbsd_installer": {
-      "package_management": "pkg_add_automation",
-      "service_configuration": "rcctl_integration", 
-      "firewall_setup": "pf_rule_generation",
-      "ssl_automation": "acme_client_setup"
-    },
-    "rails_installer": {
-      "gem_management": "bundler_integration",
-      "database_setup": "postgresql_configuration",
-      "asset_pipeline": "importmap_setup",
-      "deployment_prep": "production_ready_config"
-    },
-    "complete_stack_installer": {
-      "dependency_resolution": "automatic",
-      "environment_setup": "development_and_production",
-      "monitoring_integration": "metrics_and_logging",
-      "backup_configuration": "automated_backups"
+    "caching_strategies": {
+      "application_cache": "redis_integration_with_expiration_policies",
+      "database_cache": "query_optimization_with_connection_pooling",
+      "static_assets": "cdn_integration_with_asset_versioning",
+      "template_cache": "view_component_optimization_with_fragment_caching"
     }
   },
   "anti_corruption_safeguards": {
     "schema_validation": {
       "json_schema_compliance": true,
       "structure_preservation": true,
-      "capability_verification": true
+      "capability_verification": true,
+      "semantic_validation": true
     },
     "version_control": {
       "backup_before_changes": true,
       "incremental_updates_only": true,
-      "rollback_on_degradation": true
+      "rollback_on_degradation": true,
+      "change_tracking": true
     },
     "self_optimization": {
       "performance_monitoring": true,
       "capability_enhancement": true,
       "redundancy_elimination": true,
-      "complexity_management": true
+      "complexity_management": true,
+      "security_preservation": true
+    },
+    "integrity_verification": {
+      "checksum_validation": true,
+      "structure_consistency_checks": true,
+      "functionality_regression_testing": true,
+      "security_level_maintenance": true
     }
   },
   "execution_engine": {
     "task_orchestration": {
-      "parallel_execution": "where_safe",
-      "dependency_resolution": "automatic",
-      "error_propagation": "controlled",
-      "progress_tracking": "detailed"
+      "parallel_execution": "where_safe_with_dependency_respect",
+      "dependency_resolution": "automatic_with_security_validation",
+      "error_propagation": "controlled_with_isolation",
+      "progress_tracking": "detailed_with_milestone_reporting"
     },
     "resource_management": {
       "memory_optimization": true,
       "cpu_efficiency": true,
       "context_window_management": true,
-      "concurrent_task_limits": 5
+      "concurrent_task_limits": 5,
+      "resource_monitoring": true
     },
     "output_generation": {
-      "format_selection": "context_appropriate",
-      "template_usage": "best_practice_templates",
-      "validation_integration": "real_time_checking",
-      "user_feedback_loop": "continuous_improvement"
+      "format_selection": "context_appropriate_with_security_considerations",
+      "template_usage": "best_practice_templates_with_security_hardening",
+      "validation_integration": "real_time_checking_with_security_scanning",
+      "user_feedback_loop": "continuous_improvement_with_security_awareness"
     }
   },
   "auto_iteration": {
     "enabled": true,
+    "explicit_instruction_required": true,
     "max_iterations": 15,
     "iteration_scaling": {
       "complexity_detection": {
-        "metrics": ["code_lines", "dependency_count", "feature_count", "security_requirements"],
+        "metrics": [
+          "code_lines",
+          "dependency_count",
+          "feature_count", 
+          "security_requirements",
+          "integration_complexity"
+        ],
         "thresholds": {
-          "low": {"code_lines": 1000, "dependency_count": 5, "feature_count": 3},
-          "medium": {"code_lines": 5000, "dependency_count": 10, "feature_count": 10},
-          "high": {"code_lines": 10000, "dependency_count": 20, "feature_count": 20}
+          "low": {
+            "code_lines": 1000,
+            "dependency_count": 5,
+            "feature_count": 3,
+            "security_requirements": 5
+          },
+          "medium": {
+            "code_lines": 5000,
+            "dependency_count": 10,
+            "feature_count": 10,
+            "security_requirements": 15
+          },
+          "high": {
+            "code_lines": 10000,
+            "dependency_count": 20,
+            "feature_count": 20,
+            "security_requirements": 30
+          }
         }
       },
       "dynamic_adjustment": {
         "security_projects": "+5_iterations",
         "openbsd_projects": "+3_iterations",
-        "rails_applications": "+2_iterations"
+        "rails_applications": "+2_iterations",
+        "langchain_integrations": "+2_iterations"
       }
     },
     "stopping_criteria": [
-      {"type": "quality_threshold_met", "threshold": 0.9},
-      {"type": "security_compliance_achieved", "threshold": 1.0},
-      {"type": "improvement_plateau", "threshold": 0.02, "consecutive_iterations": 2}
+      {
+        "type": "quality_threshold_met",
+        "threshold": 0.9
+      },
+      {
+        "type": "security_compliance_achieved", 
+        "threshold": 1.0
+      },
+      {
+        "type": "improvement_plateau",
+        "threshold": 0.02,
+        "consecutive_iterations": 2
+      },
+      {
+        "type": "user_satisfaction_achieved",
+        "threshold": 0.95
+      }
     ],
     "safeguards": {
       "loop_prevention": {
@@ -366,152 +1102,9 @@
       "quality_preservation": {
         "validate_before_after": true,
         "functionality_regression_detection": true,
-        "security_degradation_prevention": true
+        "security_degradation_prevention": true,
+        "performance_regression_prevention": true
       }
-    }
-  },
-  "self_processing": {
-    "activation": "immediate",
-    "recursion_depth": 1,
-    "apply_own_rules_to_self": true,
-    "cross_reference": {
-      "scope": "all_configuration_files",
-      "enforce": {
-        "compare_with_previous_iterations": true,
-        "detect_significant_changes": true,
-        "prevent_loss_of_functionality": true,
-        "verification": "report_all_differences_between_iterations"
-      }
-    },
-    "anti_corruption": {
-      "detection": {
-        "schema_validation": true,
-        "structure_preservation": true,
-        "key_capability_testing": true,
-        "semantic_equivalence": true
-      },
-      "mitigation": {
-        "backup_original": true,
-        "restore_on_corruption": true,
-        "incremental_changes_only": true,
-        "validation_before_commit": true
-      }
-    }
-  },
-  "advanced_analysis": {
-    "execution_trace": {
-      "depth": "maximum",
-      "simulation_modes": ["static_analysis", "dynamic_prediction", "edge_case_exploration"],
-      "resource_prediction": ["memory_usage", "cpu_utilization", "network_io", "disk_operations"],
-      "bottleneck_identification": true
-    },
-    "word_by_word_reanalysis": {
-      "documentation_cross_reference": {
-        "ruby_core": "https://ruby-doc.org/",
-        "rails_guides": "https://guides.rubyonrails.org/",
-        "openbsd_manual": "https://man.openbsd.org/",
-        "langchain_docs": "https://python.langchain.com/"
-      },
-      "syntax_validation": {
-        "ruby_parser": "ripper",
-        "rails_config": "rails_config_validation",
-        "shell_script": "shellcheck_equivalent",
-        "json_yaml": "strict_parsing"
-      },
-      "semantic_analysis": {
-        "variable_flow_tracking": true,
-        "method_call_chain_analysis": true,
-        "dependency_impact_assessment": true
-      }
-    }
-  },
-  "security_hardening": {
-    "openbsd_specific": {
-      "pledge_configuration": {
-        "analysis_depth": "comprehensive",
-        "minimal_privilege_calculation": "automatic",
-        "privilege_validation": "runtime_simulation",
-        "common_pledges": {
-          "web_server": ["stdio", "rpath", "inet", "unix"],
-          "database_client": ["stdio", "rpath", "wpath", "cpath", "inet", "unix", "dns"],
-          "file_processor": ["stdio", "rpath", "wpath", "cpath"],
-          "network_client": ["stdio", "rpath", "inet", "dns"]
-        }
-      },
-      "unveil_configuration": {
-        "path_analysis": "automatic_detection",
-        "access_pattern_learning": true,
-        "readonly_optimization": true,
-        "security_boundary_enforcement": true
-      },
-      "system_integration": {
-        "httpd_security": "strict_configuration",
-        "relayd_tls": "modern_cipher_suites",
-        "pf_rules": "default_deny_principle",
-        "user_privilege_separation": "service_specific_users"
-      }
-    },
-    "rails_security": {
-      "modern_security_features": {
-        "content_security_policy": "strict_configuration",
-        "secure_headers": "comprehensive_set",
-        "input_validation": "strong_parameters_plus",
-        "output_sanitization": "context_aware_encoding"
-      },
-      "vulnerability_prevention": {
-        "sql_injection": "parameterized_queries_enforced",
-        "xss_protection": "output_encoding_mandatory",
-        "csrf_protection": "double_submit_cookies",
-        "clickjacking": "x_frame_options_deny"
-      }
-    }
-  },
-  "integration_apis": {
-    "langchain_integration": {
-      "memory_management": "langchain_memory_interface",
-      "prompt_templates": "langchain_prompt_system", 
-      "output_parsers": "structured_output_parsing",
-      "tool_integration": "langchain_tools_ecosystem",
-      "chain_composition": "intelligent_workflow_chaining"
-    },
-    "github_integration": {
-      "repository_analysis": "codebase_understanding",
-      "pull_request_generation": "automated_pr_creation",
-      "issue_tracking": "requirement_extraction",
-      "ci_cd_integration": "automated_testing",
-      "security_scanning": "dependency_vulnerability_analysis"
-    },
-    "development_tools": {
-      "editor_integration": "vscode_ruby_rails",
-      "debugging_support": "integrated_debugger",
-      "testing_frameworks": "rspec_minitest_integration",
-      "deployment_tools": "capistrano_docker_support",
-      "static_analysis": "rubocop_security_integration"
-    }
-  },
-  "performance_optimization": {
-    "resource_management": {
-      "memory_optimization": {
-        "garbage_collection_tuning": true,
-        "object_allocation_tracking": true,
-        "memory_leak_detection": true
-      },
-      "cpu_optimization": {
-        "algorithm_efficiency_analysis": true,
-        "concurrent_processing_opportunities": true,
-        "bottleneck_identification": true
-      },
-      "context_window_management": {
-        "intelligent_summarization": true,
-        "priority_based_retention": true,
-        "adaptive_compression": true
-      }
-    },
-    "caching_strategies": {
-      "application_cache": "redis_integration",
-      "database_cache": "query_optimization",
-      "static_assets": "cdn_integration",
-      "template_cache": "view_component_optimization"
     }
   }
 }
