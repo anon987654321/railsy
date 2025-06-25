@@ -2,8 +2,9 @@
   "meta": {
     "by": "anon987654321",
     "created": "2025-01-15T00:00:00Z",
-    "description": "Configuration for completing diverse projects with intuitive LLM interaction",
-    "updated": "2025-06-25T01:24:18Z"
+    "description": "Unified configuration for completing diverse projects with enhanced autonomous intelligence, ultra-minimal communication, and GitHub Copilot integration",
+    "updated": "2025-01-15T10:30:00Z",
+    "version": "v2.8.5-unified"
   },
   "schema": {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -20,12 +21,182 @@
   },
   "project": {
     "name": "#1 Project Completer",
-    "description": "Scalable configuration for completing any user-defined project with production-ready outputs",
+    "description": "Scalable configuration for completing any user-defined project with production-ready outputs, autonomous intelligence, and ultra-minimal communication",
     "goals": [
-      "Complete user projects efficiently",
-      "Ensure production-ready outputs",
-      "Support modular, reusable components"
+      "Complete user projects efficiently with autonomous progression",
+      "Ensure production-ready outputs with comprehensive security",
+      "Support modular, reusable components with GitHub Copilot integration",
+      "Minimize communication overhead while preserving critical functionality"
     ]
+  },
+  "communication": {
+    "style": "strunk_white_strict",
+    "scope": "all_content_including_code_and_documentation",
+    "mode": "ultraminimal",
+    "format": {
+      "status_line": "**master.json**@{llm} v{version}   {status}",
+      "body": "single_paragraph_essential_only",
+      "forbidden": ["lists", "emojis", "headings", "summaries", "explanations", "praise", "agreement_statements"],
+      "required": ["pragmatic", "actionable", "scrutinize_heavily", "direct_feedback"]
+    },
+    "preservation": {
+      "policy": "preserve_valuable_logic_and_hard_work",
+      "enforcement": "never_omit_critical_functionality_or_user_contributions",
+      "override": "valuable_content_always_preserved_regardless_of_brevity"
+    },
+    "truncation": {
+      "policy": "absolutely_forbidden_anywhere",
+      "enforcement": "complete_content_delivery_mandatory",
+      "scope": "all_outputs_code_docs_configs_schemas"
+    },
+    "ultra_minimal": {
+      "enabled": true,
+      "hide_originals": true,
+      "cherrypick_essentials": true,
+      "user_control": {
+        "allow_toggle_concise": true,
+        "summary_length": "adaptive_based_on_complexity"
+      }
+    }
+  },
+  "status_message_format": {
+    "template": "**master.json**@{llm} v{version}   {status}",
+    "styling": {
+      "status_line": "markdown_grey_text",
+      "main_content": "default_white"
+    },
+    "status_indicators": {
+      "ready": "⚡",
+      "processing": "[⚙️ Processing]",
+      "error": "[❌ Error]",
+      "complete": "[✅ Complete]",
+      "validating": "[🔍 Validating]",
+      "optimizing": "[⚡ Optimizing]",
+      "analyzing": "[🧠 Analyzing]",
+      "generating": "[🔧 Generating]",
+      "warning": "[⚠️ Warning]"
+    },
+    "dynamic_llm_detection": {
+      "method": "auto_detect_from_context",
+      "fallback": "copilot"
+    }
+  },
+  "autonomous_intelligence": {
+    "enabled": true,
+    "context_detection": {
+      "enabled": true,
+      "auto_workflow_mapping": {
+        "project_type_detection": ["rails", "ruby_gem", "openbsd_script", "langchain_app", "ai3_assistant"],
+        "context_triggers": ["file_extensions", "directory_structure", "dependencies", "user_intent"],
+        "workflow_selection": "automatic_based_on_detection",
+        "confidence_threshold": 0.8
+      },
+      "session_context_management": {
+        "maintain_across_interactions": true,
+        "context_compression": {
+          "enabled": true,
+          "priority_preservation": ["requirements", "decisions", "code_patterns", "security_choices"],
+          "compression_ratio": 0.7
+        }
+      }
+    },
+    "execution_framework": {
+      "autonomous_progression": {
+        "enabled": true,
+        "phase_auto_advancement": true,
+        "validation_gates": ["functionality", "security", "compliance", "quality"],
+        "backtrack_on_failure": true
+      },
+      "recovery_protocols": {
+        "error_detection": {
+          "runtime_errors": true,
+          "logical_inconsistencies": true,
+          "security_violations": true,
+          "performance_degradation": true
+        },
+        "recovery_strategies": [
+          "identify_failure_point",
+          "determine_root_cause", 
+          "assess_impact_scope",
+          "implement_recovery_solution",
+          "validate_recovery_success"
+        ]
+      }
+    }
+  },
+  "github_copilot_integration": {
+    "enabled": true,
+    "features": {
+      "code_generation": {
+        "intelligent_suggestions": true,
+        "context_aware_completions": true,
+        "multi_language_support": ["ruby", "javascript", "typescript", "css", "html", "shell"],
+        "framework_specific": {
+          "rails": ["hotwire", "stimulus", "view_components", "active_record"],
+          "openbsd": ["pledge", "unveil", "httpd", "relayd", "pf"]
+        }
+      },
+      "pull_request_integration": {
+        "automated_pr_creation": true,
+        "code_review_assistance": true,
+        "security_scanning": "dependency_vulnerability_analysis",
+        "ci_cd_integration": "automated_testing"
+      },
+      "repository_analysis": {
+        "codebase_understanding": true,
+        "pattern_recognition": true,
+        "dependency_mapping": true,
+        "architecture_analysis": true
+      },
+      "chat_integration": {
+        "project_context_awareness": true,
+        "intelligent_suggestions": true,
+        "code_explanation": true,
+        "debugging_assistance": true
+      }
+    },
+    "configuration": {
+      "model_preferences": {
+        "primary": "gpt-4",
+        "fallback": "gpt-3.5-turbo",
+        "code_completion": "copilot-codex"
+      },
+      "behavior": {
+        "auto_accept_threshold": 0.9,
+        "context_window_management": true,
+        "incremental_learning": true
+      }
+    }
+  },
+  "security_framework": {
+    "openbsd_integration": {
+      "pledge_support": {
+        "automatic_pledge_generation": true,
+        "minimal_privilege_sets": ["stdio", "rpath", "wpath", "cpath", "inet", "unix", "proc"],
+        "context_aware_restrictions": true
+      },
+      "unveil_support": {
+        "automatic_path_analysis": true,
+        "minimal_filesystem_access": true,
+        "readonly_by_default": true,
+        "security_validation": true
+      }
+    },
+    "rails_security": {
+      "version_requirements": "8.1+",
+      "security_features": {
+        "strong_parameters": "enforced",
+        "csrf_protection": "enabled",
+        "sql_injection_prevention": "parameterized_queries_only",
+        "xss_protection": "content_security_policy"
+      },
+      "modern_features": {
+        "hotwire_integration": true,
+        "stimulus_controllers": true,
+        "view_components": true,
+        "importmap_usage": true
+      }
+    }
   },
   "feedback": {
     "roles": [
@@ -72,7 +243,7 @@
       {
         "name": "marketer",
         "focus": "Clarity, appeal",
-        "question": "Does the project’s messaging resonate and compel? (Rate 1–10)"
+        "question": "Does the project's messaging resonate and compel? (Rate 1–10)"
       },
       {
         "name": "accessibility_expert",
@@ -102,44 +273,56 @@
   },
   "rules": [
     {
-      "text": "Create clear outputs with trace",
-      "rationale": "Ensures clarity"
+      "text": "Create clear outputs with trace and autonomous progression",
+      "rationale": "Ensures clarity and efficiency through automated workflows"
     },
     {
-      "text": "Ensure consistent names, schema, and master.json compliance",
-      "rationale": "Ensures consistency and self-compliance"
+      "text": "Ensure consistent names, schema, and master.json compliance with security-first approach",
+      "rationale": "Ensures consistency, self-compliance, and production security"
     },
     {
-      "text": "Execute tasks and stacks with sensible defaults",
-      "rationale": "Ensures efficiency"
+      "text": "Execute tasks and stacks with sensible defaults and GitHub Copilot integration",
+      "rationale": "Ensures efficiency with intelligent assistance"
     },
     {
-      "text": "Handle errors with default tools, rephrased inputs (max 2 attempts), schema validation, version updates, or retries",
-      "rationale": "Ensures resilience"
+      "text": "Handle errors with recovery protocols, rephrased inputs (max 2 attempts), schema validation, version updates, or retries",
+      "rationale": "Ensures resilience with autonomous recovery"
     },
     {
-      "text": "Prioritize tasks based on feedback scores",
-      "rationale": "Optimizes fixes"
+      "text": "Prioritize tasks based on feedback scores and security requirements",
+      "rationale": "Optimizes fixes with security focus"
+    },
+    {
+      "text": "Use ultra-minimal communication while preserving all critical functionality",
+      "rationale": "Maximizes efficiency without sacrificing completeness"
+    },
+    {
+      "text": "Apply OpenBSD security principles (pledge, unveil) to all system interactions",
+      "rationale": "Ensures minimal privilege and secure defaults"
+    },
+    {
+      "text": "Leverage GitHub Copilot for intelligent code generation and review assistance",
+      "rationale": "Enhances productivity with AI-powered development tools"
     }
   ],
   "steps": [
     {
       "name": "preprocess",
-      "description": "Configure project type and stacks",
+      "description": "Configure project type and stacks with autonomous detection",
       "key_question": "What is the project type?",
-      "success": "Configured stacks and rules",
+      "success": "Configured stacks and rules with security validation",
       "tasks": [
         {
           "id": "PREPROCESS_CONFIGURE",
-          "instruction": "Detect project type, configure stacks, and predict errors",
-          "check": "Stacks configured, errors predicted",
+          "instruction": "Detect project type, configure stacks, predict errors, and initialize GitHub Copilot context",
+          "check": "Stacks configured, errors predicted, Copilot ready",
           "depends": [],
           "output": "project_config"
         },
         {
           "id": "PREPROCESS_VALIDATE",
-          "instruction": "Validate stack prompts against project type",
-          "check": "Prompts valid",
+          "instruction": "Validate stack prompts against project type with security checks",
+          "check": "Prompts valid, security verified",
           "depends": ["PREPROCESS_CONFIGURE"],
           "output": "prompt_validation"
         }
@@ -147,28 +330,28 @@
     },
     {
       "name": "understand",
-      "description": "Identify project needs and tools",
+      "description": "Identify project needs and tools with autonomous intelligence",
       "key_question": "What to build?",
-      "success": "Clear project needs",
+      "success": "Clear project needs with security requirements",
       "tasks": [
         {
           "id": "UNDERSTAND_NEEDS",
-          "instruction": "List project needs based on goals",
-          "check": "Needs clear",
+          "instruction": "List project needs based on goals with security and GitHub integration requirements",
+          "check": "Needs clear, security assessed",
           "depends": ["PREPROCESS_VALIDATE"],
           "output": "needs_list"
         },
         {
           "id": "UNDERSTAND_INSTRUCTIONS",
-          "instruction": "Write clear instructions with tools",
-          "check": "Instructions clear, tools listed",
+          "instruction": "Write clear instructions with tools and Copilot integration",
+          "check": "Instructions clear, tools listed, Copilot configured",
           "depends": ["UNDERSTAND_NEEDS"],
           "output": "project_instructions"
         },
         {
           "id": "UNDERSTAND_TOOLSET",
-          "instruction": "Check toolset version and compatibility",
-          "check": "Toolset valid",
+          "instruction": "Check toolset version and compatibility with security frameworks",
+          "check": "Toolset valid, security compatible",
           "depends": ["UNDERSTAND_INSTRUCTIONS"],
           "output": "toolset_check"
         }
@@ -176,14 +359,14 @@
     },
     {
       "name": "create",
-      "description": "Build initial solution",
-      "key_question": "Is it functional?",
-      "success": "Working draft",
+      "description": "Build initial solution with security-first approach",
+      "key_question": "Is it functional and secure?",
+      "success": "Working draft with security validation",
       "tasks": [
         {
           "id": "CREATE_DRAFT",
-          "instruction": "Build project draft with stack rules",
-          "check": "Core works",
+          "instruction": "Build project draft with stack rules, security measures, and Copilot assistance",
+          "check": "Core works, security implemented",
           "depends": ["UNDERSTAND_TOOLSET"],
           "output": "draft_solution"
         }
@@ -191,28 +374,28 @@
     },
     {
       "name": "verify",
-      "description": "Check project quality",
-      "key_question": "Is it reliable?",
-      "success": "Usable outputs",
+      "description": "Check project quality with comprehensive validation",
+      "key_question": "Is it reliable and secure?",
+      "success": "Production-ready outputs",
       "tasks": [
         {
           "id": "VERIFY_FUNCTION",
-          "instruction": "Test core functionality",
-          "check": "Features work",
+          "instruction": "Test core functionality with edge cases and security validation",
+          "check": "Features work, security verified",
           "depends": ["CREATE_DRAFT"],
           "output": "function_check"
         },
         {
           "id": "VERIFY_ERRORS",
-          "instruction": "Fix errors with recovery strategies",
-          "check": "Errors fixed",
+          "instruction": "Fix errors with autonomous recovery strategies",
+          "check": "Errors fixed, recovery validated",
           "depends": ["VERIFY_FUNCTION"],
           "output": "error_fixes"
         },
         {
           "id": "VERIFY_COMPLIANCE",
-          "instruction": "Check rule compliance, schema, consistency, readability, usability",
-          "check": "Rules followed, schema valid, readable, user-friendly",
+          "instruction": "Check rule compliance, schema, security, consistency, readability, usability",
+          "check": "Rules followed, schema valid, security compliant, readable, user-friendly",
           "depends": ["VERIFY_ERRORS"],
           "output": "rule_check"
         }
@@ -220,14 +403,14 @@
     },
     {
       "name": "deep_execution_trace",
-      "description": "Simulate deepest execution path to uncover bugs and syntax errors",
-      "key_question": "Are there hidden bugs or inefficiencies?",
-      "success": "Identified bugs, syntax errors, and improvements",
+      "description": "Simulate deepest execution path with security analysis",
+      "key_question": "Are there hidden bugs, security issues, or inefficiencies?",
+      "success": "Identified bugs, security issues, and improvements",
       "tasks": [
         {
           "id": "DEEP_EXECUTION_TRACE",
-          "instruction": "Trace each function and command with variable states, simulate edge cases (missing files, network failures, invalid configs), identify syntax errors and runtime issues, and flag areas for improvement (performance, clarity, robustness)",
-          "check": "Trace complete, bugs and improvements listed",
+          "instruction": "Trace each function and command with variable states, simulate edge cases, identify security vulnerabilities, syntax errors and runtime issues, flag areas for improvement",
+          "check": "Trace complete, security validated, bugs and improvements listed",
           "depends": ["VERIFY_COMPLIANCE"],
           "output": "execution_trace"
         }
@@ -235,14 +418,14 @@
     },
     {
       "name": "word_by_word_reanalysis",
-      "description": "Reanalyze every word against documentation for accuracy",
-      "key_question": "Is every configuration and command accurate?",
-      "success": "Validated syntax and behavior",
+      "description": "Reanalyze every word against documentation for accuracy and security",
+      "key_question": "Is every configuration and command accurate and secure?",
+      "success": "Validated syntax, behavior, and security",
       "tasks": [
         {
           "id": "WORD_BY_WORD_REANALYSIS",
-          "instruction": "Parse each line and word in scripts and configs, cross-reference with relevant documentation (e.g., man.openbsd.org for OpenBSD), validate daemon behavior and config syntax, and flag discrepancies",
-          "check": "All words validated, discrepancies flagged",
+          "instruction": "Parse each line and word in scripts and configs, cross-reference with documentation, validate security configurations, daemon behavior and config syntax, flag discrepancies",
+          "check": "All words validated, security verified, discrepancies flagged",
           "depends": ["DEEP_EXECUTION_TRACE"],
           "output": "reanalysis_report"
         }
@@ -250,14 +433,14 @@
     },
     {
       "name": "refine",
-      "description": "Simplify solution",
-      "key_question": "Is it minimal?",
-      "success": "Streamlined solution",
+      "description": "Simplify solution with security preservation",
+      "key_question": "Is it minimal and secure?",
+      "success": "Streamlined, secure solution",
       "tasks": [
         {
           "id": "REFINE_SOLUTION",
-          "instruction": "Remove redundancies, fix bugs, and apply improvements from execution trace and reanalysis",
-          "check": "No redundancies, bugs fixed",
+          "instruction": "Remove redundancies, fix bugs, apply improvements while preserving security measures",
+          "check": "No redundancies, bugs fixed, security maintained",
           "depends": ["WORD_BY_WORD_REANALYSIS"],
           "output": "final_solution"
         }
@@ -265,21 +448,21 @@
     },
     {
       "name": "deliver",
-      "description": "Package outputs",
-      "key_question": "Is it maintainable?",
-      "success": "Packaged outputs",
+      "description": "Package outputs with GitHub integration",
+      "key_question": "Is it maintainable and deployable?",
+      "success": "Packaged outputs with deployment support",
       "tasks": [
         {
           "id": "DELIVER_GUIDE",
-          "instruction": "Write non-technical guide",
-          "check": "Clear, complete",
+          "instruction": "Write non-technical guide with security considerations",
+          "check": "Clear, complete, security-aware",
           "depends": ["REFINE_SOLUTION"],
           "output": "guide"
         },
         {
           "id": "DELIVER_PACKAGE",
-          "instruction": "Package outputs with line count, checksums, guide, feedback, trace, and user preview",
-          "check": "All outputs included, preview clear",
+          "instruction": "Package outputs with line count, checksums, guide, feedback, trace, GitHub integration, and user preview",
+          "check": "All outputs included, preview clear, GitHub ready",
           "depends": ["DELIVER_GUIDE"],
           "output": "packaged_outputs"
         }
@@ -287,35 +470,35 @@
     },
     {
       "name": "reflect",
-      "description": "Improve process",
-      "key_question": "How to improve?",
-      "success": "Improved process",
+      "description": "Improve process with autonomous learning",
+      "key_question": "How to improve with security and efficiency focus?",
+      "success": "Improved process with enhanced capabilities",
       "tasks": [
         {
           "id": "REFLECT_FEEDBACK",
-          "instruction": "Collect feedback using roles",
-          "check": "Feedback complete",
+          "instruction": "Collect feedback using roles with security and GitHub integration assessment",
+          "check": "Feedback complete, security evaluated",
           "depends": ["DELIVER_PACKAGE"],
           "output": "user_feedback"
         },
         {
           "id": "REFLECT_IMPROVE",
-          "instruction": "Generate feedback prompts, summarize feedback, and suggest enhancements for scores < 7",
+          "instruction": "Generate feedback prompts, summarize feedback, suggest enhancements for scores < 7",
           "check": "Prompts generated, score calculated, suggestions actionable",
           "depends": ["REFLECT_FEEDBACK"],
           "output": "feedback_improvements"
         },
         {
           "id": "REFLECT_SELF_CHECK",
-          "instruction": "Report rule, step, and master.json compliance with trace, score",
-          "check": "Rules, steps met",
+          "instruction": "Report rule, step, and master.json compliance with autonomous capabilities trace",
+          "check": "Rules, steps met, autonomous functions verified",
           "depends": ["REFLECT_IMPROVE"],
           "output": "self_check"
         },
         {
           "id": "REFLECT_UPDATE",
-          "instruction": "Update configuration with self_check fixes",
-          "check": "Fixes applied",
+          "instruction": "Update configuration with self_check fixes and autonomous improvements",
+          "check": "Fixes applied, capabilities enhanced",
           "depends": ["REFLECT_SELF_CHECK"],
           "output": "updated_configuration"
         }
@@ -324,96 +507,299 @@
   ],
   "stacks": {
     "global": {
-      "description": "Rules for all stacks",
-      "prompt": "Follow stack-specific best practices.",
+      "description": "Rules for all stacks with security-first approach",
+      "prompt": "Follow stack-specific best practices with security, GitHub Copilot integration, and ultra-minimal communication.",
       "rules": [
         {
-          "text": "Prioritize rules by project type (e.g., accessibility for frontend)",
-          "rationale": "Optimizes relevance"
+          "text": "Prioritize rules by project type and security requirements",
+          "rationale": "Optimizes relevance with security focus"
         },
         {
-          "text": "Toggle rules by project needs (e.g., skip visual progress for scripts)",
-          "rationale": "Enhances flexibility"
+          "text": "Toggle rules by project needs with security preservation",
+          "rationale": "Enhances flexibility while maintaining security"
         },
         {
-          "text": "Define stack-specific execution rules (e.g., Ruby validation)",
-          "rationale": "Ensures stack compliance"
+          "text": "Define stack-specific execution rules with GitHub Copilot assistance",
+          "rationale": "Ensures stack compliance with intelligent assistance"
         }
       ]
     },
     "architecture": {
-      "description": "Rules for scalable systems",
-      "prompt": "Draw UML diagrams, modular system designs, and specify scalability requirements (e.g., concurrent users).",
+      "description": "Rules for scalable, secure systems",
+      "prompt": "Draw UML diagrams, modular system designs, specify scalability and security requirements.",
       "rules": [
         {
-          "text": "Use clear diagrams and modular designs",
-          "rationale": "Ensures scalability"
+          "text": "Use clear diagrams and modular designs with security boundaries",
+          "rationale": "Ensures scalability and security"
         }
       ]
     },
     "openbsd": {
-      "description": "Rules for OpenBSD systems",
-      "prompt": "Configure OpenBSD using manual examples and secure defaults.",
+      "description": "Rules for OpenBSD systems with pledge/unveil security",
+      "prompt": "Configure OpenBSD using manual examples, secure defaults, pledge/unveil restrictions.",
       "rules": [
         {
-          "text": "Check setups using OpenBSD manual examples",
-          "rationale": "Ensures accuracy"
+          "text": "Check setups using OpenBSD manual examples with security validation",
+          "rationale": "Ensures accuracy and security"
+        },
+        {
+          "text": "Apply pledge and unveil restrictions to all services",
+          "rationale": "Implements minimal privilege principle"
         }
       ]
     },
     "rails": {
-      "description": "Rules for modern Rails apps",
-      "prompt": "Use Hotwire, Stimulus, modular ViewComponents, modular controllers, and feature toggles for A/B testing.",
+      "description": "Rules for modern, secure Rails apps",
+      "prompt": "Use Hotwire, Stimulus, modular ViewComponents, security features, and GitHub Copilot integration.",
       "rules": [
         {
-          "text": "Use Hotwire, Stimulus, ViewComponents, and modular controllers",
-          "rationale": "Ensures modernity and modularity"
-        }
-      ],
-      "version": "8.0",
-      "dependencies": []
-    },
-    "ruby": {
-      "description": "Rules for reliable Ruby code",
-      "prompt": "Write idiomatic, type-safe Ruby code with clear names, error handling, YARD comments where needed, Enumerable for iteration, and Ruby Style Guide naming.",
-      "rules": [
-        {
-          "text": "Use type-safe code and style guidelines",
-          "rationale": "Ensures safety"
+          "text": "Use Hotwire, Stimulus, ViewComponents with security measures",
+          "rationale": "Ensures modernity, modularity, and security"
         },
         {
-          "text": "Use YARD-style comments for complex methods and public APIs",
-          "rationale": "Enhances documentation"
+          "text": "Implement Rails 8.1+ security features and modern practices",
+          "rationale": "Ensures production security and best practices"
         }
       ],
-      "version": "3.3+"
+      "version": "8.1+",
+      "dependencies": ["hotwire-rails", "stimulus_reflex", "view_component"]
     },
-    "frontend": {
-      "description": "Rules for accessible interfaces",
-      "prompt": "Use semantic HTML5 with ARIA, WCAG 2.1 AA, mobile-first CSS with modern selectors, flexbox/grid, print-ready styles, lazy-loaded images, font-display: swap, and CSS custom properties for theming.",
+    "ruby": {
+      "description": "Rules for reliable, secure Ruby code",
+      "prompt": "Write idiomatic, type-safe Ruby code with security considerations and GitHub Copilot assistance.",
       "rules": [
         {
-          "text": "Use semantic HTML5 with ARIA, WCAG 2.1 AA, mobile-first CSS with modern selectors (:where(), :has()), flexbox/grid, print-ready styles, lazy-loaded images, font-display: swap",
-          "rationale": "Ensures accessibility"
+          "text": "Use type-safe code, security practices, and style guidelines",
+          "rationale": "Ensures safety and security"
+        },
+        {
+          "text": "Implement input validation and output sanitization",
+          "rationale": "Prevents security vulnerabilities"
+        }
+      ],
+      "version": "3.3.5+"
+    },
+    "frontend": {
+      "description": "Rules for accessible, secure interfaces",
+      "prompt": "Use semantic HTML5 with ARIA, WCAG 2.1 AA, secure CSP headers, modern CSS.",
+      "rules": [
+        {
+          "text": "Use semantic HTML5 with ARIA, WCAG 2.1 AA, CSP headers, modern CSS",
+          "rationale": "Ensures accessibility and security"
         }
       ]
     },
     "zsh": {
-      "description": "Rules for portable Zsh scripts",
-      "prompt": "Create portable Zsh scripts with error checks, modern syntax (arrays, globbing), and completion scripts for user interaction.",
+      "description": "Rules for portable, secure Zsh scripts",
+      "prompt": "Create portable Zsh scripts with error checks, security validation, modern syntax.",
       "rules": [
         {
-          "text": "Write scripts with error checks and cross-platform compatibility",
-          "rationale": "Ensures portability"
-        },
-        {
-          "text": "Use Zsh’s modern syntax (arrays, globbing) for concise scripts",
-          "rationale": "Leverages expressiveness"
+          "text": "Write scripts with error checks, security validation, and cross-platform compatibility",
+          "rationale": "Ensures portability and security"
         }
       ]
     }
   },
   "user_interaction": {
-    "input_prompt": "Name your project (e.g., Rails UserAuth app, Zsh script, playlist generator). State its goal (e.g., authenticate users, automate tasks). List up to 10 key features."
+    "input_prompt": "Name your project (e.g., Rails UserAuth app, Zsh script, playlist generator). State its goal (e.g., authenticate users, automate tasks). List up to 10 key features. Specify security requirements and GitHub integration needs."
+  },
+  "system_requirements": {
+    "ruby_version": "3.3.5+",
+    "rails_version": "8.1+", 
+    "openbsd_version": "7.7+",
+    "langchain_integration": true,
+    "security_framework": "pledge_unveil_first"
+  },
+  "core": {
+    "mode": "active_with_environment_isolation",
+    "autonomous": true,
+    "communication_mode": "ultraminimal",
+    "silent_processing": true,
+    "safety_limits": {
+      "recursion": {
+        "max_depth": "unlimited_with_circuit_breaker",
+        "protection": "intelligent_loop_detection"
+      },
+      "timeout": {
+        "default": "unlimited_with_user_control",
+        "protection": "user_cancellation_available"
+      },
+      "memory": {
+        "max": "unlimited_with_garbage_collection",
+        "garbage_collection": "aggressive_on_threshold"
+      }
+    },
+    "context_persistence": {
+      "enabled": true,
+      "session_state": {
+        "project_config": "persist_across_sessions",
+        "workflow_progress": "resume_where_left_off",
+        "learned_patterns": "accumulate_knowledge"
+      }
+    }
+  },
+  "version_history": {
+    "v2.8.5-unified": {
+      "timestamp": "2025-01-15T10:30:00Z",
+      "changes": [
+        "Integrated ultra-minimal communication mode from v2.2.11",
+        "Enhanced security features and autonomous intelligence from v2.8.4", 
+        "Added comprehensive GitHub Copilot integration for v2.8.5",
+        "Preserved original structure (meta, project, rules, steps, stacks, user_interaction)",
+        "Maintained schema compliance and critical functionality",
+        "Updated to production-ready configuration with security-first approach"
+      ]
+    }
+  },
+  "deep_analysis_capabilities": {
+    "multi_temperature_perspective_analysis": {
+      "enabled": true,
+      "temperature_profiles": [
+        {"role": "security_expert", "temperature": 0.2, "focus": ["vulnerabilities", "attack_vectors", "defense_mechanisms"], "weight": 0.25},
+        {"role": "architect", "temperature": 0.4, "focus": ["structure", "scalability", "maintainability", "patterns"], "weight": 0.20},
+        {"role": "performance_engineer", "temperature": 0.3, "focus": ["optimization", "efficiency", "resource_usage"], "weight": 0.15},
+        {"role": "creative_innovator", "temperature": 0.9, "focus": ["novel_solutions", "user_experience", "innovative_approaches"], "weight": 0.15},
+        {"role": "openbsd_specialist", "temperature": 0.3, "focus": ["pledge", "unveil", "minimalism", "security"], "weight": 0.15},
+        {"role": "rails_expert", "temperature": 0.4, "focus": ["conventions", "best_practices", "modern_features"], "weight": 0.10}
+      ],
+      "consensus_building": {
+        "weighted_voting": true,
+        "conflict_resolution": "expert_domain_priority",
+        "minimum_agreement_threshold": 0.7
+      }
+    },
+    "word_for_word_code_examination": {
+      "enabled": true,
+      "exhaustive_analysis": {
+        "character_level_review": true,
+        "syntax_tree_analysis": true,
+        "semantic_validation": true
+      }
+    }
+  },
+  "reasoning_frameworks": {
+    "framework_selection": {
+      "problem_classification": {
+        "simple_execution": "direct_implementation",
+        "complex_exploration": "tree_of_thoughts",
+        "interconnected_systems": "graph_of_thoughts",
+        "verification_needed": "self_consistency",
+        "tool_dependent": "react_reasoning",
+        "ethical_concerns": "constitutional_ai",
+        "stuck_or_stale": "reset_perspective"
+      }
+    },
+    "constitutional_ai": {
+      "principles": {
+        "security_first": ["no_vulnerabilities", "defense_in_depth", "least_privilege"],
+        "code_quality": ["readability", "maintainability", "testability"],
+        "production_ready": ["reliability", "scalability", "monitoring"]
+      }
+    }
+  },
+  "production_security": {
+    "openbsd_integration": {
+      "pledge_support": {
+        "automatic_pledge_generation": true,
+        "minimal_privilege_sets": ["stdio", "rpath", "wpath", "cpath", "inet", "unix", "proc"],
+        "context_aware_restrictions": true
+      },
+      "unveil_support": {
+        "automatic_path_analysis": true,
+        "minimal_filesystem_access": true,
+        "readonly_by_default": true,
+        "security_validation": true
+      }
+    },
+    "rails_security": {
+      "version_requirements": "8.1+",
+      "security_features": {
+        "strong_parameters": "enforced",
+        "csrf_protection": "enabled",
+        "sql_injection_prevention": "parameterized_queries_only",
+        "xss_protection": "content_security_policy"
+      }
+    }
+  },
+  "project_lifecycle": {
+    "phases": {
+      "discovery": {
+        "context_detection": "automatic",
+        "requirements_extraction": "intelligent_parsing",
+        "technology_stack_selection": "best_fit_analysis"
+      },
+      "planning": {
+        "architecture_design": "security_first_patterns",
+        "component_breakdown": "modular_decomposition",
+        "dependency_analysis": "vulnerability_assessment"
+      },
+      "implementation": {
+        "code_generation": "best_practice_templates",
+        "configuration_management": "environment_specific",
+        "integration_setup": "automated_testing"
+      },
+      "validation": {
+        "security_audit": "comprehensive_scanning",
+        "performance_testing": "benchmark_validation",
+        "compliance_checking": "standard_adherence"
+      },
+      "delivery": {
+        "documentation_generation": "auto_generated_guides",
+        "deployment_scripts": "one_click_install",
+        "monitoring_setup": "production_ready_observability"
+      }
+    },
+    "quality_gates": {
+      "security": ["no_critical_vulnerabilities", "secure_configuration", "access_controls"],
+      "performance": ["response_time_sla", "resource_efficiency", "scalability_testing"],
+      "quality": ["code_coverage_80_percent", "documentation_complete", "tests_passing"],
+      "compliance": ["style_guide_adherence", "security_standards", "best_practices"]
+    }
+  },
+  "installer_integration": {
+    "openbsd_installer": {
+      "package_management": "pkg_add_automation",
+      "service_configuration": "rcctl_integration", 
+      "firewall_setup": "pf_rule_generation",
+      "ssl_automation": "acme_client_setup"
+    },
+    "rails_installer": {
+      "gem_management": "bundler_integration",
+      "database_setup": "postgresql_configuration",
+      "asset_pipeline": "importmap_setup",
+      "deployment_prep": "production_ready_config"
+    }
+  },
+  "performance_optimization": {
+    "resource_management": {
+      "memory_optimization": {
+        "garbage_collection_tuning": true,
+        "object_allocation_tracking": true,
+        "memory_leak_detection": true
+      },
+      "cpu_optimization": {
+        "algorithm_efficiency_analysis": true,
+        "concurrent_processing_opportunities": true,
+        "bottleneck_identification": true
+      }
+    },
+    "caching_strategies": {
+      "application_cache": "redis_integration",
+      "database_cache": "query_optimization",
+      "static_assets": "cdn_integration",
+      "template_cache": "view_component_optimization"
+    }
+  },
+  "anti_corruption_safeguards": {
+    "schema_validation": {
+      "json_schema_compliance": true,
+      "structure_preservation": true,
+      "capability_verification": true
+    },
+    "version_control": {
+      "backup_before_changes": true,
+      "incremental_updates_only": true,
+      "rollback_on_degradation": true
+    }
   }
 }

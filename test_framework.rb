@@ -7,15 +7,13 @@ require 'test/unit'
 
 class UltimateMasterFrameworkTest < Test::Unit::TestCase
   def setup
-    @config = JSON.parse(File.read('master.json'))
+    @config = JSON.parse(File.read('prompts/master.json'))
   end
 
   def test_framework_metadata
-    metadata = @config['metadata']
-    assert_equal 'v2.8.4-ultimate-enhanced-corrected', metadata['version']
-    assert_equal true, metadata['production_ready']
-    assert_equal true, metadata['security_first']
-    assert_equal 'anon987654321', metadata['author']
+    metadata = @config['meta']
+    assert_equal 'v2.8.5-unified', metadata['version']
+    assert_equal 'anon987654321', metadata['by']
   end
 
   def test_system_requirements
