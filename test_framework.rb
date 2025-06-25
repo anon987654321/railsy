@@ -12,7 +12,7 @@ class UltimateMasterFrameworkTest < Test::Unit::TestCase
 
   def test_framework_metadata
     metadata = @config['metadata']
-    assert_equal 'v2.8.3-ultimate', metadata['version']
+    assert_equal 'v2.8.6-scrutiny-enhanced', metadata['version']
     assert_equal true, metadata['production_ready']
     assert_equal true, metadata['security_first']
     assert_equal 'anon987654321', metadata['author']
@@ -121,17 +121,25 @@ class UltimateMasterFrameworkTest < Test::Unit::TestCase
   end
 
   def test_anti_corruption_safeguards
-    safeguards = @config['anti_corruption_safeguards']
+    # Test the new consolidated validation framework
+    safeguards = @config['consolidated_validation_framework']
     
     # Schema validation
     validation = safeguards['schema_validation']
     assert_equal true, validation['json_schema_compliance']
     assert_equal true, validation['structure_preservation']
+    assert_equal true, validation['universal_rule_enforcement']
     
     # Version control
     version_control = safeguards['version_control']
     assert_equal true, version_control['backup_before_changes']
     assert_equal true, version_control['rollback_on_degradation']
+    
+    # Quality assurance
+    qa = safeguards['quality_assurance']
+    assert_not_nil qa['automated_testing']
+    assert_not_nil qa['code_quality']
+    assert_not_nil qa['continuous_validation']
   end
 
   def test_performance_optimization
@@ -146,6 +154,26 @@ class UltimateMasterFrameworkTest < Test::Unit::TestCase
     caching = performance['caching_strategies']
     assert_equal 'redis_integration', caching['application_cache']
     assert_equal 'query_optimization', caching['database_cache']
+  end
+
+  def test_universal_enforcement
+    universal = @config['universal_enforcement']
+    
+    # Security first universal
+    security_first = universal['security_first_universal']
+    assert_equal true, security_first['enabled']
+    assert_equal false, security_first['override_allowed']
+    assert_equal 'mandatory', security_first['enforcement_level']
+    
+    # Quality standards universal
+    quality = universal['quality_standards_universal'] 
+    assert_equal true, quality['enabled']
+    assert_equal false, quality['override_allowed']
+    
+    # Communication format universal
+    communication = universal['communication_format_universal']
+    assert_equal 'standalone_no_brackets', communication['format_rules']['emoji_indicators']
+    assert_equal 'emoji_newline_message', communication['format_rules']['message_structure']
   end
 end
 
