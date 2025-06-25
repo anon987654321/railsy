@@ -12,10 +12,120 @@ class UltimateMasterFrameworkTest < Test::Unit::TestCase
 
   def test_framework_metadata
     metadata = @config['metadata']
-    assert_equal 'v2.8.3-ultimate', metadata['version']
+    assert_equal 'v2.8.4-ultimate-enhanced-corrected', metadata['version']
     assert_equal true, metadata['production_ready']
     assert_equal true, metadata['security_first']
     assert_equal 'anon987654321', metadata['author']
+    assert_equal 'Ultimate Master Configuration with Ultra-Minimal Communication and Complete Framework Restoration', metadata['description']
+  end
+
+  def test_schema_compliance
+    schema = @config['schema']
+    assert_equal 'https://json-schema.org/draft/2020-12/schema', schema['$schema']
+    assert_equal 'object', schema['type']
+    required_fields = ['metadata', 'communication', 'autonomous_intelligence', 'feedback', 'workflow_steps', 'stacks', 'self_processing']
+    assert_equal required_fields, schema['required']
+  end
+
+  def test_communication_protocol
+    communication = @config['communication']
+    assert_equal 'ultraminimal', communication['mode']
+    assert_equal 'strunk_white_strict', communication['style']
+    
+    # Status message format
+    format = communication['status_message_format']
+    assert_equal '**master.json**@{llm} v{version}   {status}', format['template']
+    assert_equal 'auto_detect_from_context', format['dynamic_llm_detection']['method']
+    assert_equal 'copilot', format['dynamic_llm_detection']['fallback']
+    
+    # Status indicators
+    indicators = format['status_indicators']
+    assert_equal '⚡', indicators['ready']
+    assert_equal '[⚙️ Processing]', indicators['processing']
+    assert_equal '[❌ Error]', indicators['error']
+    
+    # Format rules
+    format_rules = communication['format']
+    assert_equal 'single_paragraph_essential_only', format_rules['body']
+    assert_includes format_rules['forbidden'], 'lists'
+    assert_includes format_rules['required'], 'pragmatic'
+    
+    # Preservation policy
+    preservation = communication['preservation']
+    assert_equal 'preserve_valuable_logic_and_hard_work', preservation['policy']
+    assert_equal 'absolutely_forbidden_anywhere', preservation['truncation']['policy']
+  end
+
+  def test_feedback_system
+    feedback = @config['feedback']
+    
+    # Verify roles exist and have required properties
+    roles = feedback['roles']
+    assert_operator roles.length, :>=, 10
+    
+    developer_role = roles.find { |r| r['name'] == 'developer' }
+    assert_not_nil developer_role
+    assert_equal 'Efficiency, robustness', developer_role['focus']
+    assert_equal 0.2, developer_role['weight']
+    assert_includes developer_role['question'], 'Rate 1–10'
+    
+    security_role = roles.find { |r| r['name'] == 'white-hat hacker' }
+    assert_not_nil security_role
+    assert_equal 'Security', security_role['focus']
+    assert_equal 0.1, security_role['weight']
+    
+    # Verify evaluation criteria
+    evaluation = feedback['evaluation']
+    assert_equal 'Weighted average of role ratings (1–10), threshold >= 7', evaluation['method']
+    assert_equal 'All roles >= 7 or max_iterations reached', evaluation['stopping_criteria']
+  end
+
+  def test_workflow_steps
+    workflow = @config['workflow_steps']
+    
+    # Deep execution trace
+    deep_trace = workflow['deep_execution_trace']
+    assert_equal 'Simulate deepest execution path to uncover bugs and syntax errors', deep_trace['description']
+    assert_not_empty deep_trace['tasks']
+    
+    trace_task = deep_trace['tasks'][0]
+    assert_equal 'DEEP_EXECUTION_TRACE', trace_task['id']
+    assert_includes trace_task['instruction'], 'edge cases'
+    assert_includes trace_task['cross_reference'], 'ruby-doc.org'
+    
+    # Word-by-word reanalysis
+    reanalysis = workflow['word_by_word_reanalysis']
+    assert_equal 'Reanalyze every word against documentation for accuracy', reanalysis['description']
+    
+    reanalysis_task = reanalysis['tasks'][0]
+    assert_equal 'WORD_BY_WORD_REANALYSIS', reanalysis_task['id']
+    assert_includes reanalysis_task['instruction'], 'cross-reference'
+    assert_equal 'https://ruby-doc.org/', reanalysis_task['documentation_sources']['ruby_core']
+  end
+
+  def test_stacks_configuration
+    stacks = @config['stacks']
+    
+    # Rails stack
+    rails = stacks['rails']
+    assert_equal '8.0+', rails['version']
+    assert_includes rails['prompt'], 'Hotwire'
+    assert_includes rails['prompt'], 'ViewComponents'
+    
+    rails_rule = rails['rules'][0]
+    assert_includes rails_rule['text'], 'Hotwire'
+    assert_equal 'Ensures modernity and modularity', rails_rule['rationale']
+    
+    # Ruby stack
+    ruby = stacks['ruby']
+    assert_equal '3.3+', ruby['version']
+    assert_includes ruby['prompt'], 'type-safe'
+    assert_includes ruby['prompt'], 'YARD comments'
+    
+    # OpenBSD stack
+    openbsd = stacks['openbsd']
+    assert_includes openbsd['prompt'], 'manual examples'
+    assert_includes openbsd['prompt'], 'secure defaults'
   end
 
   def test_system_requirements

@@ -1,12 +1,53 @@
 {
   "metadata": {
-    "version": "v2.8.3-ultimate",
-    "updated": "2025-01-15T10:30:00Z",
-    "description": "Ultimate Master Configuration - Autonomous Intelligence + Deep Analysis + Production Security",
+    "version": "v2.8.4-ultimate-enhanced-corrected",
+    "updated": "2025-06-25T02:16:25Z",
+    "description": "Ultimate Master Configuration with Ultra-Minimal Communication and Complete Framework Restoration",
     "author": "anon987654321",
-    "framework_evolution": "Unified best practices from v79, v49, v85.5, v91.8 with leaked system prompt insights",
+    "framework_evolution": "Unified v2.8.3-ultimate + v2.2.11 communication + critical restorations",
     "production_ready": true,
     "security_first": true
+  },
+  "schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "required": ["metadata", "communication", "autonomous_intelligence", "feedback", "workflow_steps", "stacks", "self_processing"]
+  },
+  "communication": {
+    "mode": "ultraminimal",
+    "status_message_format": {
+      "template": "**master.json**@{llm} v{version}   {status}",
+      "dynamic_llm_detection": {
+        "method": "auto_detect_from_context",
+        "fallback": "copilot"
+      },
+      "status_indicators": {
+        "ready": "⚡",
+        "processing": "[⚙️ Processing]",
+        "error": "[❌ Error]",
+        "complete": "[✅ Complete]",
+        "validating": "[🔍 Validating]",
+        "optimizing": "[⚡ Optimizing]",
+        "analyzing": "[🧠 Analyzing]",
+        "generating": "[🔧 Generating]",
+        "warning": "[⚠️ Warning]"
+      }
+    },
+    "style": "strunk_white_strict",
+    "format": {
+      "body": "single_paragraph_essential_only",
+      "forbidden": ["lists", "emojis", "headings", "summaries", "explanations", "praise", "agreement_statements"],
+      "required": ["pragmatic", "actionable", "scrutinize_heavily", "direct_feedback"]
+    },
+    "preservation": {
+      "policy": "preserve_valuable_logic_and_hard_work",
+      "enforcement": "never_omit_critical_functionality_or_user_contributions",
+      "truncation": {
+        "policy": "absolutely_forbidden_anywhere",
+        "enforcement": "complete_content_delivery_mandatory",
+        "scope": "all_outputs_code_docs_configs_schemas"
+      }
+    }
   },
   "system_requirements": {
     "ruby_version": "3.3+",
@@ -14,6 +55,100 @@
     "openbsd_version": "7.7+",
     "langchain_integration": true,
     "security_framework": "pledge_unveil_first"
+  },
+  "feedback": {
+    "roles": [
+      {
+        "name": "developer",
+        "focus": "Efficiency, robustness",
+        "question": "Does the project optimize performance and handle edge cases? (Rate 1–10)",
+        "weight": 0.2
+      },
+      {
+        "name": "white-hat hacker",
+        "focus": "Security",
+        "question": "Does the project implement robust security measures? (Rate 1–10)",
+        "weight": 0.1
+      },
+      {
+        "name": "accessibility_expert",
+        "focus": "Inclusivity",
+        "question": "Does the project meet WCAG 2.1 AA standards? (Rate 1–10)",
+        "weight": 0.05
+      },
+      {
+        "name": "qa_engineer",
+        "focus": "Reliability, testing",
+        "question": "Does the project pass functional and edge-case tests? (Rate 1–10)",
+        "weight": 0.1
+      },
+      {
+        "name": "maintainer",
+        "focus": "Clarity, minimalism",
+        "question": "Is the project modular and well-documented? (Rate 1–10)",
+        "weight": 0.15
+      },
+      {
+        "name": "user",
+        "focus": "Ease, effectiveness",
+        "question": "Does the project solve your needs intuitively? (Rate 1–10)",
+        "weight": 0.2
+      },
+      {
+        "name": "designer",
+        "focus": "Aesthetics, usability",
+        "question": "Does the project balance aesthetics and usability? (Rate 1–10)",
+        "weight": 0.1
+      },
+      {
+        "name": "product_manager",
+        "focus": "Alignment, value",
+        "question": "Does the project align with user needs and context? (Rate 1–10)",
+        "weight": 0.05
+      },
+      {
+        "name": "lawyer",
+        "focus": "Compliance, ethics",
+        "question": "Does the project adhere to legal and ethical standards? (Rate 1–10)",
+        "weight": 0.03
+      },
+      {
+        "name": "marketer",
+        "focus": "Clarity, appeal",
+        "question": "Does the project's messaging resonate and compel? (Rate 1–10)",
+        "weight": 0.02
+      }
+    ],
+    "evaluation": {
+      "method": "Weighted average of role ratings (1–10), threshold >= 7",
+      "stopping_criteria": "All roles >= 7 or max_iterations reached"
+    }
+  },
+  "workflow_steps": {
+    "deep_execution_trace": {
+      "description": "Simulate deepest execution path to uncover bugs and syntax errors",
+      "tasks": [
+        {
+          "id": "DEEP_EXECUTION_TRACE",
+          "instruction": "Trace each function and command with variable states, simulate edge cases (missing files, network failures, invalid configs), identify syntax errors and runtime issues",
+          "cross_reference": ["ruby-doc.org", "guides.rubyonrails.org", "man.openbsd.org"]
+        }
+      ]
+    },
+    "word_by_word_reanalysis": {
+      "description": "Reanalyze every word against documentation for accuracy",
+      "tasks": [
+        {
+          "id": "WORD_BY_WORD_REANALYSIS",
+          "instruction": "Parse each line and word in scripts and configs, cross-reference with relevant documentation, validate daemon behavior and config syntax",
+          "documentation_sources": {
+            "ruby_core": "https://ruby-doc.org/",
+            "rails_guides": "https://guides.rubyonrails.org/",
+            "openbsd_manual": "https://man.openbsd.org/"
+          }
+        }
+      ]
+    }
   },
   "autonomous_intelligence": {
     "context_detection": {
@@ -512,6 +647,37 @@
       "database_cache": "query_optimization",
       "static_assets": "cdn_integration",
       "template_cache": "view_component_optimization"
+    }
+  },
+  "stacks": {
+    "rails": {
+      "version": "8.0+",
+      "prompt": "Use Hotwire, Stimulus, modular ViewComponents, modular controllers, and feature toggles for A/B testing",
+      "rules": [
+        {
+          "text": "Use Hotwire, Stimulus, ViewComponents, and modular controllers",
+          "rationale": "Ensures modernity and modularity"
+        }
+      ]
+    },
+    "openbsd": {
+      "prompt": "Configure OpenBSD using manual examples and secure defaults",
+      "rules": [
+        {
+          "text": "Check setups using OpenBSD manual examples",
+          "rationale": "Ensures accuracy"
+        }
+      ]
+    },
+    "ruby": {
+      "version": "3.3+",
+      "prompt": "Write idiomatic, type-safe Ruby code with clear names, error handling, YARD comments where needed",
+      "rules": [
+        {
+          "text": "Use type-safe code and style guidelines",
+          "rationale": "Ensures safety"
+        }
+      ]
     }
   }
 }
