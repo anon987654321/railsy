@@ -12,7 +12,7 @@ class UltimateMasterFrameworkTest < Test::Unit::TestCase
 
   def test_framework_metadata
     metadata = @config['metadata']
-    assert_equal 'v2.8.3-ultimate', metadata['version']
+    assert_equal 'v2.8.4-ultimate-enhanced-corrected', metadata['version']
     assert_equal true, metadata['production_ready']
     assert_equal true, metadata['security_first']
     assert_equal 'anon987654321', metadata['author']
@@ -20,8 +20,8 @@ class UltimateMasterFrameworkTest < Test::Unit::TestCase
 
   def test_system_requirements
     requirements = @config['system_requirements']
-    assert_equal '3.3+', requirements['ruby_version']
-    assert_equal '8.0+', requirements['rails_version'] 
+    assert_equal '3.3.5+', requirements['ruby_version']
+    assert_equal '8.1+', requirements['rails_version'] 
     assert_equal '7.7+', requirements['openbsd_version']
     assert_equal true, requirements['langchain_integration']
     assert_equal 'pledge_unveil_first', requirements['security_framework']
@@ -70,7 +70,7 @@ class UltimateMasterFrameworkTest < Test::Unit::TestCase
     
     # Rails security
     rails = security['rails_security']
-    assert_equal '8.0+', rails['version_requirements']
+    assert_equal '8.1+', rails['version_requirements']
     assert_equal 'enforced', rails['security_features']['strong_parameters']
   end
 
@@ -146,6 +146,71 @@ class UltimateMasterFrameworkTest < Test::Unit::TestCase
     caching = performance['caching_strategies']
     assert_equal 'redis_integration', caching['application_cache']
     assert_equal 'query_optimization', caching['database_cache']
+  end
+
+  def test_status_message_format
+    status_format = @config['status_message_format']
+    
+    # Template format
+    assert_equal "**master.json**@{llm} v{version}   {status}", status_format['template']
+    
+    # Status indicators
+    indicators = status_format['status_indicators']
+    assert_equal "⚡", indicators['ready']
+    assert_equal "[⚙️ Processing]", indicators['processing']
+    assert_equal "[✅ Complete]", indicators['complete']
+    
+    # Dynamic LLM detection
+    llm_detection = status_format['dynamic_llm_detection']
+    assert_equal "auto_detect_from_context", llm_detection['method']
+    assert_equal "copilot", llm_detection['fallback']
+  end
+
+  def test_communication_protocol
+    communication = @config['communication']
+    
+    # Style and scope
+    assert_equal "strunk_white_strict", communication['style']
+    assert_equal "all_content_including_code_and_documentation", communication['scope']
+    
+    # Format requirements
+    format = communication['format']
+    assert_equal "**master.json**@{llm} v{version}   {status}", format['status_line']
+    assert_equal "single_paragraph_essential_only", format['body']
+    assert_includes format['forbidden'], "lists"
+    assert_includes format['forbidden'], "emojis"
+    assert_includes format['required'], "pragmatic"
+    assert_includes format['required'], "actionable"
+    
+    # Truncation policy
+    truncation = communication['truncation']
+    assert_equal "absolutely_forbidden_anywhere", truncation['policy']
+    assert_equal "complete_content_delivery_mandatory", truncation['enforcement']
+  end
+
+  def test_core_framework
+    core = @config['core']
+    
+    # Basic settings
+    assert_equal "active_with_environment_isolation", core['mode']
+    assert_equal true, core['autonomous']
+    assert_equal "ultraminimal", core['communication_mode']
+    assert_equal true, core['silent_processing']
+    
+    # Safety limits
+    safety = core['safety_limits']
+    assert_equal "unlimited_with_circuit_breaker", safety['recursion']['max_depth']
+    assert_equal "intelligent_loop_detection", safety['recursion']['protection']
+    assert_equal "unlimited_with_user_control", safety['timeout']['default']
+    assert_equal "unlimited_with_garbage_collection", safety['memory']['max']
+    
+    # Context persistence
+    persistence = core['context_persistence']
+    assert_equal true, persistence['enabled']
+    session_state = persistence['session_state']
+    assert_equal "persist_across_sessions", session_state['project_config']
+    assert_equal "resume_where_left_off", session_state['workflow_progress']
+    assert_equal "accumulate_knowledge", session_state['learned_patterns']
   end
 end
 
