@@ -257,6 +257,36 @@ class UltimateMasterFrameworkTest < Test::Unit::TestCase
     assert_equal 'redis_integration', caching['application_cache']
     assert_equal 'query_optimization', caching['database_cache']
   end
+
+  def test_self_processing_anti_corruption
+    self_processing = @config['self_processing']
+    
+    # Basic configuration
+    assert_equal 'immediate', self_processing['activation']
+    assert_equal true, self_processing['apply_own_rules_to_self']
+    
+    # Cross-reference enforcement
+    cross_ref = self_processing['cross_reference']
+    assert_equal 'all_configuration_files', cross_ref['scope']
+    
+    enforce = cross_ref['enforce']
+    assert_equal true, enforce['compare_with_previous_iterations']
+    assert_equal true, enforce['detect_significant_changes']
+    assert_equal true, enforce['prevent_loss_of_functionality']
+    
+    # Anti-corruption safeguards
+    anti_corruption = self_processing['anti_corruption']
+    
+    detection = anti_corruption['detection']
+    assert_equal true, detection['schema_validation']
+    assert_equal true, detection['structure_preservation']
+    assert_equal true, detection['key_capability_testing']
+    
+    mitigation = anti_corruption['mitigation']
+    assert_equal true, mitigation['backup_original']
+    assert_equal true, mitigation['restore_on_corruption']
+    assert_equal true, mitigation['incremental_changes_only']
+  end
 end
 
 # Run the tests if this file is executed directly
