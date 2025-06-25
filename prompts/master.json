@@ -8,10 +8,12 @@
   "schema": {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
-    "required": ["meta", "project", "rules", "steps", "stacks", "user_interaction"],
+    "required": ["meta", "project", "principles", "enforcement", "rules", "steps", "stacks", "user_interaction"],
     "properties": {
       "meta": {"type": "object"},
       "project": {"type": "object"},
+      "principles": {"type": "array"},
+      "enforcement": {"type": "object"},
       "rules": {"type": "array"},
       "steps": {"type": "array"},
       "stacks": {"type": "object"},
@@ -98,6 +100,121 @@
         "marketer": 0.05,
         "accessibility_expert": 0.05
       }
+    }
+  },
+  "principles": [
+    {
+      "id": "solid_single_responsibility",
+      "text": "One function, one task - single responsibility principle",
+      "rationale": "Simplifies testing and maintenance",
+      "scope": "universal"
+    },
+    {
+      "id": "solid_open_closed",
+      "text": "Open for extension, closed for modification",
+      "rationale": "Enables safe enhancement without breaking existing code",
+      "scope": "universal"
+    },
+    {
+      "id": "solid_liskov_substitution",
+      "text": "Derived classes must be substitutable for base classes",
+      "rationale": "Ensures proper inheritance hierarchies",
+      "scope": "universal"
+    },
+    {
+      "id": "solid_interface_segregation",
+      "text": "Many specific interfaces better than one general-purpose interface",
+      "rationale": "Reduces coupling and improves modularity",
+      "scope": "universal"
+    },
+    {
+      "id": "solid_dependency_inversion",
+      "text": "Depend on abstractions, not concretions",
+      "rationale": "Enables flexible and testable architecture",
+      "scope": "universal"
+    },
+    {
+      "id": "secure_by_default",
+      "text": "All components must implement security-first design",
+      "rationale": "Prevents vulnerabilities from inception",
+      "scope": "universal"
+    },
+    {
+      "id": "input_validation",
+      "text": "Validate all inputs with strict schemas",
+      "rationale": "Prevents injection attacks and data corruption",
+      "scope": "universal"
+    },
+    {
+      "id": "output_sanitization",
+      "text": "Sanitize all outputs based on context",
+      "rationale": "Prevents XSS and data leakage",
+      "scope": "universal"
+    },
+    {
+      "id": "ultraminimal_communication",
+      "text": "Use minimal, precise communication in all interfaces",
+      "rationale": "Reduces cognitive load and improves clarity",
+      "scope": "universal"
+    },
+    {
+      "id": "strunk_white_clarity",
+      "text": "Write with clarity, brevity, and precision",
+      "rationale": "Improves comprehension and reduces errors",
+      "scope": "universal"
+    },
+    {
+      "id": "readable_code",
+      "text": "Prioritize code readability over cleverness",
+      "rationale": "Eases maintenance and debugging",
+      "scope": "universal"
+    },
+    {
+      "id": "dry_principle",
+      "text": "Don't repeat yourself - avoid code duplication",
+      "rationale": "Reduces maintenance burden and inconsistencies",
+      "scope": "universal"
+    },
+    {
+      "id": "kiss_principle",
+      "text": "Keep it simple, stupid - favor simple solutions",
+      "rationale": "Reduces complexity and potential for errors",
+      "scope": "universal"
+    },
+    {
+      "id": "fail_fast",
+      "text": "Detect and report errors as early as possible",
+      "rationale": "Enables quick debugging and prevents cascading failures",
+      "scope": "universal"
+    },
+    {
+      "id": "defensive_programming",
+      "text": "Assume inputs are malformed and handle gracefully",
+      "rationale": "Improves robustness and security",
+      "scope": "universal"
+    }
+  ],
+  "enforcement": {
+    "universal_application": {
+      "enabled": true,
+      "scope": "all_workflows_and_stacks",
+      "override_policy": "principles_always_apply",
+      "validation_required": true
+    },
+    "inheritance_hierarchy": {
+      "global_principles": "mandatory_for_all",
+      "stack_rules": "extend_not_override_principles",
+      "task_rules": "must_comply_with_stack_and_principles"
+    },
+    "compliance_checking": {
+      "pre_execution": "validate_principle_adherence",
+      "during_execution": "continuous_monitoring",
+      "post_execution": "compliance_audit"
+    },
+    "violation_handling": {
+      "policy": "halt_and_require_correction",
+      "escalation": ["warn", "block", "halt"],
+      "reporting": "detailed_violation_log"
     }
   },
   "rules": [
@@ -325,49 +442,69 @@
   "stacks": {
     "global": {
       "description": "Rules for all stacks",
-      "prompt": "Follow stack-specific best practices.",
+      "prompt": "Follow stack-specific best practices while adhering to universal principles.",
+      "inherits_principles": "all_universal_principles",
       "rules": [
         {
           "text": "Prioritize rules by project type (e.g., accessibility for frontend)",
-          "rationale": "Optimizes relevance"
+          "rationale": "Optimizes relevance",
+          "extends": ["ultraminimal_communication"]
         },
         {
           "text": "Toggle rules by project needs (e.g., skip visual progress for scripts)",
-          "rationale": "Enhances flexibility"
+          "rationale": "Enhances flexibility",
+          "extends": ["kiss_principle"]
         },
         {
           "text": "Define stack-specific execution rules (e.g., Ruby validation)",
-          "rationale": "Ensures stack compliance"
+          "rationale": "Ensures stack compliance",
+          "extends": ["input_validation", "defensive_programming"]
         }
       ]
     },
     "architecture": {
       "description": "Rules for scalable systems",
       "prompt": "Draw UML diagrams, modular system designs, and specify scalability requirements (e.g., concurrent users).",
+      "inherits_from": "global",
       "rules": [
         {
           "text": "Use clear diagrams and modular designs",
-          "rationale": "Ensures scalability"
+          "rationale": "Ensures scalability",
+          "extends": ["solid_single_responsibility", "solid_interface_segregation"]
         }
       ]
     },
     "openbsd": {
       "description": "Rules for OpenBSD systems",
       "prompt": "Configure OpenBSD using manual examples and secure defaults.",
+      "inherits_from": "global",
       "rules": [
         {
           "text": "Check setups using OpenBSD manual examples",
-          "rationale": "Ensures accuracy"
+          "rationale": "Ensures accuracy",
+          "extends": ["defensive_programming", "secure_by_default"]
+        },
+        {
+          "text": "Use pledge(2) and unveil(2) for privilege restriction",
+          "rationale": "Implements least privilege principle",
+          "extends": ["secure_by_default"]
         }
       ]
     },
     "rails": {
       "description": "Rules for modern Rails apps",
       "prompt": "Use Hotwire, Stimulus, modular ViewComponents, modular controllers, and feature toggles for A/B testing.",
+      "inherits_from": "global",
       "rules": [
         {
           "text": "Use Hotwire, Stimulus, ViewComponents, and modular controllers",
-          "rationale": "Ensures modernity and modularity"
+          "rationale": "Ensures modernity and modularity",
+          "extends": ["solid_single_responsibility", "solid_open_closed"]
+        },
+        {
+          "text": "Implement strong parameters and CSRF protection",
+          "rationale": "Prevents injection attacks",
+          "extends": ["secure_by_default", "input_validation"]
         }
       ],
       "version": "8.0",
@@ -376,14 +513,17 @@
     "ruby": {
       "description": "Rules for reliable Ruby code",
       "prompt": "Write idiomatic, type-safe Ruby code with clear names, error handling, YARD comments where needed, Enumerable for iteration, and Ruby Style Guide naming.",
+      "inherits_from": "global",
       "rules": [
         {
           "text": "Use type-safe code and style guidelines",
-          "rationale": "Ensures safety"
+          "rationale": "Ensures safety",
+          "extends": ["readable_code", "defensive_programming"]
         },
         {
           "text": "Use YARD-style comments for complex methods and public APIs",
-          "rationale": "Enhances documentation"
+          "rationale": "Enhances documentation",
+          "extends": ["strunk_white_clarity", "ultraminimal_communication"]
         }
       ],
       "version": "3.3+"
@@ -391,24 +531,29 @@
     "frontend": {
       "description": "Rules for accessible interfaces",
       "prompt": "Use semantic HTML5 with ARIA, WCAG 2.1 AA, mobile-first CSS with modern selectors, flexbox/grid, print-ready styles, lazy-loaded images, font-display: swap, and CSS custom properties for theming.",
+      "inherits_from": "global",
       "rules": [
         {
           "text": "Use semantic HTML5 with ARIA, WCAG 2.1 AA, mobile-first CSS with modern selectors (:where(), :has()), flexbox/grid, print-ready styles, lazy-loaded images, font-display: swap",
-          "rationale": "Ensures accessibility"
+          "rationale": "Ensures accessibility",
+          "extends": ["secure_by_default", "input_validation", "output_sanitization"]
         }
       ]
     },
     "zsh": {
       "description": "Rules for portable Zsh scripts",
       "prompt": "Create portable Zsh scripts with error checks, modern syntax (arrays, globbing), and completion scripts for user interaction.",
+      "inherits_from": "global",
       "rules": [
         {
           "text": "Write scripts with error checks and cross-platform compatibility",
-          "rationale": "Ensures portability"
+          "rationale": "Ensures portability",
+          "extends": ["defensive_programming", "fail_fast"]
         },
         {
           "text": "Use Zsh’s modern syntax (arrays, globbing) for concise scripts",
-          "rationale": "Leverages expressiveness"
+          "rationale": "Leverages expressiveness",
+          "extends": ["readable_code", "kiss_principle"]
         }
       ]
     }
