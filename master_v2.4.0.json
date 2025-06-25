@@ -1,0 +1,825 @@
+{
+  "metadata": {
+    "version": "2.4.0",
+    "schema_version": "2.4",
+    "created": "2025-06-25T00:54:16Z",
+    "updated": "2025-06-25T00:54:16Z",
+    "description": "Comprehensive autonomous project completion framework with multi-role feedback and deep analysis",
+    "author": "anon987654321",
+    "framework_evolution": "Integrated best practices from v79, v49, v85.5, v91.8 with comprehensive multi-role feedback",
+    "production_ready": true,
+    "security_first": true,
+    "philosophy": "surgical_enhancement"
+  },
+  "schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "required": ["metadata", "project", "feedback", "rules", "steps", "stacks", "user_interaction", "autonomous_framework", "safety_mechanisms", "self_optimization"],
+    "properties": {
+      "metadata": {"type": "object"},
+      "project": {"type": "object"},
+      "feedback": {"type": "object"},
+      "rules": {"type": "array"},
+      "steps": {"type": "array"},
+      "stacks": {"type": "object"},
+      "user_interaction": {"type": "object"},
+      "autonomous_framework": {"type": "object"},
+      "safety_mechanisms": {"type": "object"},
+      "self_optimization": {"type": "object"}
+    }
+  },
+  "system_requirements": {
+    "ruby_version": "3.3+",
+    "rails_version": "8.0+",
+    "openbsd_version": "7.7+",
+    "langchain_integration": true,
+    "security_framework": "pledge_unveil_first",
+    "cross_llm_compatibility": ["grok", "claude", "chatgpt"]
+  },
+  "project": {
+    "name": "#1 Comprehensive Project Completer",
+    "description": "Autonomous framework for completing any user-defined project with production-ready outputs, multi-role feedback, and deep analysis",
+    "goals": [
+      "Complete user projects efficiently with autonomous intelligence",
+      "Ensure production-ready outputs with comprehensive validation",
+      "Support modular, reusable components across tech stacks",
+      "Implement multi-role feedback system for quality assurance",
+      "Provide deep analysis capabilities with safety mechanisms"
+    ]
+  },
+  "feedback": {
+    "enabled": true,
+    "description": "Multi-role feedback system with weighted evaluation for comprehensive quality assessment",
+    "roles": [
+      {
+        "name": "developer",
+        "weight": 0.2,
+        "focus": ["Efficiency", "robustness"],
+        "question": "Does the project optimize performance and handle edge cases? (Rate 1–10)",
+        "temperature": 0.4,
+        "evaluation_criteria": ["code_quality", "error_handling", "performance_optimization", "maintainability"]
+      },
+      {
+        "name": "maintainer",
+        "weight": 0.13,
+        "focus": ["Clarity", "minimalism"],
+        "question": "Is the project modular and well-documented? (Rate 1–10)",
+        "temperature": 0.3,
+        "evaluation_criteria": ["documentation_quality", "code_organization", "modular_design", "refactoring_ease"]
+      },
+      {
+        "name": "user",
+        "weight": 0.2,
+        "focus": ["Ease", "effectiveness"],
+        "question": "Does the project solve your needs intuitively? (Rate 1–10)",
+        "temperature": 0.5,
+        "evaluation_criteria": ["usability", "user_experience", "problem_solving", "intuitive_design"]
+      },
+      {
+        "name": "white-hat_hacker",
+        "weight": 0.09,
+        "focus": ["Security"],
+        "question": "Does the project implement robust security measures? (Rate 1–10)",
+        "temperature": 0.2,
+        "evaluation_criteria": ["vulnerability_assessment", "security_controls", "data_protection", "access_control"]
+      },
+      {
+        "name": "designer",
+        "weight": 0.09,
+        "focus": ["Aesthetics", "usability"],
+        "question": "Does the project balance aesthetics and usability? (Rate 1–10)",
+        "temperature": 0.7,
+        "evaluation_criteria": ["visual_design", "user_interface", "accessibility", "design_consistency"]
+      },
+      {
+        "name": "product_manager",
+        "weight": 0.13,
+        "focus": ["Alignment", "value"],
+        "question": "Does the project align with user needs and context? (Rate 1–10)",
+        "temperature": 0.5,
+        "evaluation_criteria": ["requirement_alignment", "business_value", "user_satisfaction", "market_fit"]
+      },
+      {
+        "name": "qa_engineer",
+        "weight": 0.01,
+        "focus": ["Reliability", "testing"],
+        "question": "Does the project pass functional and edge-case tests? (Rate 1–10)",
+        "temperature": 0.3,
+        "evaluation_criteria": ["test_coverage", "bug_detection", "reliability", "edge_case_handling"]
+      },
+      {
+        "name": "lawyer",
+        "weight": 0.05,
+        "focus": ["Compliance", "ethics"],
+        "question": "Does the project adhere to legal and ethical standards? (Rate 1–10)",
+        "temperature": 0.2,
+        "evaluation_criteria": ["legal_compliance", "ethical_standards", "privacy_protection", "regulatory_adherence"]
+      },
+      {
+        "name": "marketer",
+        "weight": 0.05,
+        "focus": ["Clarity", "appeal"],
+        "question": "Does the project's messaging resonate and compel? (Rate 1–10)",
+        "temperature": 0.8,
+        "evaluation_criteria": ["message_clarity", "market_appeal", "communication_effectiveness", "brand_alignment"]
+      },
+      {
+        "name": "accessibility_expert",
+        "weight": 0.05,
+        "focus": ["Inclusivity", "WCAG 2.1 AA standards"],
+        "question": "Does the project meet WCAG 2.1 AA standards? (Rate 1–10)",
+        "temperature": 0.3,
+        "evaluation_criteria": ["wcag_compliance", "screen_reader_support", "keyboard_navigation", "color_contrast"]
+      }
+    ],
+    "evaluation": {
+      "method": "Weighted average of role ratings (1–10), threshold >= 7",
+      "threshold": 7,
+      "temperature_based_analysis": {
+        "security_temperature": 0.2,
+        "creativity_temperature": 0.9,
+        "balanced_temperature": 0.5
+      },
+      "weights_validation": {
+        "total_weight": 1.0,
+        "minimum_individual_weight": 0.05,
+        "maximum_individual_weight": 0.25
+      }
+    },
+    "prompts": {
+      "general": "Rate each task and overall project (1–10, per role, based on role focus)",
+      "role_specific_prompts": {
+        "enabled": true,
+        "customize_by_temperature": true,
+        "include_evaluation_criteria": true
+      }
+    },
+    "storage": "Store feedback in-memory for LLM analysis with cross-session persistence"
+  },
+  "autonomous_framework": {
+    "enabled": true,
+    "mode": "active_with_environment_isolation",
+    "reasoning": {
+      "temperature": 0.2,
+      "mode": "self_analysis",
+      "detection_method": "pattern_match_ask_unclear",
+      "enforcement": "all_workflows_enforce_principles_including_solid_and_parametric_design"
+    },
+    "context_detection": {
+      "enabled": true,
+      "auto_workflow_mapping": {
+        "project_type_detection": ["rails", "ruby_gem", "openbsd_script", "langchain_app", "ai3_assistant", "frontend", "architecture"],
+        "context_triggers": ["file_extensions", "directory_structure", "dependencies", "user_intent"],
+        "workflow_selection": "automatic_based_on_detection",
+        "confidence_threshold": 0.8
+      },
+      "session_context_management": {
+        "maintain_across_interactions": true,
+        "context_compression": {
+          "enabled": true,
+          "priority_preservation": ["requirements", "decisions", "code_patterns", "security_choices"],
+          "compression_ratio": 0.7
+        },
+        "memory_hierarchy": {
+          "short_term": "current_session_state",
+          "medium_term": "project_context_cache",
+          "long_term": "pattern_recognition_data"
+        }
+      }
+    },
+    "execution_framework": {
+      "autonomous_progression": {
+        "enabled": true,
+        "phase_auto_advancement": true,
+        "validation_gates": ["functionality", "security", "compliance", "quality"],
+        "backtrack_on_failure": true
+      },
+      "recovery_protocols": {
+        "error_detection": {
+          "runtime_errors": true,
+          "logical_inconsistencies": true,
+          "security_violations": true,
+          "performance_degradation": true
+        },
+        "recovery_strategies": [
+          "identify_failure_point",
+          "determine_root_cause",
+          "assess_impact_scope",
+          "implement_recovery_solution",
+          "validate_recovery_success"
+        ],
+        "fallback_mechanisms": {
+          "component_isolation": true,
+          "dependency_bypass": true,
+          "graceful_degradation": true,
+          "emergency_rollback": true
+        }
+      },
+      "completion_verification": {
+        "integrity_checks": {
+          "syntax_validation": ["ruby", "rails", "json", "yaml", "shell"],
+          "semantic_consistency": true,
+          "security_compliance": true,
+          "performance_benchmarks": true
+        },
+        "output_validation": {
+          "functional_completeness": true,
+          "code_quality_metrics": true,
+          "documentation_coverage": true,
+          "test_coverage_minimum": 80
+        }
+      }
+    }
+  },
+  "safety_mechanisms": {
+    "recursion": {
+      "max_depth": 3,
+      "current_depth": 0,
+      "tracking": "enabled",
+      "depth_warning_threshold": 2
+    },
+    "circuit_breaker": {
+      "enabled": true,
+      "failure_threshold": 3,
+      "timeout_seconds": 300,
+      "half_open_retry_count": 1,
+      "progressive_timeout": true
+    },
+    "emergency_halt": {
+      "enabled": true,
+      "triggers": [
+        "max_recursion_exceeded",
+        "infinite_loop_detected",
+        "memory_threshold_exceeded",
+        "resource_exhaustion",
+        "security_violation_detected"
+      ],
+      "action": "preserve_state_and_halt",
+      "recovery_instructions": "automated_rollback_to_last_safe_state"
+    },
+    "forbidden_removals": {
+      "protected_elements": [
+        "safety_mechanisms",
+        "recursion",
+        "circuit_breaker",
+        "emergency_halt",
+        "feedback.roles",
+        "schema_validation"
+      ],
+      "enforcement": "strict",
+      "violation_action": "halt_and_report"
+    },
+    "resource_limits": {
+      "memory_monitoring": true,
+      "execution_time_limits": true,
+      "file_operation_monitoring": true,
+      "network_operation_limits": true
+    }
+  },
+  "self_optimization": {
+    "philosophy": "surgical_enhancement",
+    "enabled": true,
+    "goals": [
+      "consolidate_duplicates",
+      "enhance_context_awareness",
+      "streamline_validation_logic",
+      "optimize_design_assets",
+      "track_version_changes",
+      "improve_autonomous_capabilities"
+    ],
+    "constraints": {
+      "preserve_functionality": true,
+      "maintain_safety": true,
+      "minimal_changes_only": true,
+      "no_feature_removal": true,
+      "backward_compatibility": true
+    },
+    "enhancement_tracking": {
+      "version_changelog": true,
+      "impact_assessment": true,
+      "rollback_capability": true,
+      "validation_before_commit": true
+    }
+  },
+  "deep_analysis_capabilities": {
+    "multi_temperature_perspective_analysis": {
+      "enabled": true,
+      "temperature_profiles": [
+        {"role": "security_expert", "temperature": 0.2, "focus": ["vulnerabilities", "attack_vectors", "defense_mechanisms"], "weight": 0.25},
+        {"role": "architect", "temperature": 0.4, "focus": ["structure", "scalability", "maintainability", "patterns"], "weight": 0.20},
+        {"role": "performance_engineer", "temperature": 0.3, "focus": ["optimization", "efficiency", "resource_usage"], "weight": 0.15},
+        {"role": "creative_innovator", "temperature": 0.9, "focus": ["novel_solutions", "user_experience", "innovative_approaches"], "weight": 0.15},
+        {"role": "openbsd_specialist", "temperature": 0.3, "focus": ["pledge", "unveil", "minimalism", "security"], "weight": 0.15},
+        {"role": "rails_expert", "temperature": 0.4, "focus": ["conventions", "best_practices", "modern_features"], "weight": 0.10}
+      ],
+      "consensus_building": {
+        "weighted_voting": true,
+        "conflict_resolution": "expert_domain_priority",
+        "minimum_agreement_threshold": 0.7
+      }
+    },
+    "word_for_word_code_examination": {
+      "enabled": true,
+      "exhaustive_analysis": {
+        "character_level_review": true,
+        "syntax_tree_analysis": true,
+        "semantic_validation": true,
+        "documentation_cross_reference": {
+          "ruby_docs": true,
+          "rails_guides": true,
+          "openbsd_manpages": true,
+          "langchain_api": true
+        }
+      },
+      "execution_path_tracing": {
+        "static_analysis": true,
+        "dynamic_simulation": true,
+        "edge_case_identification": true,
+        "resource_usage_prediction": true,
+        "deepest_path_simulation": true
+      }
+    },
+    "cross_session_memory_management": {
+      "persistent_learning": {
+        "pattern_recognition": true,
+        "anti_pattern_detection": true,
+        "best_practice_accumulation": true,
+        "failure_case_memory": true
+      },
+      "knowledge_graph": {
+        "concepts": ["technologies", "patterns", "solutions", "problems"],
+        "relationships": ["depends_on", "conflicts_with", "enhances", "replaces"],
+        "confidence_scoring": true,
+        "temporal_decay": false
+      }
+    }
+  },
+  "rules": [
+    {
+      "text": "Create clear outputs with comprehensive trace and multi-role validation",
+      "rationale": "Ensures clarity and quality through diverse perspectives"
+    },
+    {
+      "text": "Ensure consistent names, schema, and master.json compliance with autonomous validation",
+      "rationale": "Ensures consistency and self-compliance with automated checks"
+    },
+    {
+      "text": "Execute tasks and stacks with sensible defaults and safety mechanisms",
+      "rationale": "Ensures efficiency while maintaining security and reliability"
+    },
+    {
+      "text": "Handle errors with recovery protocols, alternative paths, and progressive simplification",
+      "rationale": "Ensures resilience through comprehensive error handling strategies"
+    },
+    {
+      "text": "Prioritize tasks based on weighted feedback scores and security requirements",
+      "rationale": "Optimizes fixes based on importance and criticality"
+    },
+    {
+      "text": "Apply surgical enhancement philosophy with minimal, targeted changes only",
+      "rationale": "Maintains system stability while enabling continuous improvement"
+    },
+    {
+      "text": "Implement security-first approach with OpenBSD pledge/unveil integration",
+      "rationale": "Ensures production-ready security from the foundation"
+    }
+  ],
+  "steps": [
+    {
+      "name": "preprocess",
+      "description": "Configure project type and stacks with autonomous detection",
+      "key_question": "What is the project type and optimal technology stack?",
+      "success": "Configured stacks and rules with autonomous validation",
+      "tasks": [
+        {
+          "id": "PREPROCESS_CONFIGURE",
+          "instruction": "Detect project type, configure stacks, predict errors, and validate compatibility",
+          "check": "Stacks configured, errors predicted, compatibility verified",
+          "depends": [],
+          "output": "project_config",
+          "autonomous_features": ["auto_detection", "error_prediction", "stack_optimization"]
+        },
+        {
+          "id": "PREPROCESS_VALIDATE",
+          "instruction": "Validate stack prompts against project type with multi-role feedback",
+          "check": "Prompts valid, roles aligned, feedback system initialized",
+          "depends": ["PREPROCESS_CONFIGURE"],
+          "output": "prompt_validation",
+          "autonomous_features": ["multi_role_validation", "feedback_system_init"]
+        }
+      ]
+    },
+    {
+      "name": "understand",
+      "description": "Identify project needs and tools with deep analysis",
+      "key_question": "What to build and how to optimize the approach?",
+      "success": "Clear project needs with comprehensive analysis",
+      "tasks": [
+        {
+          "id": "UNDERSTAND_NEEDS",
+          "instruction": "List project needs based on goals with multi-perspective analysis",
+          "check": "Needs clear, perspectives analyzed, requirements validated",
+          "depends": ["PREPROCESS_VALIDATE"],
+          "output": "needs_list",
+          "autonomous_features": ["perspective_analysis", "requirement_validation"]
+        },
+        {
+          "id": "UNDERSTAND_INSTRUCTIONS",
+          "instruction": "Write clear instructions with tools and safety mechanisms",
+          "check": "Instructions clear, tools listed, safety validated",
+          "depends": ["UNDERSTAND_NEEDS"],
+          "output": "project_instructions",
+          "autonomous_features": ["instruction_optimization", "safety_integration"]
+        },
+        {
+          "id": "UNDERSTAND_TOOLSET",
+          "instruction": "Check toolset version, compatibility, and security implications",
+          "check": "Toolset valid, security assessed, compatibility confirmed",
+          "depends": ["UNDERSTAND_INSTRUCTIONS"],
+          "output": "toolset_check",
+          "autonomous_features": ["security_assessment", "compatibility_check"]
+        }
+      ]
+    },
+    {
+      "name": "create",
+      "description": "Build initial solution with autonomous optimization",
+      "key_question": "Is it functional and optimally designed?",
+      "success": "Working draft with quality validation",
+      "tasks": [
+        {
+          "id": "CREATE_DRAFT",
+          "instruction": "Build project draft with stack rules and autonomous optimization",
+          "check": "Core works, quality validated, optimization applied",
+          "depends": ["UNDERSTAND_TOOLSET"],
+          "output": "draft_solution",
+          "autonomous_features": ["quality_optimization", "auto_improvement", "best_practice_application"]
+        }
+      ]
+    },
+    {
+      "name": "verify",
+      "description": "Check project quality with comprehensive validation",
+      "key_question": "Is it reliable and production-ready?",
+      "success": "Usable outputs with full validation",
+      "tasks": [
+        {
+          "id": "VERIFY_FUNCTION",
+          "instruction": "Test core functionality with automated test generation",
+          "check": "Features work, tests pass, coverage adequate",
+          "depends": ["CREATE_DRAFT"],
+          "output": "function_check",
+          "autonomous_features": ["auto_test_generation", "coverage_analysis"]
+        },
+        {
+          "id": "VERIFY_ERRORS",
+          "instruction": "Fix errors with autonomous recovery strategies and alternative solutions",
+          "check": "Errors fixed, recovery tested, alternatives evaluated",
+          "depends": ["VERIFY_FUNCTION"],
+          "output": "error_fixes",
+          "autonomous_features": ["autonomous_recovery", "alternative_solution_exploration"]
+        },
+        {
+          "id": "VERIFY_COMPLIANCE",
+          "instruction": "Check rule compliance, schema validation, multi-role feedback, and production readiness",
+          "check": "Rules followed, schema valid, feedback collected, production ready",
+          "depends": ["VERIFY_ERRORS"],
+          "output": "rule_check",
+          "autonomous_features": ["multi_role_feedback", "production_readiness_check"]
+        }
+      ]
+    },
+    {
+      "name": "deep_execution_trace",
+      "description": "Simulate deepest execution path with comprehensive analysis",
+      "key_question": "Are there hidden bugs, inefficiencies, or security vulnerabilities?",
+      "success": "Identified bugs, improvements, and security issues with solutions",
+      "tasks": [
+        {
+          "id": "DEEP_EXECUTION_TRACE",
+          "instruction": "Trace each function with variable states, simulate all edge cases, identify security vulnerabilities, and flag optimization opportunities",
+          "check": "Trace complete, vulnerabilities identified, optimizations listed, security validated",
+          "depends": ["VERIFY_COMPLIANCE"],
+          "output": "execution_trace",
+          "autonomous_features": ["security_analysis", "performance_optimization", "vulnerability_detection"]
+        }
+      ]
+    },
+    {
+      "name": "word_by_word_reanalysis",
+      "description": "Reanalyze every word against documentation with cross-reference validation",
+      "key_question": "Is every configuration, command, and implementation accurate and optimal?",
+      "success": "Validated syntax, behavior, and optimized implementation",
+      "tasks": [
+        {
+          "id": "WORD_BY_WORD_REANALYSIS",
+          "instruction": "Parse each line and word with comprehensive cross-referencing, validate against official documentation, optimize implementation, and flag all discrepancies",
+          "check": "All words validated, implementations optimized, discrepancies resolved",
+          "depends": ["DEEP_EXECUTION_TRACE"],
+          "output": "reanalysis_report",
+          "autonomous_features": ["comprehensive_validation", "implementation_optimization", "discrepancy_resolution"]
+        }
+      ]
+    },
+    {
+      "name": "refine",
+      "description": "Simplify and optimize solution with surgical enhancements",
+      "key_question": "Is it minimal, secure, and production-optimized?",
+      "success": "Streamlined solution with optimal performance",
+      "tasks": [
+        {
+          "id": "REFINE_SOLUTION",
+          "instruction": "Remove redundancies, fix bugs, apply improvements from analysis, optimize performance, and ensure security",
+          "check": "No redundancies, bugs fixed, performance optimized, security ensured",
+          "depends": ["WORD_BY_WORD_REANALYSIS"],
+          "output": "final_solution",
+          "autonomous_features": ["performance_optimization", "security_hardening", "redundancy_elimination"]
+        }
+      ]
+    },
+    {
+      "name": "deliver",
+      "description": "Package outputs with comprehensive documentation and deployment support",
+      "key_question": "Is it maintainable and deployment-ready?",
+      "success": "Packaged outputs with full deployment support",
+      "tasks": [
+        {
+          "id": "DELIVER_GUIDE",
+          "instruction": "Write comprehensive non-technical guide with deployment instructions",
+          "check": "Clear, complete, deployment-ready documentation",
+          "depends": ["REFINE_SOLUTION"],
+          "output": "guide",
+          "autonomous_features": ["auto_documentation", "deployment_guide_generation"]
+        },
+        {
+          "id": "DELIVER_PACKAGE",
+          "instruction": "Package outputs with line count, checksums, monitoring setup, backup configuration, and deployment automation",
+          "check": "All outputs included, monitoring configured, deployment automated",
+          "depends": ["DELIVER_GUIDE"],
+          "output": "packaged_outputs",
+          "autonomous_features": ["monitoring_integration", "backup_automation", "deployment_automation"]
+        }
+      ]
+    },
+    {
+      "name": "reflect",
+      "description": "Improve process with comprehensive feedback analysis",
+      "key_question": "How to improve and what was learned?",
+      "success": "Improved process with lessons learned",
+      "tasks": [
+        {
+          "id": "REFLECT_FEEDBACK",
+          "instruction": "Collect comprehensive feedback using all 10 roles with weighted analysis",
+          "check": "Feedback complete, weights applied, scores calculated",
+          "depends": ["DELIVER_PACKAGE"],
+          "output": "user_feedback",
+          "autonomous_features": ["weighted_feedback_analysis", "comprehensive_role_evaluation"]
+        },
+        {
+          "id": "REFLECT_IMPROVE",
+          "instruction": "Generate improvement prompts, analyze feedback patterns, and suggest autonomous enhancements",
+          "check": "Prompts generated, patterns analyzed, enhancements suggested",
+          "depends": ["REFLECT_FEEDBACK"],
+          "output": "feedback_improvements",
+          "autonomous_features": ["pattern_analysis", "autonomous_enhancement_suggestions"]
+        },
+        {
+          "id": "REFLECT_SELF_CHECK",
+          "instruction": "Report comprehensive compliance with autonomous validation and self-optimization",
+          "check": "Full compliance verified, self-optimization applied",
+          "depends": ["REFLECT_IMPROVE"],
+          "output": "self_check",
+          "autonomous_features": ["autonomous_validation", "self_optimization"]
+        },
+        {
+          "id": "REFLECT_UPDATE",
+          "instruction": "Update configuration with validated fixes and autonomous improvements",
+          "check": "Fixes applied, improvements integrated, validation confirmed",
+          "depends": ["REFLECT_SELF_CHECK"],
+          "output": "updated_configuration",
+          "autonomous_features": ["autonomous_configuration_update", "validated_improvement_integration"]
+        }
+      ]
+    }
+  ],
+  "stacks": {
+    "global": {
+      "description": "Universal rules for all technology stacks with autonomous optimization",
+      "prompt": "Follow stack-specific best practices with security-first approach and autonomous optimization.",
+      "rules": [
+        {
+          "text": "Prioritize rules by project type with autonomous detection (e.g., accessibility for frontend)",
+          "rationale": "Optimizes relevance through intelligent priority management"
+        },
+        {
+          "text": "Toggle rules by project needs with dynamic adaptation (e.g., skip visual progress for scripts)",
+          "rationale": "Enhances flexibility through context-aware rule application"
+        },
+        {
+          "text": "Define stack-specific execution rules with validation (e.g., Ruby syntax validation)",
+          "rationale": "Ensures stack compliance through automated validation"
+        },
+        {
+          "text": "Implement security-first principles across all stacks",
+          "rationale": "Ensures consistent security posture across technologies"
+        }
+      ],
+      "autonomous_features": ["priority_detection", "dynamic_adaptation", "security_enforcement"]
+    },
+    "architecture": {
+      "description": "Rules for scalable, secure system architecture",
+      "prompt": "Design UML diagrams, modular system architectures, specify scalability requirements, and implement security-first patterns.",
+      "rules": [
+        {
+          "text": "Use clear diagrams, modular designs, and security-first architecture patterns",
+          "rationale": "Ensures scalability and security through proper architectural design"
+        },
+        {
+          "text": "Implement microservices patterns where appropriate with proper service boundaries",
+          "rationale": "Enables scalability and maintainability through service decomposition"
+        },
+        {
+          "text": "Design for fault tolerance and graceful degradation",
+          "rationale": "Ensures system resilience and reliability"
+        }
+      ],
+      "autonomous_features": ["architecture_optimization", "scalability_analysis", "security_pattern_application"]
+    },
+    "openbsd": {
+      "description": "Rules for secure OpenBSD systems with pledge/unveil integration",
+      "prompt": "Configure OpenBSD using manual examples, secure defaults, pledge/unveil restrictions, and modern security practices.",
+      "rules": [
+        {
+          "text": "Check all setups using OpenBSD manual examples with comprehensive validation",
+          "rationale": "Ensures accuracy through official documentation compliance"
+        },
+        {
+          "text": "Implement pledge and unveil restrictions for all applications",
+          "rationale": "Ensures security through principle of least privilege"
+        },
+        {
+          "text": "Use secure defaults for httpd, relayd, and pf configurations",
+          "rationale": "Provides security-first configuration out of the box"
+        },
+        {
+          "text": "Implement user privilege separation for all services",
+          "rationale": "Reduces attack surface through proper isolation"
+        }
+      ],
+      "autonomous_features": ["pledge_auto_generation", "unveil_optimization", "security_validation"],
+      "security_features": {
+        "pledge_support": true,
+        "unveil_support": true,
+        "automatic_privilege_calculation": true,
+        "security_validation": true
+      }
+    },
+    "rails": {
+      "description": "Rules for modern, secure Rails applications",
+      "prompt": "Use Rails 8.0+ features: Hotwire, Stimulus, modular ViewComponents, security headers, and modern deployment practices.",
+      "rules": [
+        {
+          "text": "Use Hotwire, Stimulus, ViewComponents, and modular controllers with security integration",
+          "rationale": "Ensures modernity, modularity, and security in Rails applications"
+        },
+        {
+          "text": "Implement comprehensive security headers and CSRF protection",
+          "rationale": "Provides defense against common web vulnerabilities"
+        },
+        {
+          "text": "Use strong parameters and input validation throughout",
+          "rationale": "Prevents injection attacks and data corruption"
+        },
+        {
+          "text": "Implement feature toggles for A/B testing and gradual rollouts",
+          "rationale": "Enables safe deployment and experimentation"
+        }
+      ],
+      "version": "8.0+",
+      "dependencies": ["hotwire", "stimulus", "view_component"],
+      "autonomous_features": ["security_header_optimization", "vulnerability_scanning", "performance_optimization"],
+      "security_features": {
+        "csrf_protection": "enforced",
+        "secure_headers": "comprehensive",
+        "input_validation": "strong_parameters_plus",
+        "sql_injection_prevention": "parameterized_queries_only"
+      }
+    },
+    "ruby": {
+      "description": "Rules for reliable, type-safe Ruby code",
+      "prompt": "Write idiomatic Ruby 3.3+ code with type safety, clear names, comprehensive error handling, YARD documentation, and security best practices.",
+      "rules": [
+        {
+          "text": "Use type-safe code with Sorbet or RBS where appropriate and style guidelines",
+          "rationale": "Ensures safety and maintainability through static typing"
+        },
+        {
+          "text": "Use YARD-style comments for all public APIs and complex methods",
+          "rationale": "Enhances documentation and developer experience"
+        },
+        {
+          "text": "Implement comprehensive error handling with specific exception types",
+          "rationale": "Improves reliability and debugging capabilities"
+        },
+        {
+          "text": "Use Enumerable methods for iteration and functional programming patterns",
+          "rationale": "Leverages Ruby's strengths for clean, efficient code"
+        }
+      ],
+      "version": "3.3+",
+      "autonomous_features": ["type_inference", "documentation_generation", "security_scanning"],
+      "security_features": {
+        "input_sanitization": "automatic",
+        "output_encoding": "context_aware",
+        "dependency_scanning": "bundler_audit",
+        "static_analysis": "rubocop_security"
+      }
+    },
+    "frontend": {
+      "description": "Rules for accessible, modern web interfaces",
+      "prompt": "Create semantic HTML5 with ARIA, WCAG 2.1 AA compliance, mobile-first CSS, modern selectors, and performance optimization.",
+      "rules": [
+        {
+          "text": "Use semantic HTML5 with ARIA, WCAG 2.1 AA compliance, and modern CSS features",
+          "rationale": "Ensures accessibility and modern web standards compliance"
+        },
+        {
+          "text": "Implement mobile-first responsive design with modern CSS Grid and Flexbox",
+          "rationale": "Provides optimal experience across all device types"
+        },
+        {
+          "text": "Optimize performance with lazy loading, font-display: swap, and critical CSS",
+          "rationale": "Ensures fast loading and good user experience"
+        },
+        {
+          "text": "Use CSS custom properties for theming and design system consistency",
+          "rationale": "Enables maintainable and flexible styling"
+        }
+      ],
+      "autonomous_features": ["accessibility_validation", "performance_optimization", "responsive_design_generation"],
+      "accessibility_features": {
+        "wcag_compliance": "2.1 AA",
+        "screen_reader_support": true,
+        "keyboard_navigation": true,
+        "color_contrast_validation": true
+      }
+    },
+    "zsh": {
+      "description": "Rules for portable, robust Zsh scripts",
+      "prompt": "Create portable Zsh scripts with comprehensive error checking, modern syntax, and user-friendly completion scripts.",
+      "rules": [
+        {
+          "text": "Write scripts with comprehensive error checks and cross-platform compatibility",
+          "rationale": "Ensures portability and reliability across environments"
+        },
+        {
+          "text": "Use Zsh's modern syntax (arrays, globbing, parameter expansion) for concise scripts",
+          "rationale": "Leverages Zsh's expressiveness and power"
+        },
+        {
+          "text": "Implement proper signal handling and cleanup mechanisms",
+          "rationale": "Ensures robust script behavior in all scenarios"
+        },
+        {
+          "text": "Create completion scripts for enhanced user interaction",
+          "rationale": "Improves user experience and reduces errors"
+        }
+      ],
+      "autonomous_features": ["error_checking_generation", "completion_script_creation", "portability_validation"]
+    }
+  },
+  "user_interaction": {
+    "input_prompt": "Name your project (e.g., Rails UserAuth app, Zsh script, playlist generator). State its goal and describe the target environment. List up to 10 key features with priority levels.",
+    "enhanced_prompting": {
+      "context_gathering": true,
+      "requirement_clarification": true,
+      "technology_preference_detection": true,
+      "security_requirement_assessment": true
+    },
+    "feedback_integration": {
+      "real_time_validation": true,
+      "multi_role_perspectives": true,
+      "iterative_improvement": true
+    }
+  },
+  "compliance_validation": {
+    "schema_validation": {
+      "enabled": true,
+      "json_schema_compliance": true,
+      "structure_preservation": true,
+      "capability_verification": true
+    },
+    "principle_adherence": {
+      "solid_principles": "enforced",
+      "parametric_design": "maintained",
+      "wcag_accessibility": "validated",
+      "security_standards": "comprehensive"
+    },
+    "quality_gates": {
+      "security": ["no_critical_vulnerabilities", "secure_configuration", "access_controls"],
+      "performance": ["response_time_sla", "resource_efficiency", "scalability_testing"],
+      "quality": ["code_coverage_80_percent", "documentation_complete", "tests_passing"],
+      "compliance": ["style_guide_adherence", "security_standards", "best_practices"]
+    }
+  }
+}
