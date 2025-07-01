@@ -29,6 +29,12 @@ chmod +x generate_dilla_chords.sh
 # Run the script
 ./generate_dilla_chords.sh
 
+# Demo mode (no SoX required) - shows what would be generated
+./generate_dilla_chords.sh --mock
+
+# Show help
+./generate_dilla_chords.sh --help
+
 # Or use the ZSH version on OpenBSD
 ./generate_dilla_chords_zsh.sh
 

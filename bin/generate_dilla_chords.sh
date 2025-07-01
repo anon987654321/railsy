@@ -7,8 +7,11 @@ set -e
 # Based on "So Far To Go" chord progression: Bb Major, F Major, Eb Major, C minor, G minor
 # Compatible with SoX v14.4.2 on OpenBSD using zsh
 # 
-# Usage: ./generate_dilla_chords.sh
+# Usage: ./generate_dilla_chords.sh [--mock]
 # Output: DILLA_CHORDS.WAV (approximately 16 seconds)
+# 
+# Options:
+#   --mock    Show what would be generated without requiring SoX (demo mode)
 #
 # Installation on OpenBSD:
 #   doas pkg_add sox
@@ -27,6 +30,7 @@ OUTPUT_FILE="DILLA_CHORDS.WAV"
 CHORD_DURATION=2      # seconds per chord
 SAMPLE_RATE=44100     # standard audio sample rate
 CHANNELS=2            # stereo
+MOCK_MODE=false       # Set to true for demo mode (no SoX required)
 
 # Chord frequencies (Hz) - using 4th octave as base
 # Each chord contains 3 notes (root, third, fifth)
@@ -50,6 +54,11 @@ error() {
 
 # Check if command exists
 command_exists() {
+    if [[ "$MOCK_MODE" == "true" ]]; then
+        log "MOCK MODE: Skipping SoX dependency check"
+        return 0
+    fi
+    
     command -v "$1" > /dev/null 2>&1 || {
         error "Command '$1' not found. Please install SoX v14.4.2 or later."
     }
@@ -90,6 +99,13 @@ generate_chord() {
     for freq in "${freq_array[@]}"; do
         synth_parts+=("synth $CHORD_DURATION sine $freq")
     done
+    
+    if [[ "$MOCK_MODE" == "true" ]]; then
+        log "MOCK: Would generate with: sox -n -r $SAMPLE_RATE -c $CHANNELS \"$output_file\" ${synth_parts[*]} fade h 0.1 $CHORD_DURATION 0.1 gain -6 reverb 20 50 100 100 0 0"
+        # Create a dummy file for mock mode
+        echo "Mock chord file for $chord_name" > "$output_file"
+        return 0
+    fi
     
     # Generate chord by mixing sine waves
     sox -n -r $SAMPLE_RATE -c $CHANNELS "$output_file" \
@@ -135,6 +151,13 @@ generate_dilla_progression() {
 generate_one_liner() {
     local chord_sequence=("bb_major" "f_major" "eb_major" "c_minor" "g_minor")
     
+    if [[ "$MOCK_MODE" == "true" ]]; then
+        log "MOCK: One-liner approach simulation"
+        log "MOCK: Would generate full progression with single SoX command"
+        echo "Mock one-liner output for J Dilla progression" > "$OUTPUT_FILE"
+        return 0
+    fi
+    
     # Build complex SoX command for entire progression
     local sox_cmd="sox -n -r $SAMPLE_RATE -c $CHANNELS \"$OUTPUT_FILE\""
     
@@ -173,6 +196,9 @@ generate_multi_command() {
     # Generate each chord file
     for chord in "${chord_sequence[@]}"; do
         local chord_file="chord_${chord}.wav"
+        if [[ "$MOCK_MODE" == "true" ]]; then
+            chord_file="chord_${chord}.txt"
+        fi
         generate_chord "$chord" "$chord_file"
         temp_files+=("$chord_file")
     done
@@ -188,6 +214,15 @@ generate_multi_command() {
     done
     
     log "Concatenating and applying effects..."
+    
+    if [[ "$MOCK_MODE" == "true" ]]; then
+        log "MOCK: Would concatenate: ${sequence_files[*]}"
+        log "MOCK: Would apply effects: fade, gain, reverb"
+        echo "Mock multi-command output combining all chords" > "$OUTPUT_FILE"
+        # Clean up mock temp files
+        rm -f chord_*.txt temp_progression.txt
+        return 0
+    fi
     
     # Concatenate all chord files
     sox "${sequence_files[@]}" temp_progression.wav
@@ -220,6 +255,11 @@ verify_output() {
     
     local file_size=$(stat -c%s "$OUTPUT_FILE" 2>/dev/null || stat -f%z "$OUTPUT_FILE" 2>/dev/null)
     
+    if [[ "$MOCK_MODE" == "true" ]]; then
+        log "Mock mode output verified: $OUTPUT_FILE (${file_size} bytes)"
+        return 0
+    fi
+    
     if [[ $file_size -lt 1000 ]]; then
         error "Output file appears to be too small: ${file_size} bytes"
     fi
@@ -235,6 +275,24 @@ verify_output() {
 
 # Main execution
 main() {
+    # Parse command line arguments
+    for arg in "$@"; do
+        case $arg in
+            --mock)
+                MOCK_MODE=true
+                OUTPUT_FILE="DILLA_CHORDS_MOCK.txt"
+                log "Mock mode enabled - demonstration without SoX"
+                ;;
+            -h|--help)
+                echo "J Dilla Chord Progression Generator"
+                echo "Usage: $0 [--mock]"
+                echo "  --mock    Demo mode (no SoX required)"
+                echo "  --help    Show this help"
+                exit 0
+                ;;
+        esac
+    done
+    
     log "J Dilla Chord Progression Generator v1.0"
     log "Generating chord progression based on 'So Far To Go'"
     log "Target: Bb Major -> F Major -> Eb Major -> C minor -> G minor (repeated)"
@@ -243,12 +301,14 @@ main() {
     check_privileges
     command_exists "sox"
     
-    # Verify SoX version (warn if not v14.4.2)
-    local sox_version=$(sox --version 2>/dev/null | head -1)
-    log "SoX version: $sox_version"
-    
-    if ! echo "$sox_version" | grep -q "v14.4"; then
-        log "WARNING: Script optimized for SoX v14.4.2, current version may behave differently"
+    if [[ "$MOCK_MODE" != "true" ]]; then
+        # Verify SoX version (warn if not v14.4.2)
+        local sox_version=$(sox --version 2>/dev/null | head -1)
+        log "SoX version: $sox_version"
+        
+        if ! echo "$sox_version" | grep -q "v14.4"; then
+            log "WARNING: Script optimized for SoX v14.4.2, current version may behave differently"
+        fi
     fi
     
     # Generate the progression
@@ -258,9 +318,15 @@ main() {
     verify_output
     
     log "J Dilla chord progression generation complete!"
-    log "Play with: sox \"$OUTPUT_FILE\" -d"
-    log "Or: aplay \"$OUTPUT_FILE\" (Linux)"
-    log "Or: aucat -i \"$OUTPUT_FILE\" (OpenBSD)"
+    
+    if [[ "$MOCK_MODE" == "true" ]]; then
+        log "Mock mode was used - no actual audio file created"
+        log "Install SoX and run without --mock for real audio generation"
+    else
+        log "Play with: sox \"$OUTPUT_FILE\" -d"
+        log "Or: aplay \"$OUTPUT_FILE\" (Linux)"
+        log "Or: aucat -i \"$OUTPUT_FILE\" (OpenBSD)"
+    fi
 }
 
 # Trap to clean up on exit
