@@ -1,0 +1,32 @@
+# Generated audio files
+*.wav
+*.mp3
+*.flac
+DILLA_CHORDS.*
+
+# Temporary chord files
+chord_*.wav
+temp_progression.wav
+
+# Log files
+*.log
+
+# Build artifacts
+dist/
+build/
+target/
+
+# Dependencies
+node_modules/
+vendor/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
