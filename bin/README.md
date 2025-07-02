@@ -10,8 +10,9 @@ This directory contains shell scripts to generate a J Dilla-inspired chord progr
 - Uses bash-compatible syntax for broader compatibility
 
 ### `generate_dilla_chords_zsh.sh`  
-- **ZSH-optimized version** - Uses ZSH-specific features
-- Optimized for OpenBSD with zsh
+- **ZSH-optimized version** - Uses ZSH-specific features for OpenBSD
+- **OpenBSD pledge/unveil integration** - Secure execution with minimal privileges
+- **Mock mode support** - Demo functionality without SoX requirement
 - More efficient array handling with ZSH syntax
 
 ## Requirements
@@ -35,8 +36,14 @@ chmod +x generate_dilla_chords.sh
 # Show help
 ./generate_dilla_chords.sh --help
 
-# Or use the ZSH version on OpenBSD
+# Or use the ZSH version on OpenBSD (with security features)
 ./generate_dilla_chords_zsh.sh
+
+# ZSH version with mock mode
+./generate_dilla_chords_zsh.sh --mock
+
+# Show help for ZSH version
+./generate_dilla_chords_zsh.sh --help
 
 # With privilege escalation if needed
 doas ./generate_dilla_chords.sh
@@ -98,10 +105,12 @@ afplay DILLA_CHORDS.WAV
 
 ## Security
 
-- **Simple tier security**: Minimal attack surface
+- **OpenBSD pledge/unveil** (ZSH version): Minimal privileges and filesystem access
+- **Simple tier security**: Minimal attack surface  
 - **No external inputs**: All parameters are hardcoded
 - **Clear fallbacks**: Multiple generation methods
-- **Privilege escalation**: Optional doas/sudo support
+- **Privilege escalation**: Optional doas/sudo support (doas preferred on OpenBSD)
+- **Input validation**: Parameter validation and sanitization
 - **Cleanup**: Automatic temporary file removal
 
 ## Frequency Reference
