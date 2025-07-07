@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>J Dilla Visualizer Carousel</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <style>
     body {
       margin: 0;
@@ -13,14 +12,27 @@
       font-family: Arial, sans-serif;
     }
     
-    .swiper {
+    .carousel-container {
       width: 100%;
       height: 100vh;
-    }
-    
-    .swiper-slide {
       position: relative;
       overflow: hidden;
+    }
+    
+    .carousel-wrapper {
+      width: 500%;
+      height: 100%;
+      display: flex;
+      transition: transform 0.3s ease-in-out;
+      transform: translateX(0%);
+    }
+    
+    .carousel-slide {
+      width: 20%;
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
     }
     
     .audio-controls {
@@ -69,32 +81,66 @@
       width: 100%;
     }
     
-    .swiper-pagination {
-      bottom: 20px !important;
-      z-index: 1000 !important;
+    .carousel-nav {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      display: flex;
+      gap: 10px;
     }
     
-    .swiper-pagination-bullet {
-      background: white !important;
-      opacity: 0.6 !important;
+    .nav-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: background 0.3s ease;
     }
     
-    .swiper-pagination-bullet-active {
-      opacity: 1 !important;
+    .nav-dot.active {
+      background: #00ff88;
     }
     
-    .swiper-button-next,
-    .swiper-button-prev {
-      color: white !important;
-      background: rgba(0, 0, 0, 0.5) !important;
-      border-radius: 50% !important;
-      width: 44px !important;
-      height: 44px !important;
+    .carousel-arrows {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1000;
     }
     
-    .swiper-button-next:after,
-    .swiper-button-prev:after {
-      font-size: 18px !important;
+    .carousel-arrows.left {
+      left: 20px;
+    }
+    
+    .carousel-arrows.right {
+      right: 20px;
+    }
+    
+    .arrow-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.8);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      color: white;
+      cursor: pointer;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s ease;
+    }
+    
+    .arrow-btn:hover {
+      background: rgba(0, 0, 0, 0.9);
+    }
+    
+    .arrow-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
     }
     
     .visualizer-canvas {
@@ -119,13 +165,36 @@
       font-size: 12px;
       opacity: 0.8;
     }
+    
+    .debug-controls {
+      position: fixed;
+      bottom: 80px;
+      left: 10px;
+      z-index: 1001;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 10px;
+      border-radius: 5px;
+      color: white;
+      font-size: 12px;
+    }
+    
+    .debug-controls button {
+      background: #444;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      margin: 2px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 11px;
+    }
   </style>
 </head>
 <body>
-  <div class="swiper">
-    <div class="swiper-wrapper">
+  <div class="carousel-container">
+    <div class="carousel-wrapper" id="carouselWrapper">
       <!-- Slide 1: Starfield Warp Tunnel (Working Audio Pattern) -->
-      <div class="swiper-slide" data-visualizer="starfield">
+      <div class="carousel-slide" data-visualizer="starfield">
         <div class="audio-controls">
           <button id="btStartAudioVisualization">Start Audio Visualization</button>
           <div class="status-text" id="txtStatus">Waiting Patiently For You... Please Click the Start Button.</div>
@@ -153,7 +222,7 @@
       </div>
       
       <!-- Slide 2: Ultimate J Dilla Experience (Placeholder) -->
-      <div class="swiper-slide" data-visualizer="ultimate">
+      <div class="carousel-slide" data-visualizer="ultimate">
         <div class="visualizer-placeholder">
           <div>
             <h2>Ultimate J Dilla Experience</h2>
@@ -165,7 +234,7 @@
       </div>
       
       <!-- Slide 3: Master.json Compliant (Placeholder) -->
-      <div class="swiper-slide" data-visualizer="advanced">
+      <div class="carousel-slide" data-visualizer="advanced">
         <div class="visualizer-placeholder">
           <div>
             <h2>Master.json Compliant</h2>
@@ -177,7 +246,7 @@
       </div>
       
       <!-- Slide 4: Reserved for future visualizer -->
-      <div class="swiper-slide" data-visualizer="reserved-1">
+      <div class="carousel-slide" data-visualizer="reserved-1">
         <div class="visualizer-placeholder">
           <div>
             <h2>Reserved Visualizer Slot 1</h2>
@@ -188,7 +257,7 @@
       </div>
       
       <!-- Slide 5: Reserved for future visualizer -->
-      <div class="swiper-slide" data-visualizer="reserved-2">
+      <div class="carousel-slide" data-visualizer="reserved-2">
         <div class="visualizer-placeholder">
           <div>
             <h2>Reserved Visualizer Slot 2</h2>
@@ -200,12 +269,34 @@
     </div>
     
     <!-- Navigation -->
-    <div class="swiper-pagination"></div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
+    <div class="carousel-nav">
+      <div class="nav-dot active" onclick="goToSlide(0)"></div>
+      <div class="nav-dot" onclick="goToSlide(1)"></div>
+      <div class="nav-dot" onclick="goToSlide(2)"></div>
+      <div class="nav-dot" onclick="goToSlide(3)"></div>
+      <div class="nav-dot" onclick="goToSlide(4)"></div>
+    </div>
+    
+    <div class="carousel-arrows left">
+      <div class="arrow-btn" id="prevBtn" onclick="previousSlide()">‹</div>
+    </div>
+    
+    <div class="carousel-arrows right">
+      <div class="arrow-btn" id="nextBtn" onclick="nextSlide()">›</div>
+    </div>
+  </div>
+  
+  <!-- Debug Controls -->
+  <div class="debug-controls">
+    <div>Carousel Navigation Test</div>
+    <button onclick="goToSlide(0)">Slide 1</button>
+    <button onclick="goToSlide(1)">Slide 2</button>
+    <button onclick="goToSlide(2)">Slide 3</button>
+    <button onclick="goToSlide(3)">Slide 4</button>
+    <button onclick="goToSlide(4)">Slide 5</button>
+    <div id="currentSlide">Current: 1</div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script>
     // Extended J Dilla Playlist - 14 tracks as specified
     const tracks = [
@@ -225,6 +316,10 @@
       { id: "j0z_-7TfPeM", title: "Fantastic (Instrumental)", artist: "J Dilla", url: "https://www.youtube.com/watch?v=j0z_-7TfPeM" }
     ];
 
+    // Carousel State
+    let currentSlideIndex = 0;
+    const totalSlides = 5;
+    
     // Unified Audio System - Working Pattern from demo.html
     let audio, audioContext, audioSrc;
     let analyser, analyserBufferLength;
@@ -241,61 +336,58 @@
     let particles = [], particlesCenter = [];
     let time = 0, colorInvertValue = 0;
 
-    // Swiper instance
-    let swiper;
-    
-    // Wait for page to fully load
-    window.addEventListener('load', function() {
-      console.log('Window loaded, initializing carousel...');
+    // Carousel Navigation Functions
+    function goToSlide(index) {
+      if (index < 0 || index >= totalSlides) return;
       
-      // Initialize Swiper with correct configuration
-      swiper = new Swiper('.swiper', {
-        direction: 'horizontal',
-        loop: false,
-        effect: 'slide',
-        speed: 300,
-        centeredSlides: false,
-        slidesPerView: 1,
-        spaceBetween: 0,
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-          type: 'bullets',
-        },
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-        keyboard: {
-          enabled: true,
-          onlyInViewport: true,
-        },
-        on: {
-          init: function() {
-            console.log('Swiper initialized');
-          },
-          slideChange: function () {
-            console.log('Slide changed to:', this.activeIndex);
-            handleSlideChange(this.activeIndex);
-          },
-        },
+      currentSlideIndex = index;
+      const wrapper = document.getElementById('carouselWrapper');
+      const translateX = -index * 20; // 20% per slide (100% / 5 slides)
+      wrapper.style.transform = `translateX(${translateX}%)`;
+      
+      updateNavigation();
+      updateDebugInfo(index);
+      handleSlideChange(index);
+      
+      console.log('Navigated to slide:', index);
+    }
+    
+    function nextSlide() {
+      if (currentSlideIndex < totalSlides - 1) {
+        goToSlide(currentSlideIndex + 1);
+      }
+    }
+    
+    function previousSlide() {
+      if (currentSlideIndex > 0) {
+        goToSlide(currentSlideIndex - 1);
+      }
+    }
+    
+    function updateNavigation() {
+      // Update dots
+      const dots = document.querySelectorAll('.nav-dot');
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlideIndex);
       });
       
-      console.log('Swiper created:', swiper);
+      // Update arrow buttons
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
       
-      // Initialize visualizer after a short delay
-      setTimeout(() => {
-        init();
-        
-        // Setup track selection
-        const trackSelect = document.getElementById('trackSelect');
-        if (trackSelect) {
-          trackSelect.addEventListener('change', handleTrackChange);
-        }
-        
-        console.log('Initialization complete');
-      }, 100);
-    });
+      prevBtn.style.opacity = currentSlideIndex === 0 ? '0.3' : '1';
+      nextBtn.style.opacity = currentSlideIndex === totalSlides - 1 ? '0.3' : '1';
+      
+      prevBtn.disabled = currentSlideIndex === 0;
+      nextBtn.disabled = currentSlideIndex === totalSlides - 1;
+    }
+    
+    function updateDebugInfo(index) {
+      const debugEl = document.getElementById('currentSlide');
+      if (debugEl) {
+        debugEl.textContent = `Current: ${index + 1}`;
+      }
+    }
     
     function handleSlideChange(activeIndex) {
       console.log('Active slide:', activeIndex);
@@ -325,22 +417,26 @@
       const currentTrack = tracks[currentTrackIndex];
       // For demo purposes, using a placeholder audio source
       // In production, would integrate with YouTube API or use actual audio files
-      audio.src = 'http://nkunited.de/ExternalImages/jsfiddle/audio/ChillDay_comp.mp3';
+      audio.src = 'data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmMeCjuT2O/OeSsFJHfO8N2STAoUXrbp6aVTEwlBmeDwwmMeCzmS2e/OeykGJXfO8N2SVQoUXrzp6aVTEwlBmeDwwmMeBTuS2e/OeSoGJXfO8N2SSCI=';
       audio.controls = false;
       audio.loop = true;
       audio.autoplay = true;
       audio.crossOrigin = 'anonymous';
       audio.addEventListener('canplaythrough', audioLoaded, false);
 
-      audioContext = new (window.AudioContext || window.webkitAudioContext)();
-      analyser = audioContext.createAnalyser();
-      analyser.connect(audioContext.destination);
-      analyser.smoothingTimeConstant = 0.65;
-      analyser.fftSize = 512 * 32;
-      analyserBufferLength = analyser.frequencyBinCount;
+      try {
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        analyser = audioContext.createAnalyser();
+        analyser.connect(audioContext.destination);
+        analyser.smoothingTimeConstant = 0.65;
+        analyser.fftSize = 512 * 32;
+        analyserBufferLength = analyser.frequencyBinCount;
 
-      audioSrc = audioContext.createMediaElementSource(audio);
-      audioSrc.connect(analyser);
+        audioSrc = audioContext.createMediaElementSource(audio);
+        audioSrc.connect(analyser);
+      } catch (e) {
+        console.log('Audio context setup failed:', e);
+      }
     }
 
     function audioLoaded(event) {
@@ -684,9 +780,46 @@
       }
     }
 
+    // Keyboard Navigation
+    document.addEventListener('keydown', function(e) {
+      switch(e.key) {
+        case 'ArrowLeft':
+          previousSlide();
+          e.preventDefault();
+          break;
+        case 'ArrowRight':
+          nextSlide();
+          e.preventDefault();
+          break;
+        case '1':
+        case '2':
+        case '3':
+        case '4':
+        case '5':
+          goToSlide(parseInt(e.key) - 1);
+          e.preventDefault();
+          break;
+      }
+    });
+
     // Initialize when DOM is loaded
     document.addEventListener('DOMContentLoaded', function() {
-      console.log('DOM loaded...');
+      console.log('DOM loaded, initializing carousel...');
+      
+      // Initialize carousel
+      updateNavigation();
+      updateDebugInfo(0);
+      
+      // Initialize visualizer
+      init();
+      
+      // Setup track selection
+      const trackSelect = document.getElementById('trackSelect');
+      if (trackSelect) {
+        trackSelect.addEventListener('change', handleTrackChange);
+      }
+      
+      console.log('Carousel initialized successfully');
     });
 
     window.requestAnimFrame = (function() {
