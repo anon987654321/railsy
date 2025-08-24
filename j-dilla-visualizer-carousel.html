@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>J Dilla Visualizer Carousel</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: black;
+      font-family: Arial, sans-serif;
+    }
+    
+    .carousel-container {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .carousel-wrapper {
+      width: 500%;
+      height: 100%;
+      display: flex;
+      transition: transform 0.3s ease-in-out;
+      transform: translateX(0%);
+    }
+    
+    .carousel-slide {
+      width: 20%;
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    
+    .audio-controls {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      color: white;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px;
+      border-radius: 5px;
+    }
+    
+    .audio-controls button {
+      background: #333;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      margin: 2px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    
+    .audio-controls button:hover {
+      background: #555;
+    }
+    
+    .playlist-controls {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: white;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px;
+      border-radius: 5px;
+      max-width: 300px;
+    }
+    
+    .playlist-controls select {
+      background: #333;
+      color: white;
+      border: 1px solid #555;
+      padding: 5px;
+      border-radius: 3px;
+      width: 100%;
+    }
+    
+    .carousel-nav {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      display: flex;
+      gap: 10px;
+    }
+    
+    .nav-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    
+    .nav-dot.active {
+      background: #00ff88;
+    }
+    
+    .carousel-arrows {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1000;
+    }
+    
+    .carousel-arrows.left {
+      left: 20px;
+    }
+    
+    .carousel-arrows.right {
+      right: 20px;
+    }
+    
+    .arrow-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.8);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      color: white;
+      cursor: pointer;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s ease;
+    }
+    
+    .arrow-btn:hover {
+      background: rgba(0, 0, 0, 0.9);
+    }
+    
+    .arrow-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+    
+    .visualizer-canvas {
+      width: 100%;
+      height: 100vh;
+      display: block;
+    }
+    
+    .visualizer-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: white;
+      font-size: 24px;
+      text-align: center;
+      background: linear-gradient(45deg, #000, #333);
+    }
+    
+    .status-text {
+      margin-top: 10px;
+      font-size: 12px;
+      opacity: 0.8;
+    }
+    
+    .debug-controls {
+      position: fixed;
+      bottom: 80px;
+      left: 10px;
+      z-index: 1001;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 10px;
+      border-radius: 5px;
+      color: white;
+      font-size: 12px;
+    }
+    
+    .debug-controls button {
+      background: #444;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      margin: 2px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 11px;
+    }
+  </style>
+</head>
+<body>
+  <div class="carousel-container">
+    <div class="carousel-wrapper" id="carouselWrapper">
+      <!-- Slide 1: Starfield Warp Tunnel (Working Audio Pattern) -->
+      <div class="carousel-slide" data-visualizer="starfield">
+        <div class="audio-controls">
+          <button id="btStartAudioVisualization">Start Audio Visualization</button>
+          <div class="status-text" id="txtStatus">Waiting Patiently For You... Please Click the Start Button.</div>
+        </div>
+        <div class="playlist-controls">
+          <label for="trackSelect">Select Track:</label>
+          <select id="trackSelect">
+            <option value="0">Microphone Master [Extended] - J Dilla</option>
+            <option value="1">Due Time - AFTA-1</option>
+            <option value="2">In Space - J Dilla</option>
+            <option value="3">Chinubian - Jneiro Jarel</option>
+            <option value="4">Rhodes Ahead - Karriem Riggins</option>
+            <option value="5">Ooooaaa - Karriem Riggins</option>
+            <option value="6">Back in Brazil - Karriem Riggins</option>
+            <option value="7">Embryo - Baatin</option>
+            <option value="8">Orbitz - Karriem Riggins</option>
+            <option value="9">Sounds Like Love (Extended) - J Dilla</option>
+            <option value="10">Get It Together (Instrumental) - J-88 (Slum Village)</option>
+            <option value="11">Hustle (Instrumental Mix) - J Dilla</option>
+            <option value="12">Stupid Lies (Instrumental) (HQ) - J Dilla</option>
+            <option value="13">Fantastic (Instrumental) - J Dilla</option>
+          </select>
+        </div>
+        <canvas id="starfieldCanvas" class="visualizer-canvas"></canvas>
+      </div>
+      
+      <!-- Slide 2: Ultimate J Dilla Experience (Placeholder) -->
+      <div class="carousel-slide" data-visualizer="ultimate">
+        <div class="visualizer-placeholder">
+          <div>
+            <h2>Ultimate J Dilla Experience</h2>
+            <p>Comprehensive UI with controls</p>
+            <p>Audio system will be integrated using working pattern</p>
+            <div class="status-text">Awaiting complete visualizer code preservation</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Slide 3: Master.json Compliant (Placeholder) -->
+      <div class="carousel-slide" data-visualizer="advanced">
+        <div class="visualizer-placeholder">
+          <div>
+            <h2>Master.json Compliant</h2>
+            <p>Advanced engine with v12.3.0 compliance</p>
+            <p>Audio system will be integrated using working pattern</p>
+            <div class="status-text">Awaiting complete visualizer code preservation</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Slide 4: Reserved for future visualizer -->
+      <div class="carousel-slide" data-visualizer="reserved-1">
+        <div class="visualizer-placeholder">
+          <div>
+            <h2>Reserved Visualizer Slot 1</h2>
+            <p>Ready for future visualizer implementation</p>
+            <div class="status-text">Placeholder slide for expansion</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Slide 5: Reserved for future visualizer -->
+      <div class="carousel-slide" data-visualizer="reserved-2">
+        <div class="visualizer-placeholder">
+          <div>
+            <h2>Reserved Visualizer Slot 2</h2>
+            <p>Ready for future visualizer implementation</p>
+            <div class="status-text">Placeholder slide for expansion</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Navigation -->
+    <div class="carousel-nav">
+      <div class="nav-dot active" onclick="goToSlide(0)"></div>
+      <div class="nav-dot" onclick="goToSlide(1)"></div>
+      <div class="nav-dot" onclick="goToSlide(2)"></div>
+      <div class="nav-dot" onclick="goToSlide(3)"></div>
+      <div class="nav-dot" onclick="goToSlide(4)"></div>
+    </div>
+    
+    <div class="carousel-arrows left">
+      <div class="arrow-btn" id="prevBtn" onclick="previousSlide()">‹</div>
+    </div>
+    
+    <div class="carousel-arrows right">
+      <div class="arrow-btn" id="nextBtn" onclick="nextSlide()">›</div>
+    </div>
+  </div>
+  
+  <!-- Debug Controls -->
+  <div class="debug-controls">
+    <div>Carousel Navigation Test</div>
+    <button onclick="goToSlide(0)">Slide 1</button>
+    <button onclick="goToSlide(1)">Slide 2</button>
+    <button onclick="goToSlide(2)">Slide 3</button>
+    <button onclick="goToSlide(3)">Slide 4</button>
+    <button onclick="goToSlide(4)">Slide 5</button>
+    <div id="currentSlide">Current: 1</div>
+  </div>
+
+  <script>
+    // Extended J Dilla Playlist - 14 tracks as specified
+    const tracks = [
+      { id: "9EGHwkDix78", title: "Microphone Master [Extended]", artist: "J Dilla", url: "https://www.youtube.com/watch?v=9EGHwkDix78" },
+      { id: "WC09qDzU9y4", title: "Due Time", artist: "AFTA-1", url: "https://youtu.be/WC09qDzU9y4" },
+      { id: "9ycJsnzJ-hA", title: "In Space", artist: "J Dilla", url: "https://youtu.be/9ycJsnzJ-hA" },
+      { id: "9OPypHXlJUQ", title: "Chinubian", artist: "Jneiro Jarel", url: "https://youtu.be/9OPypHXlJUQ" },
+      { id: "_-17rzyBrKY", title: "Rhodes Ahead", artist: "Karriem Riggins", url: "https://youtu.be/_-17rzyBrKY" },
+      { id: "RpDcz90_oWY", title: "Ooooaaa", artist: "Karriem Riggins", url: "https://youtu.be/RpDcz90_oWY" },
+      { id: "B1ZvmzfUJv0", title: "Back in Brazil", artist: "Karriem Riggins", url: "https://youtu.be/B1ZvmzfUJv0" },
+      { id: "JGUqRBJ4bIo", title: "Embryo", artist: "Baatin", url: "https://youtu.be/JGUqRBJ4bIo" },
+      { id: "nelU7OMF7VY", title: "Orbitz", artist: "Karriem Riggins", url: "https://youtu.be/nelU7OMF7VY" },
+      { id: "jnP3tRG-LZs", title: "Sounds Like Love (Extended)", artist: "J Dilla", url: "https://www.youtube.com/watch?v=jnP3tRG-LZs" },
+      { id: "t6T-Q6HMbEo", title: "Get It Together (Instrumental)", artist: "J-88 (Slum Village)", url: "https://www.youtube.com/watch?v=t6T-Q6HMbEo" },
+      { id: "zoGTC7uROZE", title: "Hustle (Instrumental Mix)", artist: "J Dilla", url: "https://www.youtube.com/watch?v=zoGTC7uROZE" },
+      { id: "7611GgbJAbM", title: "Stupid Lies (Instrumental) (HQ)", artist: "J Dilla", url: "https://www.youtube.com/watch?v=7611GgbJAbM" },
+      { id: "j0z_-7TfPeM", title: "Fantastic (Instrumental)", artist: "J Dilla", url: "https://www.youtube.com/watch?v=j0z_-7TfPeM" }
+    ];
+
+    // Carousel State
+    let currentSlideIndex = 0;
+    const totalSlides = 5;
+    
+    // Unified Audio System - Working Pattern from demo.html
+    let audio, audioContext, audioSrc;
+    let analyser, analyserBufferLength;
+    let currentTrackIndex = 0;
+    
+    // Starfield Visualizer Variables (from demo.html)
+    let w, h;
+    let btStart, txtStatus, canvas, context;
+    let imageData, data;
+    let mouseActive = false, mouseDown = false;
+    let mousePos = { x: 0, y: 0 };
+    let mouseFollowSpeed = 0.015;
+    let fov = 250, speed = 0.75;
+    let particles = [], particlesCenter = [];
+    let time = 0, colorInvertValue = 0;
+
+    // Carousel Navigation Functions
+    function goToSlide(index) {
+      if (index < 0 || index >= totalSlides) return;
+      
+      currentSlideIndex = index;
+      const wrapper = document.getElementById('carouselWrapper');
+      const translateX = -index * 20; // 20% per slide (100% / 5 slides)
+      wrapper.style.transform = `translateX(${translateX}%)`;
+      
+      updateNavigation();
+      updateDebugInfo(index);
+      handleSlideChange(index);
+      
+      console.log('Navigated to slide:', index);
+    }
+    
+    function nextSlide() {
+      if (currentSlideIndex < totalSlides - 1) {
+        goToSlide(currentSlideIndex + 1);
+      }
+    }
+    
+    function previousSlide() {
+      if (currentSlideIndex > 0) {
+        goToSlide(currentSlideIndex - 1);
+      }
+    }
+    
+    function updateNavigation() {
+      // Update dots
+      const dots = document.querySelectorAll('.nav-dot');
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlideIndex);
+      });
+      
+      // Update arrow buttons
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      
+      prevBtn.style.opacity = currentSlideIndex === 0 ? '0.3' : '1';
+      nextBtn.style.opacity = currentSlideIndex === totalSlides - 1 ? '0.3' : '1';
+      
+      prevBtn.disabled = currentSlideIndex === 0;
+      nextBtn.disabled = currentSlideIndex === totalSlides - 1;
+    }
+    
+    function updateDebugInfo(index) {
+      const debugEl = document.getElementById('currentSlide');
+      if (debugEl) {
+        debugEl.textContent = `Current: ${index + 1}`;
+      }
+    }
+    
+    function handleSlideChange(activeIndex) {
+      console.log('Active slide:', activeIndex);
+      // Handle visualizer-specific logic based on active slide
+      switch(activeIndex) {
+        case 0:
+          console.log('Starfield Warp Tunnel active');
+          break;
+        case 1:
+          console.log('Ultimate J Dilla Experience active');
+          break;
+        case 2:
+          console.log('Master.json Compliant active');
+          break;
+        case 3:
+          console.log('Reserved slot 1 active');
+          break;
+        case 4:
+          console.log('Reserved slot 2 active');
+          break;
+      }
+    }
+
+    // Audio Setup Function - Working Pattern
+    function audioSetup() {
+      audio = new Audio();
+      const currentTrack = tracks[currentTrackIndex];
+      // For demo purposes, using a placeholder audio source
+      // In production, would integrate with YouTube API or use actual audio files
+      audio.src = 'data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmMeCjuT2O/OeSsFJHfO8N2STAoUXrbp6aVTEwlBmeDwwmMeCzmS2e/OeykGJXfO8N2SVQoUXrzp6aVTEwlBmeDwwmMeBTuS2e/OeSoGJXfO8N2SSCI=';
+      audio.controls = false;
+      audio.loop = true;
+      audio.autoplay = true;
+      audio.crossOrigin = 'anonymous';
+      audio.addEventListener('canplaythrough', audioLoaded, false);
+
+      try {
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        analyser = audioContext.createAnalyser();
+        analyser.connect(audioContext.destination);
+        analyser.smoothingTimeConstant = 0.65;
+        analyser.fftSize = 512 * 32;
+        analyserBufferLength = analyser.frequencyBinCount;
+
+        audioSrc = audioContext.createMediaElementSource(audio);
+        audioSrc.connect(analyser);
+      } catch (e) {
+        console.log('Audio context setup failed:', e);
+      }
+    }
+
+    function audioLoaded(event) {
+      const currentTrack = tracks[currentTrackIndex];
+      txtStatus.innerHTML = `Playing: ${currentTrack.title} - ${currentTrack.artist}`;
+    }
+
+    // Starfield Visualizer Functions (Preserved from demo.html)
+    function init() {
+      canvas = document.getElementById('starfieldCanvas');
+      if (!canvas) return;
+      
+      canvas.addEventListener('mousedown', mouseDownHandler, false);
+      canvas.addEventListener('mouseup', mouseUpHandler, false);
+      canvas.addEventListener('mousemove', mouseMoveHandler, false);
+      canvas.addEventListener('mouseenter', mouseEnterHandler, false);
+      canvas.addEventListener('mouseleave', mouseLeaveHandler, false);
+
+      context = canvas.getContext('2d');
+      window.addEventListener('resize', onResize, false);
+      onResize();
+      addParticles();
+      render();
+      clearImageData();
+      render();
+      context.putImageData(imageData, 0, 0);
+
+      btStart = document.getElementById('btStartAudioVisualization');
+      btStart.addEventListener('mousedown', userStart, false);
+
+      txtStatus = document.getElementById('txtStatus');
+      txtStatus.innerHTML = 'Waiting Patiently For You... Please Click the Start Button.';
+    }
+
+    function userStart() {
+      btStart.removeEventListener('mousedown', userStart);
+      btStart.addEventListener('mousedown', audioBtHandler, false);
+      btStart.innerHTML = 'Pause Audio';
+
+      txtStatus.innerHTML = 'Loading Audio...';
+      audioSetup();
+      animate();
+    }
+
+    function clearImageData() {
+      for (let i = 0, l = data.length; i < l; i += 4) {
+        data[i] = 0;
+        data[i + 1] = 0;
+        data[i + 2] = 0;
+        data[i + 3] = 255;
+      }
+    }
+
+    function setPixel(x, y, r, g, b, a) {
+      const i = (x + y * imageData.width) * 4;
+      data[i] = r;
+      data[i + 1] = g;
+      data[i + 2] = b;
+      data[i + 3] = a;
+    }
+
+    function drawLine(x1, y1, x2, y2, r, g, b, a) {
+      const dx = Math.abs(x2 - x1);
+      const dy = Math.abs(y2 - y1);
+      const sx = (x1 < x2) ? 1 : -1;
+      const sy = (y1 < y2) ? 1 : -1;
+      let err = dx - dy;
+
+      let lx = x1, ly = y1;
+      while (true) {
+        if (lx > 0 && lx < w && ly > 0 && ly < h) {
+          setPixel(lx, ly, r, g, b, a);
+        }
+        if (lx === x2 && ly === y2) break;
+        const e2 = 2 * err;
+        if (e2 > -dx) { err -= dy; lx += sx; }
+        if (e2 < dy) { err += dx; ly += sy; }
+      }
+    }
+
+    function getCirclePosition(centerX, centerY, radius, index, segments) {
+      const angle = index * ((Math.PI * 2) / segments) + time;
+      const x = centerX + Math.cos(angle) * radius;
+      const y = centerY + Math.sin(angle) * radius;
+      return { x: x, y: y };
+    }
+
+    function drawCircle(centerPosition, radius, segments) {
+      const coordinates = [];
+      let radiusSave;
+      const diff = 0;
+
+      for (let i = 0; i <= segments; i++) {
+        let radiusRandom = radius;
+        if (i === 0) radiusSave = radiusRandom;
+        if (i === segments) radiusRandom = radiusSave;
+        const centerX = centerPosition.x;
+        const centerY = centerPosition.y;
+        const position = getCirclePosition(centerX, centerY, radiusRandom, i, segments);
+        coordinates.push({
+          x: position.x,
+          y: position.y,
+          index: i + diff,
+          radius: radiusRandom,
+          segments: segments,
+          centerX: centerX,
+          centerY: centerY
+        });
+      }
+      return coordinates;
+    }
+
+    function addParticle(x, y, z, audioBufferIndex) {
+      const particle = { x: x, y: y, z: z, x2d: 0, y2d: 0, audioBufferIndex: audioBufferIndex };
+      return particle;
+    }
+
+    function addParticles() {
+      const audioBufferIndexMin = 8;
+      const audioBufferIndexMax = 1024;
+      let audioBufferIndex = audioBufferIndexMin;
+
+      const centerPosition = { x: 0, y: 0 };
+      let center = { x: 0, y: 0 };
+      let c = 0;
+      const w1 = Math.random() * (w / 1);
+      const h1 = Math.random() * (h / 1);
+
+      for (let z = -fov; z < fov; z += 4) {
+        const coordinates = drawCircle(centerPosition, 75, 64);
+        const particlesRow = [];
+        center.x = ((w / 2) - w1) * (c / 15) + w / 2;
+        center.y = ((h / 2) - h1) * (c / 15) + w / 2;
+        c++;
+        particlesCenter.push(center);
+        audioBufferIndex = Math.floor(Math.random() * audioBufferIndexMax) + audioBufferIndexMin;
+
+        for (let i = 0, l = coordinates.length; i < l; i++) {
+          const coordinate = coordinates[i];
+          const particle = addParticle(coordinate.x, coordinate.y, z, audioBufferIndex);
+          particle.index = coordinate.index;
+          particle.radius = coordinate.radius;
+          particle.radiusAudio = particle.radius;
+          particle.segments = coordinate.segments;
+          particle.centerX = coordinate.centerX;
+          particle.centerY = coordinate.centerY;
+          particlesRow.push(particle);
+          if (i < coordinates.length / 2) audioBufferIndex++;
+          else audioBufferIndex--;
+          if (audioBufferIndex > audioBufferIndexMax) audioBufferIndex = audioBufferIndexMin;
+          if (audioBufferIndex < audioBufferIndexMin) audioBufferIndex = audioBufferIndexMax;
+        }
+        particles.push(particlesRow);
+      }
+    }
+
+    function onResize() {
+      w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+      h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+      if (canvas) {
+        canvas.width = w;
+        canvas.height = h;
+        context.fillStyle = '#000000';
+        context.fillRect(0, 0, w, h);
+        imageData = context.getImageData(0, 0, w, h);
+        data = imageData.data;
+      }
+    }
+
+    function audioBtHandler(event) {
+      if (audio.paused) {
+        audio.play();
+        btStart.innerHTML = 'Pause Audio';
+      } else {
+        audio.pause();
+        btStart.innerHTML = 'Play Audio';
+      }
+    }
+
+    function mouseDownHandler(event) {
+      mouseDown = true;
+    }
+
+    function mouseUpHandler(event) {
+      mouseDown = false;
+    }
+
+    function mouseEnterHandler(event) {
+      mouseActive = true;
+    }
+
+    function mouseLeaveHandler(event) {
+      mouseActive = false;
+      mousePos.x = w / 2;
+      mousePos.y = h / 2;
+      mouseDown = false;
+    }
+
+    function mouseMoveHandler(event) {
+      mousePos = getMousePos(canvas, event);
+    }
+
+    function getMousePos(canvas, event) {
+      const rect = canvas.getBoundingClientRect();
+      return { x: event.clientX - rect.left, y: event.clientY - rect.top };
+    }
+
+    function render() {
+      let frequencySource;
+      if (analyser) {
+        frequencySource = new Uint8Array(analyser.frequencyBinCount);
+        analyser.getByteFrequencyData(frequencySource);
+      }
+
+      let sortArray = false;
+      for (let i = 0, l = particles.length; i < l; i++) {
+        const particlesRow = particles[i];
+        let particlesRowBack;
+        if (i > 0) {
+          particlesRowBack = particles[i - 1];
+        }
+
+        const center = particlesCenter[i];
+        if (mouseActive) {
+          center.x = ((w / 2) - mousePos.x) * ((particlesRow[0].z - fov) / 500) + w / 2;
+          center.y = ((h / 2) - mousePos.y) * ((particlesRow[0].z - fov) / 500) + h / 2;
+        } else {
+          center.x += ((w / 2) - center.x) * mouseFollowSpeed;
+          center.y += ((h / 2) - center.y) * mouseFollowSpeed;
+        }
+
+        for (let j = 0, k = particlesRow.length; j < k; j++) {
+          const particle = particlesRow[j];
+          const scale = fov / (fov + particle.z);
+          particle.x2d = (particle.x * scale) + center.x;
+          particle.y2d = (particle.y * scale) + center.y;
+
+          if (analyser) {
+            const frequency = frequencySource[particle.audioBufferIndex];
+            const frequencyAdd = frequency / 8;
+            particle.radiusAudio = particle.radius + frequencyAdd;
+          } else {
+            particle.radiusAudio = particle.radius;
+          }
+
+          if (mouseDown) {
+            particle.z += speed;
+            if (particle.z > fov) {
+              particle.z -= (fov * 2);
+              sortArray = true;
+            }
+          } else {
+            particle.z -= speed;
+            if (particle.z < -fov) {
+              particle.z += (fov * 2);
+              sortArray = true;
+            }
+          }
+
+          let lineColorValue = 0;
+          if (j > 0) {
+            const p = particlesRow[j - 1];
+            lineColorValue = Math.round(i / l * 200);
+            drawLine(particle.x2d | 0, particle.y2d | 0, p.x2d | 0, p.y2d | 0, 0, Math.round(lineColorValue / 2), lineColorValue, 255);
+          }
+
+          let position;
+          if (j < k - 1) {
+            position = getCirclePosition(particle.centerX, particle.centerY, particle.radiusAudio, particle.index, particle.segments);
+          } else {
+            const p1 = particlesRow[0];
+            position = getCirclePosition(p1.centerX, p1.centerY, p1.radiusAudio, p1.index, p1.segments);
+          }
+          particle.x = position.x;
+          particle.y = position.y;
+
+          if (i > 0 && i < l - 1) {
+            let pB;
+            if (j === 0) {
+              pB = particlesRowBack[particlesRowBack.length - 1];
+            } else {
+              pB = particlesRowBack[j - 1];
+            }
+            drawLine(particle.x2d | 0, particle.y2d | 0, pB.x2d | 0, pB.y2d | 0, 0, Math.round(lineColorValue / 2), lineColorValue, 255);
+          }
+        }
+      }
+
+      if (sortArray) {
+        particles = particles.sort(function(a, b) {
+          return (b[0].z - a[0].z);
+        });
+      }
+
+      if (mouseDown) {
+        time -= 0.005;
+      } else {
+        time += 0.005;
+      }
+
+      if (mouseDown) {
+        if (colorInvertValue < 255)
+          colorInvertValue += 5;
+        else
+          colorInvertValue = 255;
+        softInvert(colorInvertValue);
+      } else {
+        if (colorInvertValue > 0)
+          colorInvertValue -= 5;
+        else
+          colorInvertValue = 0;
+        if (colorInvertValue > 0)
+          softInvert(colorInvertValue);
+      }
+    }
+
+    function softInvert(value) {
+      for (let j = 0, n = data.length; j < n; j += 4) {
+        data[j] = Math.abs(value - data[j]);
+        data[j + 1] = Math.abs(value - data[j + 1]);
+        data[j + 2] = Math.abs(value - data[j + 2]);
+        data[j + 3] = 255;
+      }
+    }
+
+    function animate() {
+      clearImageData();
+      render();
+      context.putImageData(imageData, 0, 0);
+      requestAnimationFrame(animate);
+    }
+
+    // Track Selection Handler
+    function handleTrackChange() {
+      const select = document.getElementById('trackSelect');
+      currentTrackIndex = parseInt(select.value);
+      if (audio) {
+        // In production, would load new track here
+        const currentTrack = tracks[currentTrackIndex];
+        txtStatus.innerHTML = `Selected: ${currentTrack.title} - ${currentTrack.artist}`;
+      }
+    }
+
+    // Keyboard Navigation
+    document.addEventListener('keydown', function(e) {
+      switch(e.key) {
+        case 'ArrowLeft':
+          previousSlide();
+          e.preventDefault();
+          break;
+        case 'ArrowRight':
+          nextSlide();
+          e.preventDefault();
+          break;
+        case '1':
+        case '2':
+        case '3':
+        case '4':
+        case '5':
+          goToSlide(parseInt(e.key) - 1);
+          e.preventDefault();
+          break;
+      }
+    });
+
+    // Initialize when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('DOM loaded, initializing carousel...');
+      
+      // Initialize carousel
+      updateNavigation();
+      updateDebugInfo(0);
+      
+      // Initialize visualizer
+      init();
+      
+      // Setup track selection
+      const trackSelect = document.getElementById('trackSelect');
+      if (trackSelect) {
+        trackSelect.addEventListener('change', handleTrackChange);
+      }
+      
+      console.log('Carousel initialized successfully');
+    });
+
+    window.requestAnimFrame = (function() {
+      return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function(callback) {
+        window.setTimeout(callback, 1000 / 60);
+      };
+    })();
+  </script>
+</body>
+</html>
